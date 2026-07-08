@@ -67,7 +67,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 26px;
   background:
     radial-gradient(120% 60% at 50% 0%, #fdfcfa 0%, var(--cream) 55%, var(--cream-deep) 100%);
-  overflow: clip;
+  overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
 
@@ -337,7 +337,7 @@ button { font-family: inherit; cursor: pointer; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  vertical-align: -0.12em;
+  vertical-align: 0.18em;
   width: 1.75em;
   height: 0.92em;
   margin: 0 0.12em;
