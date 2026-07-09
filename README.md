@@ -1,7 +1,7 @@
 # Lee Hyowon — Portfolio
 
 정보의 마찰을 줄이는 백엔드 · AI 개발자 이효원의 포트폴리오 사이트입니다.
-Fractal Glass 효과와 인터랙티브 요소가 적용된 순수 HTML/CSS/JS 정적 사이트로, 빌드 과정 없이 GitHub Pages에 바로 배포됩니다.
+할프톤(halftone) 기반의 흑백 인쇄 컨셉과 인터랙티브 요소가 적용된 순수 HTML/CSS/JS 정적 사이트로, 빌드 과정 없이 GitHub Pages에 바로 배포됩니다.
 
 ## 로컬에서 보기
 
@@ -30,7 +30,7 @@ python3 -m http.server 4317
 
 ```
 index.html   # 마크업 (전체 섹션 + 프로젝트 모달)
-style.css    # 스타일 · Fractal Glass 효과 · 애니메이션
+style.css    # 스타일 · 할프톤 효과 · 애니메이션
 main.js      # 인터랙션 (리빌, 패럴랙스, 틸트, 모달, 카운터)
 .nojekyll    # GitHub Pages에서 Jekyll 처리 비활성화
 ```

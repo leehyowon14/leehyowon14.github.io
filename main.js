@@ -69,14 +69,14 @@
   );
   sections.forEach((s) => sectionIO.observe(s));
 
-  /* ---------- hero: mouse parallax + glass light ---------- */
-  const aurora = $("#aurora");
-  const heroLight = $("#hero-light");
+  /* ---------- hero: mouse-reactive halftone (spot + tone parallax) ---------- */
+  const halftone = $(".hero .halftone");
+  const tone = $(".hero .ht-tone");
   const hero = $(".hero");
 
-  if (!reduceMotion && hero && window.matchMedia("(pointer: fine)").matches) {
+  if (!reduceMotion && hero && halftone && tone && window.matchMedia("(pointer: fine)").matches) {
     let tx = 0, ty = 0, cx = 0, cy = 0;
-    let lx = 50, ly = 38, clx = 50, cly = 38;
+    let lx = 50, ly = 82, clx = 50, cly = 82;
     let raf = null;
 
     const tick = () => {
@@ -84,9 +84,9 @@
       cy += (ty - cy) * 0.06;
       clx += (lx - clx) * 0.1;
       cly += (ly - cly) * 0.1;
-      aurora.style.transform = `translate(${cx}px, ${cy}px)`;
-      heroLight.style.setProperty("--mx", `${clx}%`);
-      heroLight.style.setProperty("--my", `${cly}%`);
+      tone.style.transform = `translate(${cx}px, ${cy}px)`;
+      halftone.style.setProperty("--mx", `${clx}%`);
+      halftone.style.setProperty("--my", `${cly}%`);
       if (Math.abs(tx - cx) > 0.1 || Math.abs(lx - clx) > 0.1) {
         raf = requestAnimationFrame(tick);
       } else {
@@ -98,8 +98,8 @@
       const r = hero.getBoundingClientRect();
       const nx = (e.clientX - r.left) / r.width - 0.5;
       const ny = (e.clientY - r.top) / r.height - 0.5;
-      tx = nx * 46;
-      ty = ny * 30;
+      tx = nx * 30;
+      ty = ny * 20;
       lx = ((e.clientX - r.left) / r.width) * 100;
       ly = ((e.clientY - r.top) / r.height) * 100;
       if (!raf) raf = requestAnimationFrame(tick);
