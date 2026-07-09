@@ -180,6 +180,9 @@ button { font-family: inherit; cursor: pointer; }
   inset: 0;
   overflow: hidden;
   background: #fff;
+  dynamic-range-limit: standard;
+  /* TODO: Replace CSS contrast() with an SVG filter clamp for Safari versions
+     that do not support dynamic-range-limit. */
   filter: contrast(13);
 }
 .ht-tone {
@@ -410,6 +413,7 @@ button { font-family: inherit; cursor: pointer; }
   inset: 0;
   overflow: hidden;
   background: #fff;
+  dynamic-range-limit: standard;
   filter: grayscale(1) contrast(14);
 }
 .hand-tone {
