@@ -98,15 +98,11 @@ button { font-family: inherit; cursor: pointer; }
   padding: 14px 40px;
 }
 .logo {
-  font-family: var(--serif);
-  font-size: 1.7rem;
-  letter-spacing: -0.01em;
-  text-shadow:
-    0 0 6px #fff, 0 0 12px #fff, 0 0 20px #fff,
-    0 0 28px rgba(255, 255, 255, 0.9);
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
-.logo em { font-style: italic; }
-.logo-dot { color: var(--gray); }
 
 .site-nav {
   display: flex;
@@ -177,7 +173,7 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   padding: 100px 24px 80px;
   overflow: hidden;
   margin-top: -87px; /* pull behind sticky header */
@@ -199,8 +195,7 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute;
   inset: -12%;
   filter: blur(22px);
-  background: radial-gradient(58% 52% at 50% 38%,
-    #fff 0%, #ececec 26%, #b8b8b8 46%, #7a7a7a 64%, #4e4e4e 82%, #3c3c3c 100%);
+  background: #fff;
 }
 .ht-blob {
   position: absolute;
@@ -234,6 +229,56 @@ button { font-family: inherit; cursor: pointer; }
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(0, 0, 0, 0.55), transparent 64%);
 }
+
+/* ---------- ink dispersing in water (rendered through the halftone) ----------
+   blobs bloom from a dense core, wobble, spread and dissolve — staggered so
+   a new drop lands as the previous one fades */
+.ink {
+  position: absolute;
+  opacity: 0;
+  /* wide near-opaque plateau so the core survives the tone blur; the dots
+     themselves are recolored by the .ht-color screen overlay */
+  background: radial-gradient(closest-side,
+    rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.92) 52%,
+    rgba(0, 0, 0, 0.58) 76%, transparent 100%);
+  will-change: transform, opacity;
+}
+.ink.i1 {
+  width: 28vw; height: 32vw;
+  right: 2%; top: 18%;
+  animation: inkBloom 15s ease-in-out infinite,
+             inkMorph 7s ease-in-out infinite alternate;
+}
+.ink.i2 {
+  width: 19vw; height: 23vw;
+  right: 15%; top: 40%;
+  animation: inkBloom 15s ease-in-out infinite 3.75s,
+             inkMorph 8.5s ease-in-out infinite alternate-reverse;
+}
+.ink.i3 {
+  width: 16vw; height: 18vw;
+  right: -4%; top: 52%;
+  animation: inkBloom 15s ease-in-out infinite 7.5s,
+             inkMorph 6.5s ease-in-out infinite alternate;
+}
+.ink.i4 {
+  width: 12vw; height: 13vw;
+  right: 23%; top: 26%;
+  animation: inkBloom 15s ease-in-out infinite 11.25s,
+             inkMorph 9s ease-in-out infinite alternate-reverse;
+}
+/* bloom further and drift down-left as the ink disperses */
+@keyframes inkBloom {
+  0%   { transform: translate(0, 0) scale(0.22) rotate(0deg); opacity: 0; }
+  5%   { opacity: 1; }
+  40%  { transform: translate(-1vw, 1.5vw) scale(1.05) rotate(10deg); opacity: 0.95; }
+  72%  { transform: translate(-2.5vw, 3vw) scale(1.65) rotate(18deg); opacity: 0.55; }
+  94%, 100% { transform: translate(-3.5vw, 4vw) scale(2.1) rotate(26deg); opacity: 0; }
+}
+@keyframes inkMorph {
+  from { border-radius: 46% 54% 52% 48% / 58% 44% 56% 42%; }
+  to   { border-radius: 58% 42% 46% 54% / 44% 58% 42% 56%; }
+}
 /* the dot screen itself, rotated like a real print raster */
 .ht-dots {
   position: absolute;
@@ -241,6 +286,26 @@ button { font-family: inherit; cursor: pointer; }
   transform: rotate(15deg);
   background: radial-gradient(circle closest-side, #000 0%, #fff 100%) 0 0 / 14px 14px;
   mix-blend-mode: screen;
+}
+
+/* recolors the black halftone dots — screen keeps white paper untouched
+   and maps ink to the indigo family (#515ada) */
+.ht-color {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, #8a74e8 0%, #515ada 55%, #4046c9 100%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* soft lavender atmosphere (#efd5ff) around the ink zone */
+.ht-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(42% 52% at 80% 34%, rgba(239, 213, 255, 0.5), transparent 72%),
+    radial-gradient(30% 36% at 10% 80%, rgba(239, 213, 255, 0.35), transparent 70%);
+  pointer-events: none;
 }
 /* seamless loops — 0% and 100% match so motion never rests */
 @keyframes orbit1 {
@@ -282,10 +347,12 @@ button { font-family: inherit; cursor: pointer; }
   mix-blend-mode: multiply;
 }
 
-/* -- grain -- */
+/* -- grain (sits above the hero content so inset halftone boxes like the
+      hand blend seamlessly into the paper) -- */
 .grain {
   position: absolute;
   inset: 0;
+  z-index: 6;
   background-image: var(--grain-img);
   opacity: 0.16;
   mix-blend-mode: multiply;
@@ -301,17 +368,21 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ---------- hero content ---------- */
-.hero-content { position: relative; z-index: 5; max-width: 1220px; }
+.hero-content {
+  position: relative;
+  z-index: 5;
+  width: min(1160px, 100% - 24px);
+}
 
 .hero-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(1.5rem, 6.8vw, 5.2rem);
-  line-height: 1.14;
-  letter-spacing: -0.015em;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(1.55rem, 4.3vw, 3.95rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
-.hero-title .line { display: block; overflow: hidden; padding: 0.06em 0.1em; }
+.hero-title .line { display: block; overflow: hidden; padding: 0.05em 0; }
 .hero-title .line-inner {
   display: inline-block;
   white-space: nowrap;
@@ -322,138 +393,74 @@ button { font-family: inherit; cursor: pointer; }
 .hero-title .line:nth-child(3) .line-inner { animation-delay: 0.28s; }
 @keyframes lineUp { to { transform: translateY(0); } }
 
-.hero-title .accent {
-  font-style: italic;
-  color: var(--gray);
-}
-.comma { color: var(--gray); }
+.hero-title .dim { color: #c9c5bf; }
 
-/* ---------- inline pills ---------- */
-.pill {
+/* ---------- halftone hand (above the headline) ---------- */
+.ht-hand-wrap {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: 0.18em;
-  width: 1.75em;
-  height: 0.92em;
-  margin: 0 0.12em;
-  border-radius: 99px;
-  overflow: visible;
-  cursor: pointer;
-  transform: scale(0);
-  animation: pillPop 0.7s var(--ease-spring) forwards;
-  transition: transform 0.4s var(--ease-spring);
-  box-shadow: 0 6px 18px rgba(20, 18, 16, 0.22), inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+  width: 168px;
+  height: 150px;
+  margin-bottom: 20px;
+  /* multiply knocks the white paper out against any backdrop,
+     leaving only the dithered dots — no box seam */
+  mix-blend-mode: multiply;
 }
-.p-wave  { animation-delay: 0.55s; }
-.p-term  { animation-delay: 0.72s; }
-.p-voice { animation-delay: 0.9s; }
-@keyframes pillPop { to { transform: scale(1); } }
-.pill:hover, .pill:focus-visible { transform: scale(1.14) rotate(-4deg); z-index: 6; }
-
-.pill::before {
+/* recolor the black dithered hand to the indigo accent */
+.ht-hand-wrap::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  z-index: 0;
+  background: #515ada;
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
-/* halftone dot pill / solid ink pills — strictly black & white */
-.p-wave::before  {
-  background:
-    radial-gradient(circle, rgba(22, 20, 18, 0.85) 1px, transparent 1.45px) 0 0 / 6px 6px,
-    #fff;
+.ht-hand {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #fff;
+  filter: grayscale(1) contrast(14);
 }
-.p-term::before  { background: linear-gradient(150deg, #161412, #2e2b27); }
-.p-voice::before { background: linear-gradient(150deg, #2e2b27, #161412); }
-
-.pill-face {
-  position: relative;
-  z-index: 1;
-  filter: grayscale(1) contrast(1.15);
-  font-size: 0.42em;
-  animation: waveHand 2.6s ease-in-out infinite;
-  transform-origin: 70% 80%;
+.hand-tone {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: blur(1.5px) brightness(0.14);
+}
+.hand-emoji {
+  font-size: 112px;
+  line-height: 1;
+  animation: waveHand 2.8s ease-in-out infinite;
+  transform-origin: 70% 85%;
 }
 @keyframes waveHand {
   0%, 55%, 100% { transform: rotate(0); }
-  60% { transform: rotate(18deg); }
-  70% { transform: rotate(-8deg); }
-  80% { transform: rotate(14deg); }
+  60% { transform: rotate(16deg); }
+  70% { transform: rotate(-7deg); }
+  80% { transform: rotate(12deg); }
   90% { transform: rotate(0); }
 }
+.hand-dots {
+  position: absolute;
+  inset: -40%;
+  transform: rotate(15deg);
+  background: radial-gradient(circle closest-side, #000 0%, #fff 100%) 0 0 / 4px 4px;
+  mix-blend-mode: screen;
+}
 
-.term-mini {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.08em;
-  font-family: "SF Mono", ui-monospace, monospace;
-  font-size: 0.34em;
-  color: var(--cream);
-}
-.term-mini i { font-style: normal; }
-.term-mini .caret {
-  width: 0.55em; height: 1em;
-  background: var(--cream);
-  animation: blink 1s steps(1) infinite;
-}
+/* keyframes shared by the project scenes */
 @keyframes blink { 50% { opacity: 0; } }
-
-.eq {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: flex-end;
-  gap: 0.055em;
-  height: 0.4em;
-}
-.eq i {
-  width: 0.075em;
-  border-radius: 2px;
-  background: var(--cream);
-  animation: eqBar 1s ease-in-out infinite;
-}
-.eq i:nth-child(1) { height: 45%; animation-delay: 0s; }
-.eq i:nth-child(2) { height: 90%; animation-delay: 0.15s; }
-.eq i:nth-child(3) { height: 60%; animation-delay: 0.3s; }
-.eq i:nth-child(4) { height: 100%; animation-delay: 0.45s; }
-.eq i:nth-child(5) { height: 50%; animation-delay: 0.6s; }
 @keyframes eqBar {
   0%, 100% { transform: scaleY(0.5); }
   50% { transform: scaleY(1.1); }
 }
 
-.pill-tip {
-  position: absolute;
-  bottom: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  font-family: var(--sans);
-  font-size: clamp(11px, 0.8vw, 13px);
-  font-weight: 600;
-  letter-spacing: 0;
-  white-space: nowrap;
-  background: var(--ink);
-  color: var(--cream);
-  padding: 7px 14px;
-  border-radius: 99px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s, transform 0.3s var(--ease-out);
-  z-index: 10;
-}
-.pill:hover .pill-tip, .pill:focus-visible .pill-tip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
 /* ---------- hero sub + cta ---------- */
 .hero-sub {
-  margin: 34px auto 0;
-  max-width: 560px;
+  margin: 30px 0 0;
+  max-width: 640px;
   font-size: clamp(0.95rem, 1.4vw, 1.08rem);
   color: var(--ink-soft);
 }
@@ -462,7 +469,7 @@ button { font-family: inherit; cursor: pointer; }
 .hero-cta {
   display: flex;
   gap: 14px;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 36px;
   flex-wrap: wrap;
 }
@@ -516,9 +523,8 @@ button { font-family: inherit; cursor: pointer; }
   gap: 8px;
   z-index: 5;
   color: var(--gray);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
 }
 .mouse {
   width: 22px; height: 34px;
@@ -1173,6 +1179,9 @@ button { font-family: inherit; cursor: pointer; }
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
+.mini-grid > .mini-card:last-child:nth-child(3n+1) {
+  grid-column: 2;
+}
 .mini-card {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -1258,6 +1267,34 @@ button { font-family: inherit; cursor: pointer; }
 }
 .auto-emoji:nth-child(2) { animation-delay: 0.5s; }
 .auto-emoji:nth-child(3) { animation-delay: 1s; }
+.mini-llmcode {
+  background:
+    radial-gradient(circle, rgba(22, 20, 18, 0.12) 1px, transparent 1.45px) 0 0 / 9px 9px,
+    linear-gradient(145deg, #f0eeea, #dedad4);
+}
+.cluster-plot { position: relative; width: 100%; height: 100%; }
+.cluster-plot .pt {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.55s var(--ease-spring);
+}
+.cluster-plot .pt.human { background: #161412; }
+.cluster-plot .pt.llm { background: transparent; border: 1.5px solid #161412; }
+.mini-card.in .cluster-plot .pt { transform: translate(-50%, -50%) scale(1); }
+.cluster-plot .pt:nth-child(2) { transition-delay: 0.04s; }
+.cluster-plot .pt:nth-child(3) { transition-delay: 0.08s; }
+.cluster-plot .pt:nth-child(4) { transition-delay: 0.12s; }
+.cluster-plot .pt:nth-child(5) { transition-delay: 0.16s; }
+.cluster-plot .pt:nth-child(6) { transition-delay: 0.2s; }
+.cluster-plot .pt:nth-child(7) { transition-delay: 0.24s; }
+.cluster-plot .pt:nth-child(8) { transition-delay: 0.28s; }
+.cluster-plot .pt:nth-child(9) { transition-delay: 0.32s; }
+.cluster-plot .pt:nth-child(10) { transition-delay: 0.36s; }
+.cluster-plot .pt:nth-child(11) { transition-delay: 0.4s; }
+.cluster-plot .pt:nth-child(12) { transition-delay: 0.44s; }
 
 /* ============================================================
    ACTIVITIES — timeline
@@ -1560,6 +1597,7 @@ button { font-family: inherit; cursor: pointer; }
   .project-info { padding: 30px 26px 36px; }
 
   .mini-grid { grid-template-columns: 1fr; }
+  .mini-grid > .mini-card:last-child:nth-child(3n+1) { grid-column: 1; }
   .skills-grid { grid-template-columns: 1fr; }
   .modal-panel { padding: 36px 26px; }
   .site-footer { justify-content: center; text-align: center; }
@@ -1568,6 +1606,12 @@ button { font-family: inherit; cursor: pointer; }
     background-size: 8px 8px !important;
   }
   .ht-spot { width: 52vw; height: 52vw; }
+
+  .ht-hand-wrap { width: 122px; height: 108px; margin-bottom: 14px; }
+  .hand-emoji { font-size: 78px; }
+  .ink.i1 { width: 48vw; height: 56vw; right: -6%; top: 7%; }
+  .ink.i2 { width: 34vw; height: 40vw; right: 2%; top: 46%; }
+  .ink.i3, .ink.i4 { display: none; }
   .br-desktop { display: none; }
 }
 
@@ -1583,5 +1627,5 @@ button { font-family: inherit; cursor: pointer; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
   .hero-title .line-inner { transform: none; }
-  .pill { transform: scale(1); }
+  .ink { animation: none; opacity: 0.5; transform: scale(1); }
 }

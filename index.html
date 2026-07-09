@@ -23,7 +23,7 @@
 
     <!-- ===== Header ===== -->
     <header class="site-header" id="site-header">
-      <a href="#top" class="logo"><em>Hyowon</em><span class="logo-dot">.</span></a>
+      <a href="#top" class="logo">Hyowon Lee</a>
       <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
         <a href="#about" data-nav>소개</a>
         <a href="#projects" data-nav>프로젝트</a>
@@ -41,21 +41,30 @@
       <div class="hero-bg" aria-hidden="true">
         <div class="halftone">
           <div class="ht-tone">
-            <span class="ht-blob hb1"></span>
-            <span class="ht-blob hb2"></span>
-            <span class="ht-blob hb3"></span>
+            <span class="ink i1"></span>
+            <span class="ink i2"></span>
+            <span class="ink i3"></span>
+            <span class="ink i4"></span>
             <span class="ht-spot"></span>
           </div>
           <div class="ht-dots"></div>
         </div>
+        <div class="ht-color"></div>
+        <div class="ht-wash"></div>
         <div class="grain"></div>
       </div>
 
       <div class="hero-content">
+        <div class="ht-hand-wrap reveal" aria-hidden="true">
+          <div class="ht-hand">
+            <div class="hand-tone"><span class="hand-emoji">👋</span></div>
+            <div class="hand-dots"></div>
+          </div>
+        </div>
         <h1 class="hero-title">
-          <span class="line"><span class="line-inner">저는 <em class="accent">이효원</em><span class="pill p-wave" tabindex="0"><span class="pill-face">👋</span><span class="pill-tip">Lee Hyowon · 광운대학교(Kwangwoon Univ.) 데이터사이언스</span></span><span class="comma">,</span></span></span>
-          <span class="line"><span class="line-inner">정보의 <em class="accent">마찰</em><span class="pill p-term" tabindex="0"><span class="term-mini"><i>❯</i><b class="caret"></b></span><span class="pill-tip">Backend · Developer Tools</span></span>을 줄이는</span></span>
-          <span class="line"><span class="line-inner">백엔드 · AI <span class="pill p-voice" tabindex="0"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span><span class="pill-tip">AI Service · Voice UX</span></span> <em class="accent">개발자</em>입니다</span></span>
+          <span class="line"><span class="line-inner"><span class="dim">저는</span> 이효원</span></span>
+          <span class="line"><span class="line-inner">정보의 마찰을 줄이는</span></span>
+          <span class="line"><span class="line-inner">백엔드 · AI 개발자<span class="dim">입니다.</span></span></span>
         </h1>
 
         <p class="hero-sub reveal">광운대학교 정보융합학부에서 데이터사이언스를 공부하며,<br class="br-desktop">
@@ -69,7 +78,7 @@
 
       <a href="#about" class="scroll-hint" aria-label="아래로 스크롤">
         <span class="mouse"><span class="wheel"></span></span>
-        <span class="scroll-label">Scroll</span>
+        <span class="scroll-label">You can scroll down.</span>
       </a>
     </section>
 
@@ -98,12 +107,12 @@
               그 마찰을 줄이는 기술적 해결책을 설계하는 데 관심이 있습니다.</p>
             <p>자가진단 자동화, 시간표 알림, 디스코드 봇 같은 <b>작은 자동화 도구</b>를 만들며 개발을 시작했고,
               지금은 백엔드, AI 서비스, 공공 정보 접근성, 교육 기술, 소셜 임팩트 프로젝트로 관심을 넓혀가고 있습니다.</p>
-            <p>현재는 <b>멋쟁이사자처럼 대학 광운대학교 14기 Back-end 운영진</b>으로
+            <p>현재는 <b>광운대학교 멋쟁이사자처럼 14기 Back-end 운영진</b>으로
               멤버들의 백엔드 학습과 프로젝트 개발을 함께하고 있습니다.</p>
           </div>
           <div class="about-side">
             <div class="stat-card reveal">
-              <span class="stat-num" data-count="8">0</span><span class="stat-plus">+</span>
+              <span class="stat-num" data-count="9">0</span><span class="stat-plus">+</span>
               <span class="stat-label">진행한 프로젝트</span>
             </div>
             <div class="stat-card reveal">
@@ -294,6 +303,27 @@
             <p>자가진단 자동화, 시간표 알림, 디스코드 봇 — 개발을 시작하게 된 출발점</p>
             <span class="more-link">자세히 <i>+</i></span>
           </article>
+          <article class="mini-card tilt reveal" data-project="llmcode" tabindex="0" role="button" aria-haspopup="dialog">
+            <div class="mini-visual mini-llmcode">
+              <div class="cluster-plot">
+                <span class="pt human" style="--x:16%; --y:26%"></span>
+                <span class="pt llm" style="--x:30%; --y:60%"></span>
+                <span class="pt llm" style="--x:44%; --y:22%"></span>
+                <span class="pt human" style="--x:50%; --y:68%"></span>
+                <span class="pt human" style="--x:63%; --y:36%"></span>
+                <span class="pt llm" style="--x:73%; --y:64%"></span>
+                <span class="pt human" style="--x:80%; --y:20%"></span>
+                <span class="pt llm" style="--x:20%; --y:76%"></span>
+                <span class="pt human" style="--x:39%; --y:46%"></span>
+                <span class="pt llm" style="--x:58%; --y:50%"></span>
+                <span class="pt human" style="--x:87%; --y:48%"></span>
+                <span class="pt llm" style="--x:9%; --y:50%"></span>
+              </div>
+            </div>
+            <h4>LLM과 인간의 코드 스타일 구분 가능성 탐구</h4>
+            <p>LLM 생성 코드와 사람 코드를 각각 수집·전처리해 4개 데이터셋으로 클러스터링, 가설을 검증한 CHIC 후속 실험</p>
+            <span class="more-link">자세히 <i>+</i></span>
+          </article>
         </div>
       </div>
     </section>
@@ -308,19 +338,37 @@
           <div class="timeline-item reveal">
             <div class="tl-dot"></div>
             <div class="tl-content">
-              <span class="tl-tag">멋쟁이사자처럼 대학 광운대학교 13기</span>
+              <span class="tl-tag">광운대학교 멋쟁이사자처럼 13기</span>
               <h3>Back-end 아기사자</h3>
               <p>서버 아키텍처, API 설계, 데이터 흐름 등 백엔드의 기본기를 다지고 팀 기반 서비스 개발을 경험했습니다.
                 백엔드가 전체 사용자 경험에 어떻게 연결되는지 이해하게 된 시간이었습니다.</p>
             </div>
           </div>
           <div class="timeline-item reveal">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <span class="tl-tag">광운대학교 정보융합학부 전공동아리 CHIC 5기</span>
+              <h3>ML 스터디 팀장</h3>
+              <p>전공동아리 CHIC 5기 겨울방학 ML 스터디에서 팀장을 맡아 팀을 이끌었습니다. 스터디를 마친 뒤에는 팀원들과 함께
+                “LLM이 생성한 코드와 사람이 작성한 코드는 다를 것이다”라는 가설을 직접 설계한 실험으로 검증했습니다.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
             <div class="tl-dot now"></div>
             <div class="tl-content">
-              <span class="tl-tag current">멋쟁이사자처럼 대학 광운대학교 14기 · 현재</span>
+              <span class="tl-tag current">광운대학교 멋쟁이사자처럼 14기 · 현재</span>
               <h3>Back-end 운영진</h3>
               <p>아기사자 시절 배운 것을 바탕으로, 이제는 멤버들이 백엔드 개념을 이해하고 프로젝트를 완성하도록 돕고 있습니다.
                 기술을 설명하고 팀의 문제 해결을 지원하며 개발자 이상의 역할로 성장하는 중입니다.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="tl-dot now"></div>
+            <div class="tl-content">
+              <span class="tl-tag current">광운대학교 정보융합학부 전공동아리 CHIC 6기 · 현재</span>
+              <h3>동아리 부원</h3>
+              <p>5기 활동에 이어 6기로 참여를 이어가고 있습니다. 출범한 지 얼마 되지 않아 아직 구체적인 활동을 시작하기 전이며,
+                새 학기 활동에 맞춰 계속 참여할 예정입니다.</p>
             </div>
           </div>
         </div>
