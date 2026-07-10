@@ -498,9 +498,7 @@ button { font-family: inherit; cursor: pointer; }
   font-style: normal;
   font-size: 0.6em;
   color: var(--ink);
-  animation: spinStar 7s linear infinite;
 }
-@keyframes spinStar { to { transform: rotate(360deg); } }
 .marquee-group .hollow {
   font-style: italic;
   color: transparent;
