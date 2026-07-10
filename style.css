@@ -167,182 +167,109 @@ button { font-family: inherit; cursor: pointer; }
   margin-top: -87px; /* pull behind sticky header */
 }
 
-/* isolate: keeps the halftone's screen/multiply blends resolving against the
-   group's own opaque white base instead of compositing against the page —
-   stops Safari from lifting the whole decorated region into wide-gamut/EDR */
+/* Keep decorative layers composited within the hero's opaque rendering group. */
 .hero-bg { position: absolute; inset: 0; pointer-events: none; isolation: isolate; }
 
-/* -- halftone field: a blurred grayscale tone map is combined with a dot
-      grid, then thresholded by contrast() — dots physically grow where the
-      tone is darker, exactly like a print halftone screen -- */
+/* Native gradient halftone: crisp at device pixel resolution and SDR-bounded. */
 .halftone {
   position: absolute;
   inset: 0;
   overflow: hidden;
   background: #fff;
   dynamic-range-limit: standard;
-  /* TODO: Replace CSS contrast() with an SVG filter clamp for Safari versions
-     that do not support dynamic-range-limit. */
-  filter: contrast(13);
+  --halftone-cell: 14px;
+  --halftone-edge: 0.9px;
+  --halftone-mid: 2.1px;
+  --halftone-core: 3.6px;
+  --halftone-dot: #3348d3;
 }
-.ht-tone {
-  position: absolute;
-  inset: -12%;
-  filter: blur(22px);
-  background: #fff;
-}
-.ht-blob {
-  position: absolute;
-  border-radius: 50%;
-  will-change: transform;
-}
-.hb1 {
-  width: 42vw; height: 42vw;
-  left: -7%; top: -6%;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.5), transparent 68%);
-  animation: orbit1 21s linear infinite;
-}
-.hb2 {
-  width: 38vw; height: 38vw;
-  right: -9%; top: 0%;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.42), transparent 68%);
-  animation: orbit2 26s linear infinite;
-}
-.hb3 {
-  width: 46vw; height: 30vw;
-  left: 26%; bottom: -16%;
-  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.46), transparent 74%);
-  animation: orbit3 23s linear infinite;
-}
-/* mouse-follow spot — dots swell under the cursor */
-.ht-spot {
-  position: absolute;
-  left: var(--mx, 50%);
-  top: var(--my, 68%);
-  width: 30vw; height: 30vw;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.55), transparent 64%);
-}
-
-/* ---------- ink dispersing in water (rendered through the halftone) ----------
-   blobs bloom from a dense core, wobble, spread and dissolve — staggered so
-   a new drop lands as the previous one fades */
-.ink {
-  position: absolute;
-  opacity: 0;
-  /* wide near-opaque plateau so the core survives the tone blur; the dots
-     themselves are recolored by the .ht-color screen overlay */
-  background: radial-gradient(closest-side,
-    rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.92) 52%,
-    rgba(0, 0, 0, 0.58) 76%, transparent 100%);
-  will-change: transform, opacity;
-}
-.ink.i1 {
-  width: 28vw; height: 32vw;
-  right: 2%; top: 18%;
-  animation: inkBloom 15s ease-in-out infinite,
-             inkMorph 7s ease-in-out infinite alternate;
-}
-.ink.i2 {
-  width: 19vw; height: 23vw;
-  right: 15%; top: 40%;
-  animation: inkBloom 15s ease-in-out infinite 3.75s,
-             inkMorph 8.5s ease-in-out infinite alternate-reverse;
-}
-.ink.i3 {
-  width: 16vw; height: 18vw;
-  right: -4%; top: 52%;
-  animation: inkBloom 15s ease-in-out infinite 7.5s,
-             inkMorph 6.5s ease-in-out infinite alternate;
-}
-.ink.i4 {
-  width: 12vw; height: 13vw;
-  right: 23%; top: 26%;
-  animation: inkBloom 15s ease-in-out infinite 11.25s,
-             inkMorph 9s ease-in-out infinite alternate-reverse;
-}
-/* bloom further and drift down-left as the ink disperses */
-@keyframes inkBloom {
-  0%   { transform: translate(0, 0) scale(0.22) rotate(0deg); opacity: 0; }
-  5%   { opacity: 1; }
-  40%  { transform: translate(-1vw, 1.5vw) scale(1.05) rotate(10deg); opacity: 0.95; }
-  72%  { transform: translate(-2.5vw, 3vw) scale(1.65) rotate(18deg); opacity: 0.55; }
-  94%, 100% { transform: translate(-3.5vw, 4vw) scale(2.1) rotate(26deg); opacity: 0; }
-}
-@keyframes inkMorph {
-  from { border-radius: 46% 54% 52% 48% / 58% 44% 56% 42%; }
-  to   { border-radius: 58% 42% 46% 54% / 44% 58% 42% 56%; }
-}
-/* the dot screen itself, rotated like a real print raster */
+/* Aligned vector dot layers restore the original center-to-edge size taper. */
 .ht-dots {
   position: absolute;
-  inset: -50%;
-  transform: rotate(15deg);
-  background: radial-gradient(circle closest-side, #000 0%, #fff 100%) 0 0 / 14px 14px;
-  mix-blend-mode: screen;
+  inset: -18%;
+  transform: rotate(12deg) scale(1.08);
+  transform-origin: center;
+  --halftone-edge-mask:
+    radial-gradient(44% 58% at 84% 32%, #000 0%, rgba(0, 0, 0, 0.82) 52%, transparent 82%),
+    radial-gradient(36% 46% at 68% 66%, rgba(0, 0, 0, 0.76) 0%, transparent 80%),
+    radial-gradient(30% 40% at var(--mx, 52%) var(--my, 68%), rgba(0, 0, 0, 0.46) 0%, transparent 82%);
+  --halftone-mid-mask:
+    radial-gradient(32% 44% at 84% 32%, #000 0%, rgba(0, 0, 0, 0.88) 36%, transparent 72%),
+    radial-gradient(25% 34% at 68% 66%, rgba(0, 0, 0, 0.78) 0%, transparent 70%),
+    radial-gradient(20% 28% at var(--mx, 52%) var(--my, 68%), rgba(0, 0, 0, 0.5) 0%, transparent 72%);
+  --halftone-core-mask:
+    radial-gradient(19% 28% at 84% 32%, #000 0%, rgba(0, 0, 0, 0.9) 30%, transparent 68%),
+    radial-gradient(15% 22% at 68% 66%, rgba(0, 0, 0, 0.8) 0%, transparent 66%),
+    radial-gradient(12% 18% at var(--mx, 52%) var(--my, 68%), rgba(0, 0, 0, 0.52) 0%, transparent 68%);
+  background: radial-gradient(circle,
+    var(--halftone-dot) 0 var(--halftone-edge),
+    transparent calc(var(--halftone-edge) + 0.35px)) 0 0 /
+    var(--halftone-cell) var(--halftone-cell);
+  -webkit-mask-image: var(--halftone-edge-mask);
+  mask-image: var(--halftone-edge-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  opacity: 0.72;
 }
-
-/* recolors the black halftone dots — screen keeps white paper untouched
-   and maps ink to the indigo family (#515ada) */
-.ht-color {
+.ht-dots::before,
+.ht-dots::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(165deg, #8a74e8 0%, #515ada 55%, #4046c9 100%);
-  mix-blend-mode: screen;
-  pointer-events: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: var(--halftone-cell) var(--halftone-cell);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.ht-dots::before {
+  background-image: radial-gradient(circle,
+    var(--halftone-dot) 0 var(--halftone-mid),
+    transparent calc(var(--halftone-mid) + 0.35px));
+  -webkit-mask-image: var(--halftone-mid-mask);
+  mask-image: var(--halftone-mid-mask);
+}
+.ht-dots::after {
+  background-image: radial-gradient(circle,
+    var(--halftone-dot) 0 var(--halftone-core),
+    transparent calc(var(--halftone-core) + 0.35px));
+  -webkit-mask-image: var(--halftone-core-mask);
+  mask-image: var(--halftone-core-mask);
 }
 
-/* soft lavender atmosphere (#efd5ff) around the ink zone */
+/* Quiet cobalt atmosphere around the dot field. */
 .ht-wash {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(42% 52% at 80% 34%, rgba(239, 213, 255, 0.5), transparent 72%),
-    radial-gradient(30% 36% at 10% 80%, rgba(239, 213, 255, 0.35), transparent 70%);
+    radial-gradient(42% 52% at 80% 34%, rgba(51, 72, 211, 0.12), transparent 72%),
+    radial-gradient(30% 36% at 10% 80%, rgba(51, 72, 211, 0.08), transparent 70%);
   pointer-events: none;
 }
-/* seamless loops — 0% and 100% match so motion never rests */
-@keyframes orbit1 {
-  0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(7vw, 5vh) scale(1.14); }
-  66%  { transform: translate(-4vw, 9vh) scale(0.94); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-@keyframes orbit2 {
-  0%   { transform: translate(0, 0) scale(1.08); }
-  33%  { transform: translate(-8vw, 4vh) scale(0.92); }
-  66%  { transform: translate(-3vw, -6vh) scale(1.12); }
-  100% { transform: translate(0, 0) scale(1.08); }
-}
-@keyframes orbit3 {
-  0%   { transform: translate(0, 0) scale(0.96); }
-  33%  { transform: translate(6vw, -5vh) scale(1.16); }
-  66%  { transform: translate(9vw, 4vh) scale(1); }
-  100% { transform: translate(0, 0) scale(0.96); }
-}
-
-/* -- dark paper variant — white dots that grow where the tone is brighter -- */
+/* Dark paper variant for the contact section. */
 .halftone.dark {
   background: #0f0e0c;
-  filter: contrast(11);
-}
-.halftone.dark .ht-tone {
-  background: radial-gradient(78% 88% at 50% 100%,
-    #bcbcbc 0%, #7c7c7c 34%, #383838 64%, #0c0c0c 100%);
-}
-.halftone.dark .hb1 {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent 66%);
-}
-.halftone.dark .hb2 {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 66%);
+  --halftone-cell: 14px;
+  --halftone-edge: 0.85px;
+  --halftone-mid: 2px;
+  --halftone-core: 3.4px;
+  --halftone-dot: #fff;
 }
 .halftone.dark .ht-dots {
-  background: radial-gradient(circle closest-side, #fff 0%, #000 100%) 0 0 / 14px 14px;
-  mix-blend-mode: multiply;
+  transform: rotate(-11deg) scale(1.08);
+  --halftone-edge-mask:
+    radial-gradient(74% 96% at 50% 112%, #000 0%, rgba(0, 0, 0, 0.82) 54%, transparent 84%),
+    radial-gradient(30% 44% at 12% 42%, rgba(0, 0, 0, 0.5) 0%, transparent 80%);
+  --halftone-mid-mask:
+    radial-gradient(56% 74% at 50% 112%, #000 0%, rgba(0, 0, 0, 0.86) 44%, transparent 76%),
+    radial-gradient(22% 34% at 12% 42%, rgba(0, 0, 0, 0.54) 0%, transparent 72%);
+  --halftone-core-mask:
+    radial-gradient(34% 48% at 50% 112%, #000 0%, rgba(0, 0, 0, 0.9) 34%, transparent 70%),
+    radial-gradient(14% 22% at 12% 42%, rgba(0, 0, 0, 0.58) 0%, transparent 68%);
+  opacity: 0.68;
 }
 
-/* -- grain (sits above the hero content so inset halftone boxes like the
-      hand blend seamlessly into the paper) -- */
+/* Grain softens the contact background and unifies the paper texture. */
 .grain {
   position: absolute;
   inset: 0;
@@ -1596,16 +1523,33 @@ button { font-family: inherit; cursor: pointer; }
   .modal-panel { padding: 36px 26px; }
   .site-footer { justify-content: center; text-align: center; }
 
-  .ht-dots {
-    background-size: 8px 8px !important;
+  .halftone,
+  .halftone.dark {
+    --halftone-cell: 8px;
+    --halftone-edge: 0.55px;
+    --halftone-mid: 1.25px;
+    --halftone-core: 2.05px;
   }
-  .ht-spot { width: 52vw; height: 52vw; }
+  .hero .ht-dots,
+  .halftone.dark .ht-dots {
+    inset: 0;
+    transform: none;
+  }
+  .hero .ht-dots {
+    --halftone-edge-mask:
+      radial-gradient(32% 32% at 100% 10%, rgba(0, 0, 0, 0.66) 0%, transparent 82%),
+      radial-gradient(28% 30% at 100% 86%, rgba(0, 0, 0, 0.34) 0%, transparent 80%);
+    --halftone-mid-mask:
+      radial-gradient(23% 24% at 100% 10%, rgba(0, 0, 0, 0.72) 0%, transparent 72%),
+      radial-gradient(19% 21% at 100% 86%, rgba(0, 0, 0, 0.38) 0%, transparent 70%);
+    --halftone-core-mask:
+      radial-gradient(14% 16% at 100% 10%, rgba(0, 0, 0, 0.78) 0%, transparent 68%),
+      radial-gradient(11% 13% at 100% 86%, rgba(0, 0, 0, 0.42) 0%, transparent 66%);
+    opacity: 0.66;
+  }
 
   .ht-hand-wrap { width: 122px; height: 108px; margin-bottom: 14px; }
   .hand-emoji { font-size: 78px; }
-  .ink.i1 { width: 48vw; height: 56vw; right: -6%; top: 7%; }
-  .ink.i2 { width: 34vw; height: 40vw; right: 2%; top: 46%; }
-  .ink.i3, .ink.i4 { display: none; }
   .br-desktop { display: none; }
 }
 
@@ -1621,5 +1565,4 @@ button { font-family: inherit; cursor: pointer; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
   .hero-title .line-inner { transform: none; }
-  .ink { animation: none; opacity: 0.5; transform: scale(1); }
 }
