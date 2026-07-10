@@ -182,6 +182,14 @@ button { font-family: inherit; cursor: pointer; }
   --halftone-mid: 2.1px;
   --halftone-core: 3.6px;
   --halftone-dot: #3348d3;
+  --halftone-pointer-edge: transparent;
+  --halftone-pointer-mid: transparent;
+  --halftone-pointer-core: transparent;
+}
+.hero .halftone.pointer-active {
+  --halftone-pointer-edge: rgba(0, 0, 0, 0.46);
+  --halftone-pointer-mid: rgba(0, 0, 0, 0.5);
+  --halftone-pointer-core: rgba(0, 0, 0, 0.52);
 }
 /* Aligned vector dot layers restore the original center-to-edge size taper. */
 .ht-dots {
@@ -190,17 +198,17 @@ button { font-family: inherit; cursor: pointer; }
   transform: rotate(12deg) scale(1.08);
   transform-origin: center;
   --halftone-edge-mask:
-    radial-gradient(44% 58% at 84% 32%, #000 0%, rgba(0, 0, 0, 0.82) 52%, transparent 82%),
-    radial-gradient(36% 46% at 68% 66%, rgba(0, 0, 0, 0.76) 0%, transparent 80%),
-    radial-gradient(30% 40% at var(--mx, 52%) var(--my, 68%), rgba(0, 0, 0, 0.46) 0%, transparent 82%);
+    radial-gradient(30% 43% at 90% 30%, #000 0%, rgba(0, 0, 0, 0.82) 42%, transparent 72%),
+    radial-gradient(24% 32% at 78% 70%, rgba(0, 0, 0, 0.76) 0%, transparent 68%),
+    radial-gradient(18% 26% at var(--mx, 70%) var(--my, 62%), var(--halftone-pointer-edge) 0%, transparent 68%);
   --halftone-mid-mask:
-    radial-gradient(32% 44% at 84% 32%, #000 0%, rgba(0, 0, 0, 0.88) 36%, transparent 72%),
-    radial-gradient(25% 34% at 68% 66%, rgba(0, 0, 0, 0.78) 0%, transparent 70%),
-    radial-gradient(20% 28% at var(--mx, 52%) var(--my, 68%), rgba(0, 0, 0, 0.5) 0%, transparent 72%);
+    radial-gradient(22% 34% at 90% 30%, #000 0%, rgba(0, 0, 0, 0.88) 32%, transparent 66%),
+    radial-gradient(17% 24% at 78% 70%, rgba(0, 0, 0, 0.78) 0%, transparent 64%),
+    radial-gradient(12% 18% at var(--mx, 70%) var(--my, 62%), var(--halftone-pointer-mid) 0%, transparent 64%);
   --halftone-core-mask:
-    radial-gradient(19% 28% at 84% 32%, #000 0%, rgba(0, 0, 0, 0.9) 30%, transparent 68%),
-    radial-gradient(15% 22% at 68% 66%, rgba(0, 0, 0, 0.8) 0%, transparent 66%),
-    radial-gradient(12% 18% at var(--mx, 52%) var(--my, 68%), rgba(0, 0, 0, 0.52) 0%, transparent 68%);
+    radial-gradient(13% 22% at 90% 30%, #000 0%, rgba(0, 0, 0, 0.9) 26%, transparent 62%),
+    radial-gradient(10% 15% at 78% 70%, rgba(0, 0, 0, 0.8) 0%, transparent 60%),
+    radial-gradient(8% 12% at var(--mx, 70%) var(--my, 62%), var(--halftone-pointer-core) 0%, transparent 60%);
   background: radial-gradient(circle,
     var(--halftone-dot) 0 var(--halftone-edge),
     transparent calc(var(--halftone-edge) + 0.35px)) 0 0 /
@@ -1535,14 +1543,14 @@ button { font-family: inherit; cursor: pointer; }
   }
   .hero .ht-dots {
     --halftone-edge-mask:
-      radial-gradient(32% 32% at 100% 10%, rgba(0, 0, 0, 0.66) 0%, transparent 82%),
-      radial-gradient(28% 30% at 100% 86%, rgba(0, 0, 0, 0.34) 0%, transparent 80%);
+      radial-gradient(27% 28% at 102% 8%, rgba(0, 0, 0, 0.66) 0%, transparent 70%),
+      radial-gradient(22% 24% at 102% 88%, rgba(0, 0, 0, 0.34) 0%, transparent 68%);
     --halftone-mid-mask:
-      radial-gradient(23% 24% at 100% 10%, rgba(0, 0, 0, 0.72) 0%, transparent 72%),
-      radial-gradient(19% 21% at 100% 86%, rgba(0, 0, 0, 0.38) 0%, transparent 70%);
+      radial-gradient(19% 20% at 102% 8%, rgba(0, 0, 0, 0.72) 0%, transparent 64%),
+      radial-gradient(15% 16% at 102% 88%, rgba(0, 0, 0, 0.38) 0%, transparent 62%);
     --halftone-core-mask:
-      radial-gradient(14% 16% at 100% 10%, rgba(0, 0, 0, 0.78) 0%, transparent 68%),
-      radial-gradient(11% 13% at 100% 86%, rgba(0, 0, 0, 0.42) 0%, transparent 66%);
+      radial-gradient(12% 13% at 102% 8%, rgba(0, 0, 0, 0.78) 0%, transparent 58%),
+      radial-gradient(8% 10% at 102% 88%, rgba(0, 0, 0, 0.42) 0%, transparent 56%);
     opacity: 0.66;
   }
 

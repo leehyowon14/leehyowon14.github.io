@@ -74,7 +74,7 @@
   const hero = $(".hero");
 
   if (!reduceMotion && hero && halftone && window.matchMedia("(pointer: fine)").matches) {
-    let lx = 50, ly = 68, clx = 50, cly = 68;
+    let lx = 70, ly = 62, clx = 70, cly = 62;
     let raf = null;
 
     const tick = () => {
@@ -95,6 +95,8 @@
       ly = ((e.clientY - r.top) / r.height) * 100;
       if (!raf) raf = requestAnimationFrame(tick);
     });
+    hero.addEventListener("mouseenter", () => halftone.classList.add("pointer-active"));
+    hero.addEventListener("mouseleave", () => halftone.classList.remove("pointer-active"));
   }
 
   /* ---------- card tilt ---------- */
