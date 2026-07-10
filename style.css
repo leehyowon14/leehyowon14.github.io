@@ -381,8 +381,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .hand-dots {
   position: absolute;
-  inset: -40%;
-  transform: rotate(12deg);
+  inset: 0;
   background: radial-gradient(circle, #000 0 1.2px, #fff 1.35px) 0 0 / 5.5px 5.5px;
   mix-blend-mode: screen;
 }
