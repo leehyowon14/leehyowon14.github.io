@@ -354,6 +354,8 @@ button { font-family: inherit; cursor: pointer; }
 .hand-print {
   position: absolute;
   inset: 0;
+  isolation: isolate;
+  background: #fff;
   animation: waveHand 2.8s ease-in-out infinite;
   transform-origin: 70% 85%;
 }
