@@ -351,6 +351,12 @@ button { font-family: inherit; cursor: pointer; }
   background: #fff;
   dynamic-range-limit: standard;
 }
+.hand-print {
+  position: absolute;
+  inset: 0;
+  animation: waveHand 2.8s ease-in-out infinite;
+  transform-origin: 70% 85%;
+}
 .hand-tone {
   position: absolute;
   inset: 0;
@@ -362,8 +368,6 @@ button { font-family: inherit; cursor: pointer; }
 .hand-emoji {
   font-size: 112px;
   line-height: 1;
-  animation: waveHand 2.8s ease-in-out infinite;
-  transform-origin: 70% 85%;
 }
 @keyframes waveHand {
   0%, 55%, 100% { transform: rotate(0); }
@@ -376,7 +380,7 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute;
   inset: -40%;
   transform: rotate(12deg);
-  background: radial-gradient(circle, #000 0 1.55px, #fff 1.7px) 0 0 / 7px 7px;
+  background: radial-gradient(circle, #000 0 1.2px, #fff 1.35px) 0 0 / 5.5px 5.5px;
   mix-blend-mode: screen;
 }
 
