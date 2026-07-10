@@ -347,9 +347,9 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute;
   inset: 0;
   overflow: hidden;
+  isolation: isolate;
   background: #fff;
   dynamic-range-limit: standard;
-  filter: grayscale(1) contrast(14);
 }
 .hand-tone {
   position: absolute;
@@ -357,7 +357,7 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: blur(1.5px) brightness(0.14);
+  filter: brightness(0);
 }
 .hand-emoji {
   font-size: 112px;
@@ -375,8 +375,8 @@ button { font-family: inherit; cursor: pointer; }
 .hand-dots {
   position: absolute;
   inset: -40%;
-  transform: rotate(15deg);
-  background: radial-gradient(circle closest-side, #000 0%, #fff 100%) 0 0 / 4px 4px;
+  transform: rotate(12deg);
+  background: radial-gradient(circle, #000 0 1.55px, #fff 1.7px) 0 0 / 7px 7px;
   mix-blend-mode: screen;
 }
 
