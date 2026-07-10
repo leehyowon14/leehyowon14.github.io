@@ -217,7 +217,7 @@ button { font-family: inherit; cursor: pointer; }
   mask-image: var(--halftone-edge-mask);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  opacity: 0.72;
+  opacity: 0.88;
 }
 .ht-dots::before,
 .ht-dots::after {
@@ -1551,7 +1551,7 @@ button { font-family: inherit; cursor: pointer; }
     --halftone-core-mask:
       radial-gradient(12% 13% at 102% 8%, rgba(0, 0, 0, 0.78) 0%, transparent 58%),
       radial-gradient(8% 10% at 102% 88%, rgba(0, 0, 0, 0.42) 0%, transparent 56%);
-    opacity: 0.66;
+    opacity: 0.82;
   }
 
   .ht-hand-wrap { width: 122px; height: 108px; margin-bottom: 14px; }
