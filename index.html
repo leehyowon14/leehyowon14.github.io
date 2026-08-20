@@ -11,438 +11,515 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23141312'/%3E%3Ctext x='50' y='66' font-size='48' text-anchor='middle' fill='%23f5f3ef' font-family='Georgia,serif' font-style='italic'%3EH%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+KR:wght@400;600;700;900&family=Roboto+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div class="progress-bar" aria-hidden="true"><span id="progress"></span></div>
 
   <div class="sheet">
-
-    <!-- ===== Header ===== -->
-    <header class="site-header" id="site-header">
-      <a href="#top" class="logo">Hyowon Lee</a>
+    <header class="site-header editorial-header" id="site-header">
+      <a href="#top" class="logo" aria-label="페이지 맨 위로">HYOWON LEE</a>
       <nav class="site-nav" id="site-nav" aria-label="주요 메뉴">
-        <a href="#about" data-nav>소개</a>
-        <a href="#projects" data-nav>프로젝트</a>
-        <a href="#activities" data-nav>활동</a>
-        <a href="#skills" data-nav>스킬</a>
-        <a href="#contact" data-nav class="nav-cta">연락하기</a>
+        <a href="#about" data-nav>ABOUT</a>
+        <a href="#experience" data-nav>EXPERIENCE</a>
+        <a href="#work" data-nav>WORK</a>
+        <a href="#toy-intro" data-nav>TOY PROJECT</a>
+        <a href="#contact" data-nav>CONTACT</a>
       </nav>
-      <button class="menu-btn" id="menu-btn" aria-label="메뉴 열기" aria-expanded="false">
-        <span></span><span></span>
+      <button class="menu-btn" id="menu-btn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-nav">
+        MENU
       </button>
     </header>
 
-    <!-- ===== Hero ===== -->
-    <section class="hero" id="top">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="halftone">
-          <div class="ht-dots"></div>
-        </div>
-        <div class="ht-wash"></div>
-      </div>
+    <main>
+      <section class="editorial-hero" id="top" data-nav-section="#about" aria-labelledby="hero-title">
+        <figure class="hero-surge" aria-hidden="true">
+          <canvas id="surge-canvas"></canvas>
+          <figcaption>BACKEND / AI / DATA / DEVTOOLS / AUTOMATION / PUBLIC TECH / HCI / HAI</figcaption>
+        </figure>
 
-      <div class="hero-content">
-        <div class="ht-hand-wrap reveal" aria-hidden="true">
-          <div class="ht-hand">
-            <div class="hand-print">
-              <div class="hand-tone"><span class="hand-emoji">👋</span></div>
-              <div class="hand-dots"></div>
-            </div>
-          </div>
-        </div>
-        <h1 class="hero-title">
-          <span class="line"><span class="line-inner"><span class="dim">저는</span> 이효원</span></span>
-          <span class="line"><span class="line-inner">정보의 마찰을 줄이는</span></span>
-          <span class="line"><span class="line-inner">백엔드 · AI 개발자<span class="dim">입니다.</span></span></span>
+        <h1 class="editorial-hero-title" id="hero-title">
+          <span>HELLO, I'M</span>
+          <span>HYOWON</span>
+          <span>LEE</span>
         </h1>
 
-        <p class="hero-sub reveal">광운대학교 정보융합학부에서 데이터사이언스를 공부하며,<br class="br-desktop">
-          사용자가 정보를 더 쉽게 <b>찾고, 이해하고, 행동</b>할 수 있는 백엔드 · AI 서비스를 만듭니다.</p>
-
-        <div class="hero-cta reveal">
-          <a href="#projects" class="btn btn-dark magnetic">프로젝트 보기 <span class="arr">↗</span></a>
-          <a href="mailto:leehyowon14@gmail.com" class="btn btn-ghost magnetic">이메일 보내기</a>
+        <div class="editorial-hero-meta">
+          <p>정보의 마찰을 줄이는<br>BACKEND · AI DEVELOPER</p>
+          <p>DATA SCIENCE<br>AT KWANGWOON UNIVERSITY</p>
         </div>
-      </div>
 
-      <a href="#about" class="scroll-hint" aria-label="아래로 스크롤">
-        <span class="mouse"><span class="wheel"></span></span>
-        <span class="scroll-label">You can scroll down.</span>
-      </a>
-    </section>
+        <a href="#about" class="editorial-scroll-link">SCROLL TO EXPLORE</a>
+      </section>
 
-    <!-- ===== Marquee ===== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <div class="marquee-group">
-          <span>Backend</span><i>/</i><span>AI Service</span><i>/</i><span class="hollow">LLM</span><i>/</i><span>RAG</span><i>/</i><span>Reverse Engineering</span><i>/</i><span class="hollow">Data Science</span><i>/</i><span>EdTech</span><i>/</i><span class="hollow">Social Impact</span><i>/</i><span>Automation</span><i>/</i><span class="hollow">Accessibility</span><i>/</i>
-        </div>
-        <div class="marquee-group">
-          <span>Backend</span><i>/</i><span>AI Service</span><i>/</i><span class="hollow">LLM</span><i>/</i><span>RAG</span><i>/</i><span>Reverse Engineering</span><i>/</i><span class="hollow">Data Science</span><i>/</i><span>EdTech</span><i>/</i><span class="hollow">Social Impact</span><i>/</i><span>Automation</span><i>/</i><span class="hollow">Accessibility</span><i>/</i>
-        </div>
-      </div>
-    </div>
+      <section class="profile-panel" id="about" data-snap-panel data-nav-section="#about" aria-labelledby="about-title">
+        <aside class="profile-rail" aria-hidden="true">
+          <span>HYOWON LEE</span>
+          <span>BACKEND · AI DEVELOPER</span>
+        </aside>
 
-    <!-- ===== About ===== -->
-    <section class="section about" id="about">
-      <div class="container">
-        <p class="eyebrow reveal"><span class="num">01</span> 소개 — About</p>
-        <h2 class="section-title reveal">정보를 찾고, 이해하고,<br><em>행동하기 쉽게.</em></h2>
-
-        <div class="about-grid">
-          <div class="about-text reveal">
-            <p>안녕하세요, 광운대학교 <b>정보융합학부 데이터사이언스 전공</b> 이효원입니다.
-              기능을 구현하는 것에서 멈추지 않고, <b>사용자가 어디에서 마찰을 겪는지</b> 이해하고
-              그 마찰을 줄이는 기술적 해결책을 설계하는 데 관심이 있습니다.</p>
-            <p>자가진단 자동화, 시간표 알림, 디스코드 봇 같은 <b>작은 자동화 도구</b>를 만들며 개발을 시작했고,
-              지금은 백엔드, AI 서비스, 공공 정보 접근성, 교육 기술, 소셜 임팩트 프로젝트로 관심을 넓혀가고 있습니다.</p>
-            <p>현재는 <b>광운대학교 멋쟁이사자처럼 14기 Back-end 운영진</b>으로
-              멤버들의 백엔드 학습과 프로젝트 개발을 함께하고 있습니다.</p>
+        <div class="profile-layout">
+          <div class="profile-heading">
+            <p class="profile-label">ABOUT</p>
+            <h2 id="about-title">PEOPLE<br>BEFORE<br>SYSTEMS.</h2>
+            <p class="profile-native">정보를 찾고, 이해하고, 행동하기 쉽게.</p>
           </div>
-          <div class="about-side">
-            <div class="stat-card reveal">
-              <span class="stat-num" data-count="9">0</span><span class="stat-plus">+</span>
-              <span class="stat-label">진행한 프로젝트</span>
+
+          <div class="profile-copy">
+            <div class="profile-bio">
+              <p>광운대학교 정보융합학부 데이터사이언스 전공 이효원입니다.</p>
+              <p>기능 구현에서 멈추지 않고, 사용자가 어디에서 마찰을 겪는지 이해해 그 마찰을 줄이는 기술적 해결책을 설계합니다.</p>
+              <p>작은 자동화 도구에서 시작해 백엔드, AI 서비스, 공공 정보 접근성, 교육 기술과 소셜 임팩트로 관심을 넓혀가고 있습니다.</p>
             </div>
-            <div class="stat-card reveal">
-              <span class="stat-num" data-count="7">0</span><span class="stat-plus">영역</span>
-              <span class="stat-label">Back-end · ML · Data Science · LLM · Planning · HCI · HAI</span>
+
+            <dl class="profile-facts">
+              <div><dt>EDUCATION</dt><dd>KWANGWOON UNIVERSITY</dd></div>
+              <div><dt>MAJOR</dt><dd>DATA SCIENCE</dd></div>
+              <div><dt>ROLE</dt><dd>BACKEND · AI DEVELOPER</dd></div>
+              <div><dt>WORK</dt><dd>09+ PROJECTS</dd></div>
+            </dl>
+          </div>
+
+          <p class="profile-interests">BACKEND <i>/</i> AI <i>/</i> DATA <i>/</i> DEVTOOLS <i>/</i> AUTOMATION <i>/</i> PUBLIC TECH <i>/</i> HCI <i>/</i> HAI</p>
+        </div>
+      </section>
+
+      <section class="experience-chapter" data-experience data-nav-section="#experience" aria-label="경력 및 활동">
+        <div class="experience-stage" aria-hidden="true">
+          <div class="experience-heading">
+            <p>EXPERIENCE</p>
+            <h2 id="experience-title"><span>LEARN.</span><span>BUILD.</span><span>GROW</span><span>TOGETHER.</span></h2>
+          </div>
+
+          <div class="experience-axis">
+            <span class="experience-direction">↑</span>
+            <ol>
+              <li data-experience-point class="is-active">
+                <span class="experience-point-number">01</span><i></i><span class="experience-point-label">LIKELION 13TH</span>
+              </li>
+              <li data-experience-point>
+                <span class="experience-point-number">02</span><i></i><span class="experience-point-label">CHIC 5TH</span>
+              </li>
+              <li data-experience-point>
+                <span class="experience-point-number">03</span><i></i><span class="experience-point-label">LIKELION 14TH</span>
+              </li>
+              <li data-experience-point>
+                <span class="experience-point-number">04</span><i></i><span class="experience-point-label">CHIC 6TH</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="experience-detail">
+            <span class="experience-count" data-experience-count>01 / 04</span>
+            <div class="experience-detail-copy" data-experience-detail>
+              <p class="experience-organization" data-experience-organization>광운대학교 멋쟁이사자처럼 13기</p>
+              <h3 data-experience-role>BACK-END 아기사자</h3>
+              <p class="experience-status" data-experience-status hidden></p>
+              <p class="experience-description" data-experience-description>서버 아키텍처, API 설계와 데이터 흐름의 기본기를 다지고 팀 기반 서비스 개발을 경험했습니다.</p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== Projects ===== -->
-    <section class="section projects" id="projects">
-      <div class="container">
-        <p class="eyebrow reveal"><span class="num">02</span> 프로젝트 — Selected Works</p>
-        <h2 class="section-title reveal">마찰을 줄이는<br><em>다섯 가지 실험.</em></h2>
-        <p class="section-desc reveal">카드를 클릭하면 문제 정의부터 배운 점까지 자세한 이야기를 볼 수 있어요.</p>
-
-        <div class="project-list">
-
-          <!-- Sonju -->
-          <article class="project-card tilt reveal" data-project="sonju" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="project-visual">
-              <div class="scene scene-sonju">
-                <div class="mic-wrap">
-                  <span class="ring r1"></span><span class="ring r2"></span>
-                  <span class="mic">🎙️</span>
-                </div>
-                <div class="s-bubble user">“등본은 어디서 떼요?”</div>
-                <div class="s-bubble ai">가까운 주민센터 또는 정부24에서 발급하실 수 있어요.</div>
-                <div class="s-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              </div>
-            </div>
-            <div class="project-info">
-              <span class="project-num">P.01</span>
-              <h3 class="project-title">손주 <span class="en">Sonju</span></h3>
-              <p class="project-tagline">음성 기반 AI 민원 상담 서비스</p>
-              <p class="project-desc">행정 용어가 낯선 사용자도 음성으로 질문하면, AI가 의도를 파악하고 신뢰할 수 있는
-                공공 민원 정보를 검색해 절차와 담당 기관을 쉬운 말로 안내합니다.</p>
-              <ul class="chips">
-                <li>AI Service</li><li>Voice Interface</li><li>LLM</li><li>RAG</li><li>Backend</li>
-              </ul>
-              <span class="more-link">자세히 보기 <i>+</i></span>
-            </div>
-          </article>
-
-          <!-- KLAP-cli -->
-          <article class="project-card tilt reveal" data-project="klap" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="project-visual">
-              <div class="scene scene-klap">
-                <div class="term">
-                  <div class="term-bar"><i></i><i></i><i></i><span>klap — zsh</span></div>
-                  <div class="term-body">
-                    <p class="t-line"><span class="prompt">❯</span> klap notices</p>
-                    <p class="t-line out">📌 [자료구조] 중간고사 범위 공지</p>
-                    <p class="t-line out">📎 [데이터베이스] 과제 3 마감 <b>D-2</b></p>
-                    <p class="t-line"><span class="prompt">❯</span> klap assignments<span class="t-caret"></span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project-info">
-              <span class="project-num">P.02</span>
-              <h3 class="project-title">KLAP-cli</h3>
-              <p class="project-tagline">광운대 LMS(KLAS) 사용성을 개선하는 TUI/CLI 도구</p>
-              <p class="project-desc">KLAS 웹 클라이언트의 요청·응답 흐름을 직접 분석해 비공식 API 클라이언트를 구현하고,
-                반복되는 로그인·메뉴 탐색 없이 터미널에서 바로 공지와 과제를 확인할 수 있게 만들었습니다.</p>
-              <ul class="chips">
-                <li>TUI / CLI</li><li>Reverse Engineering</li><li>Unofficial API</li><li>HTTP</li><li>Session</li>
-              </ul>
-              <span class="more-link">자세히 보기 <i>+</i></span>
-            </div>
-          </article>
-
-          <!-- INSITE -->
-          <article class="project-card tilt reveal" data-project="insite" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="project-visual">
-              <div class="scene scene-insite">
-                <div class="editor">
-                  <div class="code-line w70"></div>
-                  <div class="code-line w50 c2"></div>
-                  <div class="code-line w80"></div>
-                  <div class="code-line w40 c3 err"></div>
-                  <div class="code-line w60 c2"></div>
-                </div>
-                <div class="hint-chip h1">💡 힌트 1 · 문제 이해</div>
-                <div class="hint-chip h2">🧭 힌트 2 · 접근 설계</div>
-                <div class="hint-chip h3">🔍 디버깅 포인트</div>
-              </div>
-            </div>
-            <div class="project-info">
-              <span class="project-num">P.03</span>
-              <h3 class="project-title">INSITE</h3>
-              <p class="project-tagline">AI 기반 코딩 학습 어시스턴트</p>
-              <p class="project-desc">정답 코드를 바로 주는 대신 단계별 힌트와 디버깅 가이드로 학습자의 사고 과정을 지켜주는
-                교육용 AI 서비스입니다. AI가 생각을 대신하지 않고, 생각을 안내하도록 설계했습니다.</p>
-              <ul class="chips">
-                <li>AI Education</li><li>LLM</li><li>Code Feedback</li><li>EdTech</li>
-              </ul>
-              <span class="more-link">자세히 보기 <i>+</i></span>
-            </div>
-          </article>
-
-          <!-- Reminiscence -->
-          <article class="project-card tilt reveal" data-project="reminiscence" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="project-visual">
-              <div class="scene scene-rem">
-                <div class="frame">
-                  <div class="photo">
-                    <span class="sun"></span>
-                    <span class="hill h1"></span>
-                    <span class="hill h2"></span>
-                  </div>
-                  <div class="frame-caption">가족과 제주도, 2019</div>
-                </div>
-                <div class="rem-bubble">💊 오늘 15:00 병원 예약이 있어요</div>
-                <div class="rem-heart">♥</div>
-              </div>
-            </div>
-            <div class="project-info">
-              <span class="project-num">P.04</span>
-              <h3 class="project-title">Reminiscence <span class="badge-ing">진행 중</span></h3>
-              <p class="project-tagline">치매 환자를 위한 AI 대화형 스마트 케어 액자</p>
-              <p class="project-desc">Sowon H.O.P.E 프로젝트. 어르신에게 익숙한 ‘액자’라는 형태에 사진 기반 기억 지원,
-                일정 리마인드, 정서적 AI 대화, 보호자 연결을 담은 소셜 임팩트 프로젝트입니다.</p>
-              <ul class="chips">
-                <li>AI Care</li><li>Healthcare</li><li>Voice Interaction</li><li>Social Impact</li>
-              </ul>
-              <span class="more-link">자세히 보기 <i>+</i></span>
-            </div>
-          </article>
-
-          <!-- UNI PANG -->
-          <article class="project-card tilt reveal" data-project="unipang" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="project-visual">
-              <div class="scene scene-unipang">
-                <div class="quest-card">
-                  <div class="quest done"><span class="check">✓</span> 장학금 공지 확인 <b>+10P</b></div>
-                  <div class="quest"><span class="check"></span> 상담센터 프로그램 신청 <b>+30P</b></div>
-                  <div class="quest"><span class="check"></span> 교내 특강 리마인더 등록 <b>+15P</b></div>
-                </div>
-                <div class="point-badge">🪙 1,240P</div>
-              </div>
-            </div>
-            <div class="project-info">
-              <span class="project-num">P.05</span>
-              <h3 class="project-title">UNI PANG</h3>
-              <p class="project-tagline">맞춤형 교내 복지 정보 · 참여 플랫폼 (아이디어톤)</p>
-              <p class="project-desc">흩어져 있어 놓치기 쉬운 교내 복지 정보를 학년·전공·관심사 기반으로 추천하고,
-                확인 퀘스트와 포인트 리워드로 ‘보는 것’을 ‘참여하는 것’으로 바꾸는 구조를 제안했습니다.</p>
-              <ul class="chips">
-                <li>Service Planning</li><li>Personalization</li><li>Gamification</li><li>Data Metrics</li>
-              </ul>
-              <span class="more-link">자세히 보기 <i>+</i></span>
-            </div>
-          </article>
-        </div>
-
-        <!-- More works -->
-        <h3 class="sub-title reveal">그 외의 작업들</h3>
-        <div class="mini-grid">
-          <article class="mini-card tilt reveal" data-project="freq" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="mini-visual mini-freq">
-              <div class="bars"><i style="--h:70%"></i><i style="--h:45%"></i><i style="--h:90%"></i><i style="--h:30%"></i><i style="--h:60%"></i><i style="--h:80%"></i></div>
-              <span class="mini-glyphs">이 · の · 다 · る</span>
-            </div>
-            <h4>한글 · 일본어 빈도 분석</h4>
-            <p>글자 빈도 데이터를 입력 효율 관점에서 해석한 언어 데이터 분석 프로젝트</p>
-            <span class="more-link">자세히 <i>+</i></span>
-          </article>
-          <article class="mini-card tilt reveal" data-project="library" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="mini-visual mini-lib">
-              <pre>{
-  "status": 200,
-  "library": "kwangwoon",
-  "seats": [ ... ]
-}</pre>
-            </div>
-            <h4>광운대 도서관 API</h4>
-            <p>도서관 정보를 구조화된 JSON API로 제공해 재사용성을 높인 백엔드 프로젝트</p>
-            <span class="more-link">자세히 <i>+</i></span>
-          </article>
-          <article class="mini-card tilt reveal" data-project="automation" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="mini-visual mini-auto">
-              <span class="auto-emoji">⏰</span><span class="auto-emoji">🤖</span><span class="auto-emoji">💬</span>
-            </div>
-            <h4>초기 자동화 프로젝트</h4>
-            <p>자가진단 자동화, 시간표 알림, 디스코드 봇 — 개발을 시작하게 된 출발점</p>
-            <span class="more-link">자세히 <i>+</i></span>
-          </article>
-          <article class="mini-card tilt reveal" data-project="llmcode" tabindex="0" role="button" aria-haspopup="dialog">
-            <div class="mini-visual mini-llmcode">
-              <div class="cluster-plot">
-                <span class="pt human" style="--x:16%; --y:26%"></span>
-                <span class="pt llm" style="--x:30%; --y:60%"></span>
-                <span class="pt llm" style="--x:44%; --y:22%"></span>
-                <span class="pt human" style="--x:50%; --y:68%"></span>
-                <span class="pt human" style="--x:63%; --y:36%"></span>
-                <span class="pt llm" style="--x:73%; --y:64%"></span>
-                <span class="pt human" style="--x:80%; --y:20%"></span>
-                <span class="pt llm" style="--x:20%; --y:76%"></span>
-                <span class="pt human" style="--x:39%; --y:46%"></span>
-                <span class="pt llm" style="--x:58%; --y:50%"></span>
-                <span class="pt human" style="--x:87%; --y:48%"></span>
-                <span class="pt llm" style="--x:9%; --y:50%"></span>
-              </div>
-            </div>
-            <h4>LLM과 인간의 코드 스타일 구분 가능성 탐구</h4>
-            <p>LLM 생성 코드와 사람 코드를 각각 수집·전처리해 4개 데이터셋으로 클러스터링, 가설을 검증한 CHIC 후속 실험</p>
-            <span class="more-link">자세히 <i>+</i></span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Activities ===== -->
-    <section class="section activities" id="activities">
-      <div class="container">
-        <p class="eyebrow reveal"><span class="num">03</span> 활동 — Activities</p>
-        <h2 class="section-title reveal">배우고, 만들고,<br><em>함께 성장하기.</em></h2>
-
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <span class="tl-tag">광운대학교 멋쟁이사자처럼 13기</span>
+        <div class="experience-steps">
+          <article class="experience-step" id="experience" data-experience-step="0" data-snap-panel>
+            <div class="experience-step-copy">
+              <p>광운대학교 멋쟁이사자처럼 13기</p>
               <h3>Back-end 아기사자</h3>
-              <p>서버 아키텍처, API 설계, 데이터 흐름 등 백엔드의 기본기를 다지고 팀 기반 서비스 개발을 경험했습니다.
-                백엔드가 전체 사용자 경험에 어떻게 연결되는지 이해하게 된 시간이었습니다.</p>
+              <p>서버 아키텍처, API 설계와 데이터 흐름의 기본기를 다지고 팀 기반 서비스 개발을 경험했습니다. 백엔드가 전체 사용자 경험에 어떻게 연결되는지 이해하게 된 시간이었습니다.</p>
             </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <span class="tl-tag">광운대학교 정보융합학부 전공동아리 CHIC 5기</span>
+          </article>
+          <article class="experience-step" id="experience-chic-5" data-experience-step="1" data-snap-panel>
+            <div class="experience-step-copy">
+              <p>광운대학교 정보융합학부 전공동아리 CHIC 5기</p>
               <h3>ML 스터디 팀장</h3>
-              <p>전공동아리 CHIC 5기 겨울방학 ML 스터디에서 팀장을 맡아 팀을 이끌었습니다. 스터디를 마친 뒤에는 팀원들과 함께
-                “LLM이 생성한 코드와 사람이 작성한 코드는 다를 것이다”라는 가설을 직접 설계한 실험으로 검증했습니다.</p>
+              <p>겨울방학 ML 스터디를 이끌고, 팀원들과 LLM 생성 코드와 사람 코드의 차이를 검증하는 실험을 직접 설계했습니다.</p>
             </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="tl-dot now"></div>
-            <div class="tl-content">
-              <span class="tl-tag current">광운대학교 멋쟁이사자처럼 14기 · 현재</span>
+          </article>
+          <article class="experience-step" id="experience-likelion-14" data-experience-step="2" data-snap-panel>
+            <div class="experience-step-copy">
+              <p>광운대학교 멋쟁이사자처럼 14기</p>
               <h3>Back-end 운영진</h3>
-              <p>아기사자 시절 배운 것을 바탕으로, 이제는 멤버들이 백엔드 개념을 이해하고 프로젝트를 완성하도록 돕고 있습니다.
-                기술을 설명하고 팀의 문제 해결을 지원하며 개발자 이상의 역할로 성장하는 중입니다.</p>
+              <span>CURRENT</span>
+              <p>멤버들의 백엔드 학습과 프로젝트 완성을 지원하고 있습니다. 기술을 설명하고 팀의 문제 해결을 도우며 개발자 이상의 역할로 성장하는 중입니다.</p>
             </div>
-          </div>
-          <div class="timeline-item reveal">
-            <div class="tl-dot now"></div>
-            <div class="tl-content">
-              <span class="tl-tag current">광운대학교 정보융합학부 전공동아리 CHIC 6기 · 현재</span>
+          </article>
+          <article class="experience-step" id="experience-chic-6" data-experience-step="3" data-snap-panel>
+            <div class="experience-step-copy">
+              <p>광운대학교 정보융합학부 전공동아리 CHIC 6기</p>
               <h3>동아리 부원</h3>
-              <p>5기 활동에 이어 6기로 참여를 이어가고 있습니다. 출범한 지 얼마 되지 않아 아직 구체적인 활동을 시작하기 전이며,
-                새 학기 활동에 맞춰 계속 참여할 예정입니다.</p>
+              <span>CURRENT</span>
+              <p>5기 활동에 이어 전공 기반 탐구와 협업 활동을 이어가고 있습니다.</p>
             </div>
-          </div>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===== Skills ===== -->
-    <section class="section skills" id="skills">
-      <div class="container">
-        <p class="eyebrow reveal"><span class="num">04</span> 스킬 — Skills</p>
-        <h2 class="section-title reveal">문제에서 출발하는<br><em>다섯 개의 도구 상자.</em></h2>
+      <section class="project-chapter" id="projects" data-indexed-chapter data-nav-section="#work" data-nav-href="#work" data-intro-nav-href="#work" aria-label="메인 프로젝트">
+        <nav class="chapter-rail" aria-label="메인 프로젝트 인덱스">
+          <span class="chapter-rail-name" aria-hidden="true">HYOWON LEE</span>
+          <ol class="chapter-index">
+            <li><a href="#work" data-chapter-link="0" aria-current="true">00</a></li>
+            <li><a href="#project-sonju" data-chapter-link="1">01</a></li>
+            <li><a href="#project-klap" data-chapter-link="2">02</a></li>
+            <li><a href="#project-insite" data-chapter-link="3">03</a></li>
+            <li><a href="#project-reminiscence" data-chapter-link="4">04</a></li>
+            <li><a href="#project-unipang" data-chapter-link="5">05</a></li>
+          </ol>
+          <span class="chapter-rail-role" aria-hidden="true">BACKEND / AI DEVELOPER</span>
+        </nav>
 
-        <div class="skills-grid">
-          <div class="skill-card reveal">
-            <span class="skill-icon">🧩</span>
-            <h3>Backend Development</h3>
-            <p>사용자 요청이 서버에서 처리되고 데이터가 구조화되어 돌아오는 과정을 설계합니다.</p>
-            <ul class="chips"><li>REST API 설계</li><li>서버 로직</li><li>JSON 응답 설계</li><li>API 클라이언트</li><li>에러 처리</li></ul>
-          </div>
-          <div class="skill-card reveal">
-            <span class="skill-icon">🤖</span>
-            <h3>AI Service Development</h3>
-            <p>AI 응답을 붙이는 것이 아니라, 실제 문제를 해결하는 구조를 만듭니다.</p>
-            <ul class="chips"><li>LLM 서비스 설계</li><li>RAG 응답 흐름</li><li>AI 피드백 설계</li><li>음성 인터랙션</li><li>인간 중심 AI</li></ul>
-          </div>
-          <div class="skill-card reveal">
-            <span class="skill-icon">📊</span>
-            <h3>Data Science</h3>
-            <p>데이터로 문제를 정량적으로 이해하고, 서비스 지표를 설계합니다.</p>
-            <ul class="chips"><li>Python</li><li>Pandas</li><li>텍스트 전처리</li><li>빈도 분석</li><li>시각화</li><li>지표 설계</li></ul>
-          </div>
-          <div class="skill-card reveal">
-            <span class="skill-icon">⌨️</span>
-            <h3>Developer Tools</h3>
-            <p>반복되는 수작업을 줄이는 도구를 만드는 걸 즐깁니다.</p>
-            <ul class="chips"><li>CLI / TUI 설계</li><li>HTTP 요청 분석</li><li>비공식 API 클라이언트</li><li>세션 기반 접근</li><li>자동화</li></ul>
-          </div>
-          <div class="skill-card wide reveal">
-            <span class="skill-icon">🤝</span>
-            <h3>Collaboration & Leadership</h3>
-            <p>기획과 개발 사이를 잇는 커뮤니케이션, 그리고 팀의 성장을 돕는 운영 경험이 있습니다.</p>
-            <ul class="chips"><li>팀 프로젝트</li><li>백엔드 스터디 운영</li><li>문제 정의</li><li>서비스 기획</li><li>발표 · 문서화</li></ul>
-          </div>
+        <div class="chapter-track">
+          <section class="chapter-panel chapter-intro" id="work" data-chapter-panel="0" aria-labelledby="main-project-title">
+            <div class="chapter-intro-copy">
+              <p class="chapter-label">PROJECT</p>
+              <h2 id="main-project-title">INFORMATION<br>WITHOUT<br>FRICTION.</h2>
+              <p class="chapter-native">정보를 찾고, 이해하고, 행동하기 쉽게.</p>
+            </div>
+            <div class="chapter-intro-aside">
+              <p class="chapter-aside-label">SELECTED WORKS / 2025—2026</p>
+              <p>백엔드와 AI를 사용해 정보가 사람에게 닿는 과정의 불필요한 마찰을 줄입니다. 문제 정의에서 시작해 작동하는 구조와 경험까지 연결합니다.</p>
+              <span class="chapter-count" aria-label="소개 화면, 전체 5개 프로젝트">00 / 05</span>
+            </div>
+          </section>
+
+          <article class="chapter-panel project-panel" id="project-sonju" data-chapter-panel="1" aria-labelledby="project-sonju-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">01</span>
+              <p class="project-domain">VOICE AI / PUBLIC INFORMATION</p>
+              <h3 id="project-sonju-title">SONJU</h3>
+              <p class="project-summary">음성 질문의 의도를 파악해 신뢰 가능한 공공 민원 정보를 찾고, 다음 절차와 담당 기관을 쉬운 말로 안내하는 AI 상담 서비스입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>백엔드·AI 담당으로 OpenAI Realtime API 중개 WebSocket, 음성 전사와 세션 상태, RAG·Function Calling, 프롬프트와 오류 처리 흐름을 구현하고 개선했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK</h4>
+                <ul class="project-stack" aria-label="Sonju 기술 스택">
+                  <li>Node.js</li>
+                  <li>Express</li>
+                  <li>GPT-4o Realtime</li>
+                  <li>Vector Store / RAG</li>
+                  <li>WebSocket</li>
+                  <li>Docker</li>
+                </ul>
+              </section>
+              <a class="project-source-link" href="https://github.com/Team1-kw13/Sonju-BE" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
+            </div>
+            <span class="project-count" aria-hidden="true">01 / 05</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="project-klap" data-chapter-panel="2" aria-labelledby="project-klap-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">02</span>
+              <p class="project-domain">DEVELOPER TOOL / REVERSE ENGINEERING</p>
+              <h3 id="project-klap-title">KLAP-cli</h3>
+              <p class="project-summary">반복 로그인과 메뉴 탐색 없이 KLAS의 공지, 과제, 강의, 성적과 학사 일정을 터미널에서 조회·관리하는 크로스플랫폼 CLI/TUI입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>개인 프로젝트로 KLAS 요청·응답을 역분석하고 비공식 API client, 인증·세션, OS keyring, 캐시·오류 처리와 CLI/TUI 경험 전반을 설계·구현했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK</h4>
+                <ul class="project-stack" aria-label="KLAP-cli 기술 스택">
+                  <li>Go</li>
+                  <li>Bubble Tea</li>
+                  <li>Lip Gloss</li>
+                  <li>go-keyring</li>
+                  <li>Swift Bridge</li>
+                  <li>Apple Speech</li>
+                </ul>
+              </section>
+              <a class="project-source-link" href="https://github.com/leehyowon14/KLAP-cli" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
+            </div>
+            <span class="project-count" aria-hidden="true">02 / 05</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="project-insite" data-chapter-panel="3" aria-labelledby="project-insite-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">03</span>
+              <p class="project-domain">AI EDUCATION / CODE FEEDBACK</p>
+              <h3 id="project-insite-title">INSITE</h3>
+              <p class="project-summary">정답을 바로 주지 않고 단계별 힌트, 코드 평가와 디버깅 피드백으로 초보 개발자의 사고 과정을 지켜주는 AI 코딩 학습 서비스입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>AI 힌트와 L5 피드백, WebSocket 평가, Docker code execution, MongoDB·Redis 기반 학습 기록, API·배포와 일부 프론트엔드 연동까지 폭넓게 구현했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK</h4>
+                <ul class="project-stack" aria-label="INSITE 기술 스택">
+                  <li>Node.js</li>
+                  <li>Express</li>
+                  <li>OpenAI</li>
+                  <li>WebSocket</li>
+                  <li>Dockerode</li>
+                  <li>MongoDB / Redis</li>
+                </ul>
+              </section>
+              <a class="project-source-link" href="https://github.com/kw-ic-web/25-team-in-site" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
+            </div>
+            <span class="project-count" aria-hidden="true">03 / 05</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="project-reminiscence" data-chapter-panel="4" aria-labelledby="project-reminiscence-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">04</span>
+              <p class="project-domain">AI CARE / SOCIAL IMPACT</p>
+              <h3 id="project-reminiscence-title">REMINISCENCE</h3>
+              <p class="project-summary">가족사진 기반 기억 지원, 일정 리마인드, 정서적 음성 대화와 보호자 연결을 담은 치매 환자용 AI 스마트 케어 액자입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>문제 정의와 서비스 방향 설계에 참여하고 기억 지원, 루틴 케어, 정서 대화의 세 축으로 구조를 정리해 인지 부담을 낮춘 사용자 시나리오를 설계했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK / DOMAIN</h4>
+                <ul class="project-stack" aria-label="Reminiscence 도메인">
+                  <li>AI Care</li>
+                  <li>Voice Interaction</li>
+                  <li>Smart Device</li>
+                  <li>Healthcare</li>
+                  <li>Social Impact</li>
+                </ul>
+              </section>
+              <div class="project-source-unavailable">
+                <span>NO PUBLIC REPOSITORY</span>
+                <a class="project-source-link" href="https://github.com/leehyowon14" target="_blank" rel="noopener noreferrer">VIEW GITHUB PROFILE</a>
+              </div>
+            </div>
+            <span class="project-count" aria-hidden="true">04 / 05</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="project-unipang" data-chapter-panel="5" aria-labelledby="project-unipang-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">05</span>
+              <p class="project-domain">SERVICE DESIGN / CAMPUS WELFARE</p>
+              <h3 id="project-unipang-title">UNI PANG</h3>
+              <p class="project-summary">학년·전공·관심사에 맞춘 교내 복지 추천과 확인 퀘스트·포인트 리워드로 정보 확인을 실제 참여로 전환하는 아이디어톤 플랫폼입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>문제 정의, 서비스 구조·기능·사용자 플로우를 기획하고 노출, 클릭, 저장, 퀘스트 완료와 신청 전환 지표를 함께 설계했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK / DOMAIN</h4>
+                <ul class="project-stack" aria-label="UNI PANG 기획 영역">
+                  <li>Service Planning</li>
+                  <li>Personalization</li>
+                  <li>Gamification</li>
+                  <li>Data Metrics</li>
+                  <li>UX</li>
+                </ul>
+              </section>
+              <div class="project-source-unavailable">
+                <span>NO PUBLIC REPOSITORY</span>
+                <a class="project-source-link" href="https://github.com/leehyowon14" target="_blank" rel="noopener noreferrer">VIEW GITHUB PROFILE</a>
+              </div>
+            </div>
+            <span class="project-count" aria-hidden="true">05 / 05</span>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ===== Contact ===== -->
-    <section class="section contact" id="contact">
-      <div class="contact-bg" aria-hidden="true">
-        <div class="halftone dark">
-          <div class="ht-dots"></div>
-        </div>
-        <div class="grain"></div>
-      </div>
-      <div class="container contact-inner">
-        <p class="eyebrow light reveal"><span class="num">05</span> 연락처 — Contact</p>
-        <h2 class="contact-title reveal">새로운 문제를<br><em>함께 풀어봐요.</em></h2>
-        <p class="contact-sub reveal">협업, 프로젝트, 커피챗 — 어떤 이야기든 환영합니다.</p>
-        <div class="contact-actions reveal">
-          <a class="btn btn-light magnetic" href="mailto:leehyowon14@gmail.com">leehyowon14@gmail.com <span class="arr">↗</span></a>
-          <button class="btn btn-outline magnetic" id="copy-email" type="button">이메일 복사</button>
-        </div>
-      </div>
-    </section>
+      <section class="project-chapter toy-chapter" id="toy-projects" data-indexed-chapter data-nav-section="#toy-intro" data-nav-href="#toy-intro" aria-label="토이 프로젝트">
+        <nav class="chapter-rail" aria-label="토이 프로젝트 인덱스">
+          <span class="chapter-rail-name" aria-hidden="true">CURIOSITY / EXPERIMENTS</span>
+          <ol class="chapter-index">
+            <li><a href="#toy-intro" data-chapter-link="0" aria-current="true">00</a></li>
+            <li><a href="#toy-frequency" data-chapter-link="1">01</a></li>
+            <li><a href="#toy-library" data-chapter-link="2">02</a></li>
+            <li><a href="#toy-automation" data-chapter-link="3">03</a></li>
+            <li><a href="#toy-code-style" data-chapter-link="4">04</a></li>
+          </ol>
+          <span class="chapter-rail-role" aria-hidden="true">TOY PROJECTS / 2021—2026</span>
+        </nav>
 
-    <footer class="site-footer">
-      <span>© <span id="year">2026</span> Lee Hyowon</span>
-      <a href="#top" class="to-top">맨 위로 ↑</a>
+        <div class="chapter-track">
+          <section class="chapter-panel chapter-intro" id="toy-intro" data-chapter-panel="0" aria-labelledby="toy-project-title">
+            <div class="chapter-intro-copy">
+              <p class="chapter-label">TOY PROJECT</p>
+              <h2 id="toy-project-title">TO SATISFY<br>MY<br>CURIOSITY.</h2>
+              <p class="chapter-native">궁금한 것은 작게 만들고, 직접 확인합니다.</p>
+            </div>
+            <div class="chapter-intro-aside">
+              <p class="chapter-aside-label">EXPERIMENTS / UTILITIES / DATA</p>
+              <p>가설을 검증하고 일상의 반복을 줄이기 위해 만든 작은 도구들입니다. 결과의 크기보다 질문을 코드로 바꾸는 과정에 집중했습니다.</p>
+              <span class="chapter-count" aria-label="토이 프로젝트 소개 화면, 전체 4개 프로젝트">00 / 04</span>
+            </div>
+          </section>
+
+          <article class="chapter-panel project-panel" id="toy-frequency" data-chapter-panel="1" aria-labelledby="toy-frequency-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">01</span>
+              <p class="project-domain">TEXT DATA / INPUT EFFICIENCY</p>
+              <h3 id="toy-frequency-title">CHARACTER FREQUENCY</h3>
+              <p class="project-summary">한글과 일본어의 글자·발음·배열 패턴을 빈도로 계산하고, 자판과 입력 효율의 관점에서 결과를 해석한 언어 데이터 실험입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>데이터셋 준비부터 정제, 문자 치환·분해, 빈도 집계와 결과 해석까지 개인으로 수행하고 서로 다른 문자 체계에 맞춘 처리 방법을 비교했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK</h4>
+                <ul class="project-stack" aria-label="문자 빈도 분석 기술 스택">
+                  <li>Python</li>
+                  <li>Hugging Face Datasets</li>
+                  <li>requests</li>
+                  <li>tqdm</li>
+                  <li>Unicode Processing</li>
+                  <li>Text Analysis</li>
+                </ul>
+              </section>
+              <div class="project-source-group" aria-label="문자 빈도 분석 GitHub 링크">
+                <a class="project-source-link" href="https://github.com/leehyowon14/Japanese_frequency" target="_blank" rel="noopener noreferrer">JAPANESE SOURCE</a>
+                <a class="project-source-link" href="https://github.com/leehyowon14/hangul_frequency_for_semi-2-set-keyboard" target="_blank" rel="noopener noreferrer">KOREAN SOURCE</a>
+              </div>
+            </div>
+            <span class="project-count" aria-hidden="true">01 / 04</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="toy-library" data-chapter-panel="2" aria-labelledby="toy-library-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">02</span>
+              <p class="project-domain">UNOFFICIAL API / MOBILE ID</p>
+              <h3 id="toy-library-title">KW LIBRARY API</h3>
+              <p class="project-summary">광운대학교 모바일 학생증 시스템과 연동해 도서관 출입·대출에 사용할 QR 인증 문자열을 생성하는 비공식 API 서버입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>Mobile ID XML 흐름을 분석하고 AES-256-CBC 인증, 응답 파싱, 입력 검증과 API 계약을 개인으로 구현했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK</h4>
+                <ul class="project-stack" aria-label="광운대 도서관 API 기술 스택">
+                  <li>Node.js</li>
+                  <li>Express</li>
+                  <li>Axios</li>
+                  <li>xml2js</li>
+                  <li>Zod</li>
+                  <li>AES-256-CBC</li>
+                </ul>
+              </section>
+              <a class="project-source-link" href="https://github.com/leehyowon14/Kwangwoon-Univ_Library" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
+            </div>
+            <span class="project-count" aria-hidden="true">02 / 04</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="toy-automation" data-chapter-panel="3" aria-labelledby="toy-automation-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">03</span>
+              <p class="project-domain">AUTOMATION / UTILITY</p>
+              <h3 id="toy-automation-title">EARLY AUTOMATIONS</h3>
+              <p class="project-summary">자가진단, 시간표 알림, Discord 게임 봇으로 일상의 반복 작업을 코드로 줄인 초기 유틸리티 모음입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>문제 발견부터 자동 실행, 알림과 봇의 event-command 구조까지 직접 구현하며 실제 불편을 코드로 해결하는 개발 접근법을 만들었습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK</h4>
+                <ul class="project-stack" aria-label="초기 자동화 프로젝트 기술 스택">
+                  <li>Python</li>
+                  <li>Selenium</li>
+                  <li>schedule</li>
+                  <li>Go</li>
+                  <li>DiscordGo</li>
+                  <li>MongoDB</li>
+                </ul>
+              </section>
+              <div class="project-source-group" aria-label="초기 자동화 프로젝트 GitHub 링크">
+                <a class="project-source-link" href="https://github.com/Team-Stepix/auto-hcs" target="_blank" rel="noopener noreferrer">AUTO HCS</a>
+                <a class="project-source-link" href="https://github.com/leehyowon14/school_schedule_reminder" target="_blank" rel="noopener noreferrer">SCHEDULE REMINDER</a>
+                <a class="project-source-link" href="https://github.com/leehyowon14/WRwolf_Bot-Go" target="_blank" rel="noopener noreferrer">DISCORD BOT</a>
+              </div>
+            </div>
+            <span class="project-count" aria-hidden="true">03 / 04</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="toy-code-style" data-chapter-panel="4" aria-labelledby="toy-code-style-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">04</span>
+              <p class="project-domain">MACHINE LEARNING / EXPERIMENT</p>
+              <h3 id="toy-code-style-title">HUMAN / LLM CODE STYLE</h3>
+              <p class="project-summary">동일한 코딩 문제의 인간·ChatGPT·Gemini 풀이를 여러 전처리 조건으로 비교하고 임베딩·클러스터링해 출처 구분 가능성을 검증한 실험입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>CHIC ML 스터디 팀장으로 실험 설계, 데이터 수집·정리, AST·주석·변수명 전처리와 클러스터링 전 과정을 주도했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK</h4>
+                <ul class="project-stack" aria-label="코드 스타일 실험 기술 스택">
+                  <li>Python</li>
+                  <li>scikit-learn</li>
+                  <li>TF-IDF</li>
+                  <li>PCA / UMAP</li>
+                  <li>KMeans / DBSCAN</li>
+                  <li>HDBSCAN / KNN</li>
+                </ul>
+              </section>
+              <a class="project-source-link" href="https://github.com/pgr1212/CHIC_26_Machine_Learning_team-4_toy_project" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
+            </div>
+            <span class="project-count" aria-hidden="true">04 / 04</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="editorial-contact" id="contact" data-nav-section="#contact" aria-labelledby="contact-title">
+        <div class="contact-directory">
+          <div class="contact-copy">
+            <p class="contact-label">CONTACT</p>
+            <h2 id="contact-title">새로운 문제를<br>함께 풀어봐요.</h2>
+            <p>협업, 프로젝트, 커피챗 — 어떤 이야기든 환영합니다.</p>
+          </div>
+          <address class="contact-links">
+            <div>
+              <span>EMAIL</span>
+              <a href="mailto:leehyowon14@gmail.com">leehyowon14@gmail.com</a>
+            </div>
+            <div>
+              <span>GITHUB</span>
+              <a href="https://github.com/leehyowon14" target="_blank" rel="noopener noreferrer">github.com/leehyowon14</a>
+            </div>
+            <div>
+              <span>WRITING</span>
+              <a href="https://velog.io/@wonny_0724/" target="_blank" rel="noopener noreferrer">velog.io/@wonny_0724</a>
+            </div>
+            <div>
+              <span>BASED IN</span>
+              <p>SEOUL, KR</p>
+            </div>
+          </address>
+        </div>
+
+        <a class="contact-statement" href="mailto:leehyowon14@gmail.com" aria-label="이효원에게 이메일 보내기">
+          <span>LET'S BUILD</span>
+          <span>SOMETHING USEFUL.</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="editorial-footer">
+      <span>© <span id="year">2026</span> HYOWON LEE</span>
+      <a href="#top">BACK TO TOP</a>
+      <span>BUILT FOR GITHUB PAGES</span>
     </footer>
   </div>
 
-  <!-- ===== Project Modal ===== -->
-  <div class="modal" id="project-modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close></div>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" data-close aria-label="닫기">×</button>
-      <div class="modal-content" id="modal-content"></div>
-    </div>
-  </div>
-
+  <script src="hero-texture.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
