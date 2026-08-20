@@ -1,13 +1,14 @@
 # Lee Hyowon — Portfolio
 
 정보의 마찰을 줄이는 백엔드 · AI 개발자 이효원의 포트폴리오 사이트입니다.
-할프톤(halftone) 기반의 흑백 인쇄 컨셉과 인터랙티브 요소가 적용된 순수 HTML/CSS/JS 정적 사이트로, 빌드 과정 없이 GitHub Pages에 바로 배포됩니다.
+에디토리얼 레이아웃과 인터랙티브 요소가 적용된 순수 HTML/CSS/JS 정적 사이트로, 빌드 과정 없이 GitHub Pages에 바로 배포됩니다. 이전 할프톤 디자인은 `/old/`에서 확인할 수 있습니다.
 
 ## 로컬에서 보기
 
 ```bash
 python3 -m http.server 4317
-# http://localhost:4317 접속
+# 현재 버전: http://localhost:4317/
+# 이전 버전: http://localhost:4317/old/
 ```
 
 ## GitHub Pages 배포 방법
@@ -29,8 +30,10 @@ python3 -m http.server 4317
 ## 구조
 
 ```
-index.html   # 마크업 (전체 섹션 + 프로젝트 모달)
-style.css    # 스타일 · 할프톤 효과 · 애니메이션
-main.js      # 인터랙션 (리빌, 패럴랙스, 틸트, 모달, 카운터)
-.nojekyll    # GitHub Pages에서 Jekyll 처리 비활성화
+index.html       # 현재 포트폴리오 마크업
+style.css        # 현재 포트폴리오 스타일
+main.js          # 현재 포트폴리오 인터랙션
+hero-texture.js  # 히어로 canvas 텍스처
+old/             # 이전 할프톤 포트폴리오
+.nojekyll        # GitHub Pages에서 Jekyll 처리 비활성화
 ```
