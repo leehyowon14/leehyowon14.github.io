@@ -2218,6 +2218,11 @@ html {
   font-family: var(--display);
   font-size: 1.7rem;
   font-weight: 200;
+  transition: opacity 180ms ease;
+}
+
+.experience-chapter[data-active-experience="3"] .experience-direction {
+  opacity: 0;
 }
 
 .experience-axis ol {
