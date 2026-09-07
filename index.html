@@ -247,6 +247,18 @@
                 <h4>ROLE / CONTRIBUTION</h4>
                 <p>개인 프로젝트로 KLAS 요청·응답을 역분석하고 비공식 API client, 인증·세션, OS keyring, 캐시·오류 처리와 CLI/TUI 경험 전반을 설계·구현했습니다.</p>
               </section>
+              <details class="project-case">
+                <summary>KLAP-cli 설계와 구현 근거</summary>
+                <dl>
+                  <div><dt>문제</dt><dd>과제와 공지, 강의 마감을 확인할 때마다 로그인하고 여러 메뉴를 오가야 하는 반복 작업을 줄이고자 했습니다.</dd></div>
+                  <div><dt>설계</dt><dd>인증에 성공한 계정만 저장하고 비밀번호·세션 쿠키는 OS 보안 저장소에 보관합니다. 목록 조회는 기본 5분 캐시로 반복 요청을 줄이고, 최신 정보가 필요하면 <code>--refresh</code>로 직접 갱신할 수 있게 했습니다.</dd></div>
+                  <div><dt>구현 결과</dt><dd><code>klap search</code>로 과목·과제·공지·강의·학사일정을 함께 검색하고, <code>klap due</code>로 여러 종류의 마감을 한 목록에서 확인합니다. 기능별 명령과 패키지 설계는 공개 문서로 제공하고 있습니다.</dd></div>
+                </dl>
+                <div class="project-evidence-links">
+                  <a href="https://github.com/leehyowon14/KLAP-cli#readme" target="_blank" rel="noopener noreferrer">명령과 동작 방식 ↗</a>
+                  <a href="https://github.com/leehyowon14/KLAP-cli/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">패키지 설계 문서 ↗</a>
+                </div>
+              </details>
               <section class="project-fact">
                 <h4>STACK</h4>
                 <ul class="project-stack" aria-label="KLAP-cli 기술 스택">
