@@ -36,6 +36,22 @@ body {
   word-break: keep-all;
 }
 
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 12px;
+  padding: 12px 18px;
+  color: #111312;
+  background: #f2ede3;
+  border: 2px solid #bd3213;
+  transform: translateY(calc(-100% - 24px));
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 ::selection { background: var(--ink); color: var(--cream); }
 
 img { max-width: 100%; }

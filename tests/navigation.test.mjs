@@ -60,3 +60,30 @@ test('the mobile menu closes when focus or a click moves outside it', () => {
   env.emit('click', { target: env.contact });
   assert.equal(env.menu.getAttribute('aria-expanded'), 'false');
 });
+
+test('anchor navigation moves keyboard focus to its destination after scrolling', () => {
+  for (const reduced of [true, false]) {
+    const env = loadNavigation({ reduced });
+    env.links[1].focus();
+    env.links[1].emit('click');
+    if (!reduced) {
+      assert.equal(env.document.activeElement, env.links[1]);
+      env.frame(1000);
+    }
+    assert.equal(env.document.activeElement, env.contact);
+    assert.equal(env.contact.getAttribute('tabindex'), '-1');
+    env.contact.emit('blur');
+    assert.equal(env.contact.hasAttribute('tabindex'), false);
+  }
+});
+
+test('anchors focus an already visible destination without another animation', () => {
+  const env = loadNavigation();
+  env.window.scrollTo({ top: 2700 });
+  env.contact.setAttribute('tabindex', '0');
+  env.links[1].emit('click');
+  assert.equal(env.frames.size, 0);
+  assert.equal(env.document.activeElement, env.contact);
+  env.contact.emit('blur');
+  assert.equal(env.contact.getAttribute('tabindex'), '0', 'authored focusability must be preserved');
+});

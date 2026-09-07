@@ -220,17 +220,19 @@
     snapAnimationFrame = 0;
   };
 
-  const animateSnap = (destination, duration) => {
+  const animateSnap = (destination, duration, onComplete = () => {}) => {
     stopSnapAnimation();
     if (reducedMotionQuery.matches) {
       window.scrollTo({ top: destination, behavior: "instant" });
       delete document.documentElement.dataset.pageSnap;
+      onComplete();
       return;
     }
     const origin = window.scrollY;
     const distance = destination - origin;
     if (Math.abs(distance) < 1) {
       delete document.documentElement.dataset.pageSnap;
+      onComplete();
       return;
     }
 
@@ -241,6 +243,7 @@
         window.scrollTo({ top: destination, behavior: "instant" });
         snapAnimationFrame = 0;
         delete document.documentElement.dataset.pageSnap;
+        onComplete();
         return;
       }
       const progress = Math.min((now - startedAt) / duration, 1);
@@ -251,6 +254,7 @@
         window.scrollTo({ top: destination, behavior: "instant" });
         snapAnimationFrame = 0;
         delete document.documentElement.dataset.pageSnap;
+        onComplete();
       }
     };
     snapAnimationFrame = window.requestAnimationFrame(tick);
@@ -394,7 +398,13 @@
       const destination = targetTop(target);
       const pageDistance = Math.abs(destination - window.scrollY) / Math.max(window.innerHeight, 1);
       const duration = Math.min(620, 320 + (pageDistance * 42));
-      animateSnap(destination, duration);
+      animateSnap(destination, duration, () => {
+        if (!target.hasAttribute("tabindex")) {
+          target.setAttribute("tabindex", "-1");
+          target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
+        }
+        target.focus({ preventScroll: true });
+      });
       window.history.pushState(null, "", href);
       if (link.matches("[data-nav]")) updateNavigation(href);
     });
