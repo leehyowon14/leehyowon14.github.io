@@ -2629,6 +2629,10 @@ html[data-page-snap="contact-free"] {
   min-width: 0;
 }
 
+.chapter-intro-copy {
+  container-type: inline-size;
+}
+
 .chapter-label,
 .chapter-aside-label,
 .project-domain,
@@ -2764,6 +2768,10 @@ html[data-page-snap="contact-free"] {
   min-width: 0;
 }
 
+.project-heading {
+  container-type: inline-size;
+}
+
 .project-number {
   display: block;
   margin-bottom: clamp(26px, 6svh, 60px);
@@ -2793,7 +2801,14 @@ html[data-page-snap="contact-free"] {
 }
 
 @media (min-width: 1051px) {
-  #project-reminiscence-title,
+  .chapter-intro h2 {
+    font-size: min(10.6rem, 18.5cqi);
+  }
+
+  #project-reminiscence-title {
+    font-size: min(5.15rem, 17cqi);
+  }
+
   #toy-frequency-title {
     font-size: clamp(3.2rem, 7.2vw, 5.15rem);
   }
