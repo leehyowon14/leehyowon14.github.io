@@ -86,7 +86,7 @@ export function loadNavigation({ reduced = false, desktop = true } = {}) {
     location: { hash: '' },
   };
   runInNewContext(readFileSync(new URL('../../main.js', import.meta.url), 'utf8'), {
-    window, document, Element, performance: { now: () => 0 }, Date, Math,
+    window, document, Element, Node: Element, performance: { now: () => 0 }, Date, Math,
     IntersectionObserver: class { observe() {} },
     WheelEvent: { DOM_DELTA_LINE: 1, DOM_DELTA_PAGE: 2 },
   });

@@ -59,6 +59,11 @@ test('the mobile menu closes when focus or a click moves outside it', () => {
   env.menu.emit('click');
   env.emit('click', { target: env.contact });
   assert.equal(env.menu.getAttribute('aria-expanded'), 'false');
+  for (const relatedTarget of [null, env.window]) {
+    env.menu.emit('click');
+    env.nav.emit('focusout', { relatedTarget });
+    assert.equal(env.menu.getAttribute('aria-expanded'), 'false', 'focus leaving the document must close the menu');
+  }
 });
 
 test('anchor navigation moves keyboard focus to its destination after scrolling', () => {

@@ -4,8 +4,10 @@
 (() => {
   "use strict";
 
-  const $ = (selector, context = document) => context.querySelector(selector);
-  const $$ = (selector, context = document) => [...context.querySelectorAll(selector)];
+  /** @param {string} selector @param {ParentNode | null} [context] */
+  const $ = (selector, context = document) => /** @type {HTMLElement | null} */ (context?.querySelector(selector) ?? null);
+  /** @param {string} selector @param {ParentNode | null} [context] */
+  const $$ = (selector, context = document) => /** @type {HTMLElement[]} */ ([...context?.querySelectorAll(selector) ?? []]);
   const header = $("#site-header");
   const progress = $("#progress");
   const menuButton = $("#menu-btn");
@@ -25,6 +27,7 @@
 
   if (menuButton && navigation) {
     const mobileMenuQuery = window.matchMedia("(max-width: 860px)");
+    /** @param {boolean} open */
     const setMenu = (open) => {
       navigation.classList.toggle("open", open);
       menuButton.setAttribute("aria-expanded", String(open));
@@ -45,10 +48,12 @@
       }
     });
     document.addEventListener("click", (event) => {
-      if (!navigation.contains(event.target) && !menuButton.contains(event.target)) setMenu(false);
+      const target = event.target;
+      if (!(target instanceof Node) || (!navigation.contains(target) && !menuButton.contains(target))) setMenu(false);
     });
     navigation.addEventListener("focusout", (event) => {
-      if (!navigation.contains(event.relatedTarget) && event.relatedTarget !== menuButton) setMenu(false);
+      const target = event.relatedTarget;
+      if (!(target instanceof Node) || (!navigation.contains(target) && target !== menuButton)) setMenu(false);
     });
     mobileMenuQuery.addEventListener("change", () => {
       setMenu(false);
@@ -59,6 +64,7 @@
 
   const navLinks = $$("[data-nav]");
 
+  /** @param {string} activeHref */
   const updateNavigation = (activeHref) => {
     navLinks.forEach((link) => {
       link.classList.toggle("active", link.getAttribute("href") === activeHref);
@@ -103,13 +109,14 @@
     const experienceData = experienceSteps.map((step) => {
       const copy = $('.experience-step-copy', step);
       return {
-        organization: $('p', copy)?.textContent.trim() || "",
-        role: $('h3', copy)?.textContent.trim() || "",
-        status: $('span', copy)?.textContent.trim() || "",
-        description: $$('p', copy)[1]?.textContent.trim() || "",
+        organization: $('p', copy)?.textContent?.trim() || "",
+        role: $('h3', copy)?.textContent?.trim() || "",
+        status: $('span', copy)?.textContent?.trim() || "",
+        description: $$('p', copy)[1]?.textContent?.trim() || "",
       };
     });
 
+    /** @param {number} index @param {boolean} [animate] */
     const updateExperience = (index, animate = true) => {
       const next = experienceData[index];
       if (!next) return;
@@ -141,7 +148,7 @@
     const experienceObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) updateExperience(Number(entry.target.dataset.experienceStep));
+          if (entry.isIntersecting) updateExperience(Number(/** @type {HTMLElement} */ (entry.target).dataset.experienceStep));
         });
       },
       { rootMargin: '-46% 0px -46% 0px', threshold: 0 }
@@ -155,6 +162,7 @@
   $$("[data-indexed-chapter]").forEach((chapter) => {
     const chapterLinks = $$("[data-chapter-link]", chapter);
     const chapterPanels = $$("[data-chapter-panel]", chapter);
+    /** @param {string} index */
     const updateChapter = (index) => {
       chapterLinks.forEach((link) => {
         const active = link.dataset.chapterLink === index;
@@ -169,7 +177,7 @@
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          updateChapter(entry.target.dataset.chapterPanel);
+          updateChapter(entry.target.getAttribute("data-chapter-panel") || "");
         });
       },
       { rootMargin: "-46% 0px -46% 0px", threshold: 0 }
@@ -181,9 +189,10 @@
     $("#top"),
     ...$$('[data-snap-panel], [data-chapter-panel]'),
     $("#contact"),
-  ].filter(Boolean);
+  ].filter((target) => target !== null);
   const timedSnapQuery = window.matchMedia("(min-width: 1051px) and (pointer: fine)");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  /** @type {{ anchorIndex: number, delta: number } | null} */
   let wheelGesture = null;
   let wheelIdleTimer = 0;
   let snapAnimationFrame = 0;
@@ -191,25 +200,30 @@
 
   const timedSnapEnabled = () => timedSnapQuery.matches && !reducedMotionQuery.matches;
 
+  /** @param {HTMLElement} target */
   const targetTop = (target) => target.getBoundingClientRect().top + window.scrollY;
 
   const snapPositions = () => snapTargets.map(targetTop);
 
+  /** @param {number[]} positions */
   const nearestSnapIndex = (positions) => positions.reduce((nearest, position, index) => (
     Math.abs(position - window.scrollY) < Math.abs(positions[nearest] - window.scrollY) ? index : nearest
   ), 0);
 
+  /** @param {WheelEvent} event */
   const normalizeWheelDelta = (event) => {
     if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16;
     if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) return event.deltaY * window.innerHeight;
     return event.deltaY;
   };
 
+  /** @param {EventTarget | null} target */
   const isEditableTarget = (target) => (
     target instanceof Element
     && Boolean(target.closest("input, textarea, select, [contenteditable='true']"))
   );
 
+  /** @param {EventTarget | null} target */
   const isInteractiveTarget = (target) => (
     target instanceof Element
     && Boolean(target.closest("a, button, input, textarea, select, summary, [contenteditable='true']"))
@@ -220,6 +234,7 @@
     snapAnimationFrame = 0;
   };
 
+  /** @param {number} destination @param {number} duration @param {() => void} [onComplete] */
   const animateSnap = (destination, duration, onComplete = () => {}) => {
     stopSnapAnimation();
     if (reducedMotionQuery.matches) {
@@ -238,6 +253,7 @@
 
     const startedAt = performance.now();
     const returning = duration <= 200;
+    /** @param {number} now */
     const tick = (now) => {
       if (reducedMotionQuery.matches) {
         window.scrollTo({ top: destination, behavior: "instant" });
@@ -260,6 +276,7 @@
     snapAnimationFrame = window.requestAnimationFrame(tick);
   };
 
+  /** @param {number} index @param {number} position @param {number} direction */
   const targetCanContinue = (index, position, direction) => {
     const end = position + snapTargets[index].offsetHeight - window.innerHeight;
     if (end <= position + 2) return false;
@@ -386,7 +403,8 @@
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
       const href = link.getAttribute("href");
-      const target = href && href !== "#" ? $(href) : null;
+      if (!href || href === "#") return;
+      const target = $(href);
       if (!target) return;
 
       event.preventDefault();
@@ -411,5 +429,5 @@
   });
 
   const year = $("#year");
-  if (year) year.textContent = new Date().getFullYear();
+  if (year) year.textContent = String(new Date().getFullYear());
 })();
