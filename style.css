@@ -2695,6 +2695,63 @@ html[data-page-snap="contact-free"] {
   letter-spacing: -0.055em;
 }
 
+.project-directory {
+  grid-column: 1 / -1;
+  margin-top: 28px;
+}
+
+.project-directory ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-directory li {
+  border-top: 1px solid var(--surge-line);
+}
+
+.project-directory a {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 4px 12px;
+  min-height: 64px;
+  padding: 14px 0;
+  color: var(--surge-paper);
+}
+
+.project-directory span {
+  grid-row: 1 / 3;
+  font-family: var(--display);
+  font-size: 0.8rem;
+  color: var(--surge-orange);
+}
+
+.project-directory strong {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.project-directory small {
+  grid-column: 2;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--surge-muted);
+}
+
+.project-directory a:hover strong {
+  color: var(--surge-orange);
+}
+
+.project-directory a:focus-visible {
+  outline: 2px solid var(--surge-orange);
+  outline-offset: 4px;
+}
+
+.project-directory + .chapter-count {
+  padding-top: 28px;
+}
+
 .project-panel {
   display: grid;
   grid-template-columns: minmax(320px, 0.82fr) minmax(440px, 1.18fr);
