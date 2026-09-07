@@ -1652,6 +1652,15 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 0.76rem;
   font-weight: 400;
   letter-spacing: 0.04em;
+  min-width: 44px;
+  min-height: 44px;
+  margin-block: -14px;
+}
+
+.editorial-header a:focus-visible,
+.editorial-header .menu-btn:focus-visible {
+  outline: 2px solid var(--surge-orange);
+  outline-offset: 5px;
 }
 
 .editorial-hero {
@@ -1812,6 +1821,13 @@ button { font-family: inherit; cursor: pointer; }
 
   .editorial-header .site-nav.open {
     visibility: visible;
+  }
+
+  .editorial-header .site-nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    width: 100%;
   }
 
   .hero-surge {

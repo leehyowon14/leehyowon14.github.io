@@ -34,3 +34,29 @@ test('modified clicks keep native browser behavior', () => {
   assert.equal(env.frames.size, 0);
   assert.equal(env.history.length, 0);
 });
+
+test('opening the mobile menu focuses a link and Escape returns to its button', () => {
+  const env = loadNavigation({ desktop: false });
+  env.menu.focus();
+  env.menu.emit('click');
+  assert.equal(env.menu.getAttribute('aria-expanded'), 'true');
+  assert.equal(env.document.activeElement, env.links[0]);
+  env.emit('keydown', { key: 'Escape' });
+  assert.equal(env.menu.getAttribute('aria-expanded'), 'false');
+  assert.equal(env.document.activeElement, env.menu);
+  env.contact.focus();
+  env.emit('keydown', { key: 'Escape' });
+  assert.equal(env.document.activeElement, env.contact, 'Escape on a closed menu must not steal focus');
+});
+
+test('the mobile menu closes when focus or a click moves outside it', () => {
+  const env = loadNavigation({ desktop: false });
+  env.menu.emit('click');
+  env.nav.emit('focusout', { relatedTarget: env.links[1] });
+  assert.equal(env.menu.getAttribute('aria-expanded'), 'true');
+  env.nav.emit('focusout', { relatedTarget: env.contact });
+  assert.equal(env.menu.getAttribute('aria-expanded'), 'false');
+  env.menu.emit('click');
+  env.emit('click', { target: env.contact });
+  assert.equal(env.menu.getAttribute('aria-expanded'), 'false');
+});

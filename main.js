@@ -24,6 +24,7 @@
   updatePageChrome();
 
   if (menuButton && navigation) {
+    const mobileMenuQuery = window.matchMedia("(max-width: 860px)");
     const setMenu = (open) => {
       navigation.classList.toggle("open", open);
       menuButton.setAttribute("aria-expanded", String(open));
@@ -32,11 +33,27 @@
     };
 
     menuButton.addEventListener("click", () => {
-      setMenu(menuButton.getAttribute("aria-expanded") !== "true");
+      const open = menuButton.getAttribute("aria-expanded") !== "true";
+      setMenu(open);
+      if (open) $("a", navigation)?.focus();
     });
     $$("a", navigation).forEach((link) => link.addEventListener("click", () => setMenu(false)));
     window.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setMenu(false);
+      if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (!navigation.contains(event.target) && !menuButton.contains(event.target)) setMenu(false);
+    });
+    navigation.addEventListener("focusout", (event) => {
+      if (!navigation.contains(event.relatedTarget) && event.relatedTarget !== menuButton) setMenu(false);
+    });
+    mobileMenuQuery.addEventListener("change", () => {
+      setMenu(false);
+      if (mobileMenuQuery.matches && navigation.contains(document.activeElement)) menuButton.focus();
+      else if (!mobileMenuQuery.matches && document.activeElement === menuButton) $("a", navigation)?.focus();
     });
   }
 
