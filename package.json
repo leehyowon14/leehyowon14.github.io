@@ -1,0 +1,15 @@
+{
+  "name": "lee-hyowon-portfolio",
+  "private": true,
+  "scripts": {
+    "lint": "eslint main.js hero-texture.js tests eslint.config.mjs --max-warnings 0"
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.10.0",
+    "globals": "17.12.0"
+  }
+}
