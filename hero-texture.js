@@ -4,9 +4,9 @@
 (() => {
   "use strict";
 
-  const canvas = document.querySelector("#surge-canvas");
-  const hero = document.querySelector(".editorial-hero");
-  const artwork = document.querySelector(".hero-surge");
+  const canvas = /** @type {HTMLCanvasElement | null} */ (document.querySelector("#surge-canvas"));
+  const hero = /** @type {HTMLElement | null} */ (document.querySelector(".editorial-hero"));
+  const artwork = /** @type {HTMLElement | null} */ (document.querySelector(".hero-surge"));
 
   if (!canvas || !hero || !artwork) return;
 
@@ -25,7 +25,8 @@
     cream: [247, 237, 217],
   };
 
-  let imageData;
+  /** @type {ImageData | null} */
+  let imageData = null;
   let fieldWidth = 260;
   let fieldHeight = 390;
   let canvasWidth = 1;
@@ -36,16 +37,21 @@
   let currentY = 0;
   let scrollPhase = 0;
   let active = true;
+  /** @type {number | null} */
   let frameId = null;
   let lastFrame = 0;
   const frameInterval = 1000 / 24;
 
+  /** @param {number} value @param {number} [min] @param {number} [max] */
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  /** @param {number} from @param {number} to @param {number} amount */
   const mix = (from, to, amount) => from + (to - from) * amount;
+  /** @param {number} edge0 @param {number} edge1 @param {number} value */
   const smoothstep = (edge0, edge1, value) => {
     const amount = clamp((value - edge0) / (edge1 - edge0));
     return amount * amount * (3 - 2 * amount);
   };
+  /** @param {number} x @param {number} y @param {number} seed */
   const hash = (x, y, seed) => {
     const value = Math.sin(x * 12.9898 + y * 78.233 + seed * 37.719) * 43758.5453;
     return value - Math.floor(value);
@@ -74,6 +80,7 @@
     drawField(motionQuery.matches ? 0.72 : performance.now() * 0.001);
   };
 
+  /** @param {number} energy @param {number} heat @param {number} shadow @param {number} grain */
   const colorize = (energy, heat, shadow, grain) => {
     let base = palette.ink;
     let target = palette.teal;
@@ -111,7 +118,8 @@
     ];
   };
 
-  function drawField(time) {
+  /** @param {number} time */
+  const drawField = (time) => {
     if (!imageData) return;
 
     currentX += (pointerX - currentX) * 0.045;
@@ -175,8 +183,9 @@
     context.fillStyle = "#020404";
     context.fillRect(0, 0, canvasWidth, canvasHeight);
     context.drawImage(field, 0, 0, canvasWidth, canvasHeight);
-  }
+  };
 
+  /** @param {number} timestamp */
   const animate = (timestamp) => {
     frameId = null;
     if (!active || document.hidden || motionQuery.matches) return;
