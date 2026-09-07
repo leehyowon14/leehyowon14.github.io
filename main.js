@@ -205,6 +205,11 @@
 
   const animateSnap = (destination, duration) => {
     stopSnapAnimation();
+    if (reducedMotionQuery.matches) {
+      window.scrollTo({ top: destination, behavior: "instant" });
+      delete document.documentElement.dataset.pageSnap;
+      return;
+    }
     const origin = window.scrollY;
     const distance = destination - origin;
     if (Math.abs(distance) < 1) {
@@ -215,12 +220,18 @@
     const startedAt = performance.now();
     const returning = duration <= 200;
     const tick = (now) => {
+      if (reducedMotionQuery.matches) {
+        window.scrollTo({ top: destination, behavior: "instant" });
+        snapAnimationFrame = 0;
+        delete document.documentElement.dataset.pageSnap;
+        return;
+      }
       const progress = Math.min((now - startedAt) / duration, 1);
       const eased = 1 - ((1 - progress) ** (returning ? 4 : 3));
-      window.scrollTo(0, origin + (distance * eased));
+      window.scrollTo({ top: origin + (distance * eased), behavior: "instant" });
       if (progress < 1) snapAnimationFrame = window.requestAnimationFrame(tick);
       else {
-        window.scrollTo(0, destination);
+        window.scrollTo({ top: destination, behavior: "instant" });
         snapAnimationFrame = 0;
         delete document.documentElement.dataset.pageSnap;
       }

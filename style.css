@@ -1916,12 +1916,10 @@ html {
   scroll-padding-top: 0;
 }
 
-@media (min-width: 1051px) and (pointer: fine) {
-  html[data-page-snap="timed"],
-  html[data-page-snap="contact-free"] {
-    scroll-behavior: auto;
-    scroll-snap-type: none;
-  }
+html[data-page-snap="timed"],
+html[data-page-snap="contact-free"] {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
 }
 
 .editorial-hero,
