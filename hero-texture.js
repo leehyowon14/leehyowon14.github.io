@@ -53,15 +53,20 @@
 
   const resize = () => {
     const rect = canvas.getBoundingClientRect();
+    if (rect.width <= 0 || rect.height <= 0) {
+      imageData = null;
+      return;
+    }
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     canvasWidth = Math.max(1, Math.round(rect.width * dpr));
     canvasHeight = Math.max(1, Math.round(rect.height * dpr));
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
 
-    const aspect = Math.max(1.1, rect.height / Math.max(rect.width, 1));
-    fieldWidth = rect.width < 520 ? 640 : 800;
-    fieldHeight = Math.round(fieldWidth * aspect);
+    // Keep the procedural field bounded; the display canvas handles upscaling.
+    const fieldScale = Math.min(1, 256 / rect.width, 384 / rect.height);
+    fieldWidth = Math.max(1, Math.round(rect.width * fieldScale));
+    fieldHeight = Math.max(1, Math.round(rect.height * fieldScale));
     field.width = fieldWidth;
     field.height = fieldHeight;
     imageData = fieldContext.createImageData(fieldWidth, fieldHeight);
@@ -118,31 +123,30 @@
     for (let y = 0; y < fieldHeight; y += 1) {
       const v = y / fieldHeight;
       const vertical = v * 2 - 1;
+      const wave =
+        Math.sin(vertical * 3.8 + time * 0.58) * 0.2 +
+        Math.sin(vertical * 8.4 - time * 0.24) * 0.07 +
+        currentX * 0.18;
+      const ribbonCenter = wave + Math.sin(vertical * 1.35 + time * 0.18) * 0.24;
+      const surgeCenter = -0.56 + Math.sin(vertical * 2.1 - time * 0.42) * 0.13 + currentY * 0.08;
+      const foldCenter = 0.6 + Math.sin(vertical * 5.5 + time * 0.31) * 0.1;
+      const flareVertical = Math.pow((vertical - 0.45 + Math.sin(time * 0.22) * 0.08) / 0.33, 2);
+      const shadowWave = Math.sin(v * 7 + time * 0.2) * 0.08;
 
       for (let x = 0; x < fieldWidth; x += 1) {
         const u = x / fieldWidth;
         const horizontal = u * 2 - 1;
-        const wave =
-          Math.sin(vertical * 3.8 + time * 0.58) * 0.2 +
-          Math.sin(vertical * 8.4 - time * 0.24) * 0.07 +
-          currentX * 0.18;
-        const ribbonCenter = wave + Math.sin(vertical * 1.35 + time * 0.18) * 0.24;
         const ribbonDistance = Math.abs(horizontal - ribbonCenter);
         const ribbon = Math.exp(-Math.pow(ribbonDistance / 0.17, 2));
 
-        const surgeCenter =
-          -0.56 +
-          Math.sin(vertical * 2.1 - time * 0.42) * 0.13 +
-          currentY * 0.08;
         const surgeDistance = Math.abs(horizontal - surgeCenter);
         const surge = Math.exp(-Math.pow(surgeDistance / 0.1, 2));
 
-        const foldCenter = 0.6 + Math.sin(vertical * 5.5 + time * 0.31) * 0.1;
         const fold = Math.exp(-Math.pow(Math.abs(horizontal - foldCenter) / 0.22, 2));
         const flare = Math.exp(
           -(
             Math.pow((horizontal - 0.34 - currentX * 0.1) / 0.52, 2) +
-            Math.pow((vertical - 0.45 + Math.sin(time * 0.22) * 0.08) / 0.33, 2)
+            flareVertical
           )
         );
 
@@ -155,7 +159,7 @@
             sparse
         );
         const heat = clamp(flare * 0.7 + fold * 0.32 + Math.max(0, vertical) * 0.12);
-        const shadow = clamp(0.28 + (1 - ribbon) * 0.2 + Math.sin(v * 7 + time * 0.2) * 0.08);
+        const shadow = clamp(0.28 + (1 - ribbon) * 0.2 + shadowWave);
         const grain = hash(x, y, seed);
         const [red, green, blue] = colorize(energy, heat, shadow, grain);
         const index = (y * fieldWidth + x) * 4;
