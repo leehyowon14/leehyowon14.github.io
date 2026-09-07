@@ -13,7 +13,7 @@
   const context = canvas.getContext("2d", { alpha: false });
   const field = document.createElement("canvas");
   const fieldContext = field.getContext("2d", { alpha: false });
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   if (!context || !fieldContext) return;
 
@@ -71,7 +71,7 @@
     field.height = fieldHeight;
     imageData = fieldContext.createImageData(fieldWidth, fieldHeight);
     context.imageSmoothingEnabled = true;
-    drawField(reduceMotion ? 0.72 : performance.now() * 0.001);
+    drawField(motionQuery.matches ? 0.72 : performance.now() * 0.001);
   };
 
   const colorize = (energy, heat, shadow, grain) => {
@@ -179,7 +179,7 @@
 
   const animate = (timestamp) => {
     frameId = null;
-    if (!active || document.hidden || reduceMotion) return;
+    if (!active || document.hidden || motionQuery.matches) return;
 
     if (timestamp - lastFrame >= frameInterval) {
       const time = timestamp * 0.001 + scrollPhase * 1.9;
@@ -191,7 +191,7 @@
   };
 
   const start = () => {
-    if (reduceMotion || frameId || !active || document.hidden) return;
+    if (motionQuery.matches || frameId || !active || document.hidden) return;
     frameId = requestAnimationFrame(animate);
   };
 
@@ -202,6 +202,7 @@
   };
 
   hero.addEventListener("pointermove", (event) => {
+    if (motionQuery.matches) return;
     const rect = hero.getBoundingClientRect();
     pointerX = clamp((event.clientX - rect.left) / rect.width, 0, 1) * 2 - 1;
     pointerY = clamp((event.clientY - rect.top) / rect.height, 0, 1) * 2 - 1;
@@ -214,6 +215,17 @@
     pointerY = 0;
     artwork.style.setProperty("--surge-tilt-x", "0deg");
     artwork.style.setProperty("--surge-tilt-y", "0deg");
+  });
+
+  motionQuery.addEventListener("change", () => {
+    if (motionQuery.matches) {
+      stop();
+      pointerX = currentX = 0;
+      pointerY = currentY = 0;
+      artwork.style.setProperty("--surge-tilt-x", "0deg");
+      artwork.style.setProperty("--surge-tilt-y", "0deg");
+      drawField(0.72);
+    } else start();
   });
 
   window.addEventListener(

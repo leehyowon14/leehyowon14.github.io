@@ -21,3 +21,34 @@ test('a hidden canvas avoids allocation and recovers when made visible', () => {
   assert.equal(env.draws, 1);
   assert.ok(new Set(env.allocations[0].data).size > 10, 'the recovered artwork must contain color variation');
 });
+
+test('reduced motion disables animation and pointer tilt, including live changes', () => {
+  const env = loadHero({ reduced: true });
+  assert.equal(env.frames.size, 0);
+  env.emit('pointermove', { clientX: 10, clientY: 10 });
+  assert.equal(env.styles.size, 0);
+  env.motion.matches = false;
+  env.emit('change');
+  assert.equal(env.frames.size, 1);
+  env.emit('pointermove', { clientX: 10, clientY: 10 });
+  assert.notEqual(env.styles.get('--surge-tilt-x'), '0deg');
+  env.motion.matches = true;
+  env.emit('change');
+  assert.equal(env.frames.size, 0);
+  assert.equal(env.styles.get('--surge-tilt-x'), '0deg');
+  env.intersect(true);
+  assert.equal(env.frames.size, 0, 'intersection must not restart reduced-motion animation');
+});
+
+test('hidden tabs and offscreen heroes suspend animation', () => {
+  const env = loadHero();
+  env.document.hidden = true;
+  env.emit('visibilitychange');
+  assert.equal(env.frames.size, 0);
+  env.intersect(false);
+  env.document.hidden = false;
+  env.emit('visibilitychange');
+  assert.equal(env.frames.size, 0);
+  env.intersect(true);
+  assert.equal(env.frames.size, 1);
+});
