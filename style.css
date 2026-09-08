@@ -2510,12 +2510,12 @@ html[data-page-snap="timed"] {
   }
 }
 
-/* Let desktop wheel gestures and their momentum settle in the browser.
-   Nearby chapter boundaries align without trapping long reads or fast flings. */
+/* Keep native momentum within a section, but catch the next chapter boundary
+   so a fling does not silently skip past it. */
 @media (min-width: 1051px) and (pointer: fine) {
   html {
     scroll-behavior: auto;
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
   }
 
   .editorial-hero,
@@ -2523,7 +2523,7 @@ html[data-page-snap="timed"] {
   .experience-step,
   .chapter-panel,
   .editorial-contact {
-    scroll-snap-stop: normal;
+    scroll-snap-stop: always;
   }
 
   .editorial-footer {
