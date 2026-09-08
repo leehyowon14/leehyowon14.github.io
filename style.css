@@ -2525,6 +2525,11 @@ html[data-page-snap="timed"] {
   .editorial-contact {
     scroll-snap-stop: normal;
   }
+
+  .editorial-footer {
+    scroll-snap-align: end;
+    scroll-snap-stop: normal;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
