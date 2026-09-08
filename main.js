@@ -190,15 +190,11 @@
     ...$$('[data-snap-panel], [data-chapter-panel]'),
     $("#contact"),
   ].filter((target) => target !== null);
-  const timedSnapQuery = window.matchMedia("(min-width: 1051px) and (pointer: fine)");
+  const keyboardSnapQuery = window.matchMedia("(min-width: 1051px) and (pointer: fine)");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  /** @type {{ anchorIndex: number, delta: number } | null} */
-  let wheelGesture = null;
-  let wheelIdleTimer = 0;
   let snapAnimationFrame = 0;
-  let lastWheelAt = 0;
 
-  const timedSnapEnabled = () => timedSnapQuery.matches && !reducedMotionQuery.matches;
+  const keyboardSnapEnabled = () => keyboardSnapQuery.matches && !reducedMotionQuery.matches;
 
   /** @param {HTMLElement} target */
   const targetTop = (target) => target.getBoundingClientRect().top + window.scrollY;
@@ -209,19 +205,6 @@
   const nearestSnapIndex = (positions) => positions.reduce((nearest, position, index) => (
     Math.abs(position - window.scrollY) < Math.abs(positions[nearest] - window.scrollY) ? index : nearest
   ), 0);
-
-  /** @param {WheelEvent} event */
-  const normalizeWheelDelta = (event) => {
-    if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16;
-    if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) return event.deltaY * window.innerHeight;
-    return event.deltaY;
-  };
-
-  /** @param {EventTarget | null} target */
-  const isEditableTarget = (target) => (
-    target instanceof Element
-    && Boolean(target.closest("input, textarea, select, [contenteditable='true']"))
-  );
 
   /** @param {EventTarget | null} target */
   const isInteractiveTarget = (target) => (
@@ -283,95 +266,16 @@
     return direction > 0 ? window.scrollY < end - 2 : window.scrollY > position + 2;
   };
 
-  const settleWheelGesture = () => {
-    if (!wheelGesture) return;
-    const { anchorIndex, delta } = wheelGesture;
-    wheelGesture = null;
-
-    const positions = snapPositions();
-    const anchor = positions[anchorIndex];
-    const displacement = window.scrollY - anchor;
-    const direction = Math.sign(delta || displacement);
-    if (!direction || targetCanContinue(anchorIndex, anchor, direction)) {
-      delete document.documentElement.dataset.pageSnap;
-      return;
-    }
-
-    const threshold = Math.min(180, window.innerHeight * 0.2);
-    const crossedThreshold = Math.abs(displacement) >= threshold || Math.abs(delta) >= threshold;
-    const movedDistance = Math.abs(displacement);
-    const requestedSteps = crossedThreshold
-      ? Math.max(1, Math.round(movedDistance / Math.max(window.innerHeight, 1)))
-      : 0;
-    const destinationIndex = Math.max(
-      0,
-      Math.min(anchorIndex + (direction * requestedSteps), snapTargets.length - 1)
-    );
-    const destination = positions[destinationIndex];
-    const movedPanels = Math.abs(destinationIndex - anchorIndex);
-    const remainingDistance = Math.abs(destination - window.scrollY);
-    const duration = movedPanels > 0
-      ? Math.min(560, 360 + (Math.max(movedPanels - 1, 0) * 55))
-      : Math.min(200, Math.max(120, remainingDistance * 0.75));
-    animateSnap(destination, duration);
-  };
-
-  window.addEventListener("wheel", (event) => {
-    if (
-      !timedSnapEnabled()
-      || event.defaultPrevented
-      || event.ctrlKey
-      || isEditableTarget(event.target)
-      || Math.abs(event.deltaY) <= Math.abs(event.deltaX)
-    ) return;
-
-    if (snapAnimationFrame) {
-      event.preventDefault();
-      return;
-    }
-
-    const delta = normalizeWheelDelta(event);
-    const positions = snapPositions();
-    const contactIndex = snapTargets.length - 1;
-    const contactTop = positions[contactIndex];
-    const contactFree = document.documentElement.dataset.pageSnap === "contact-free";
-    if (contactFree) {
-      if (delta > 0 || window.scrollY > contactTop + 2) return;
-      delete document.documentElement.dataset.pageSnap;
-    }
-
-    const anchorIndex = nearestSnapIndex(positions);
-    if (anchorIndex === contactIndex && delta > 0) {
-      wheelGesture = null;
-      window.clearTimeout(wheelIdleTimer);
-      document.documentElement.dataset.pageSnap = "contact-free";
-      return;
-    }
-
-    const now = performance.now();
-    const elapsed = lastWheelAt ? Math.max(now - lastWheelAt, 8) : 16;
-    lastWheelAt = now;
-    const speed = Math.abs(delta) / elapsed;
-    if (Math.abs(delta) < 3 || speed < 0.16) return;
-
-    if (!wheelGesture) {
-      wheelGesture = { anchorIndex, delta: 0 };
-      document.documentElement.dataset.pageSnap = "timed";
-    }
-    wheelGesture.delta += delta;
-    window.clearTimeout(wheelIdleTimer);
-    wheelIdleTimer = window.setTimeout(settleWheelGesture, 90);
-  }, { passive: false });
-
-  window.addEventListener("scroll", () => {
-    if (document.documentElement.dataset.pageSnap !== "contact-free") return;
-    const contactTop = targetTop(snapTargets[snapTargets.length - 1]);
-    if (window.scrollY < contactTop - 2) delete document.documentElement.dataset.pageSnap;
+  // Native wheel scrolling owns momentum and snap timing. A manual gesture
+  // also cancels an explicit navigation animation without consuming the input.
+  window.addEventListener("wheel", () => {
+    stopSnapAnimation();
+    delete document.documentElement.dataset.pageSnap;
   }, { passive: true });
 
   window.addEventListener("keydown", (event) => {
     if (
-      !timedSnapEnabled()
+      !keyboardSnapEnabled()
       || event.defaultPrevented
       || event.repeat
       || event.metaKey
@@ -408,8 +312,6 @@
       if (!target) return;
 
       event.preventDefault();
-      wheelGesture = null;
-      window.clearTimeout(wheelIdleTimer);
       stopSnapAnimation();
       document.documentElement.dataset.pageSnap = "timed";
 

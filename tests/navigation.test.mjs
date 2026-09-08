@@ -92,3 +92,66 @@ test('anchors focus an already visible destination without another animation', (
   env.contact.emit('blur');
   assert.equal(env.contact.getAttribute('tabindex'), '0', 'authored focusability must be preserved');
 });
+
+test('wheel bursts, decaying momentum, and reversals never schedule a delayed section jump', () => {
+  for (const options of [{}, { desktop: false }, { reduced: true }]) {
+    for (const deltaMode of [0, 1, 2]) {
+      const env = loadNavigation(options);
+      for (const deltaY of [100, 80, 60, 40, 20, 8, 3, 1, 0.2, -2, -40, -80]) {
+        assert.equal(env.emit('wheel', { deltaX: 0, deltaY, deltaMode }).defaultPrevented, false);
+        assert.equal(env.timers.size, 0, 'momentum must not restart an idle timer');
+        assert.equal(env.frames.size, 0, 'wheel input must not start a second animation');
+        assert.equal(env.document.documentElement.dataset.pageSnap, undefined);
+      }
+      assert.equal(env.scrolls.length, 0, 'scroll movement belongs to the browser');
+    }
+  }
+});
+
+test('manual wheel input cancels anchor animation without consuming input or moving focus later', () => {
+  const env = loadNavigation();
+  env.links[1].focus();
+  env.links[1].emit('click');
+  env.frame(100);
+  const position = env.window.scrollY;
+  assert.ok(position > 0 && position < 2700);
+  assert.equal(env.emit('wheel', { deltaX: 0, deltaY: -40, deltaMode: 0 }).defaultPrevented, false);
+  env.frame(1000);
+  assert.equal(env.window.scrollY, position);
+  assert.equal(env.document.activeElement, env.links[1]);
+  assert.equal(env.frames.size, 0);
+  assert.equal(env.document.documentElement.dataset.pageSnap, undefined);
+});
+
+test('explicit keyboard paging remains available and manual wheel input can interrupt it', () => {
+  const env = loadNavigation();
+  assert.equal(env.emit('keydown', { key: 'PageDown' }).defaultPrevented, true);
+  env.frame(1000);
+  assert.equal(env.window.scrollY, 900);
+  env.emit('keydown', { key: 'PageDown' });
+  env.emit('wheel', { deltaX: 0, deltaY: 60, deltaMode: 0 });
+  env.frame(2000);
+  assert.equal(env.window.scrollY, 900);
+  assert.equal(env.frames.size, 0);
+});
+
+test('long content, contact footer, horizontal scrolling, and pinch zoom remain native', () => {
+  const env = loadNavigation();
+  env.about.offsetHeight = 1800;
+  for (const top of [1200, 2800]) {
+    env.window.scrollTo({ top });
+    for (const event of [
+      { deltaX: 0, deltaY: 50 },
+      { deltaX: 80, deltaY: 1 },
+      { deltaX: 0, deltaY: -20, ctrlKey: true },
+    ]) {
+      assert.equal(env.emit('wheel', event).defaultPrevented, false);
+    }
+    env.frame(1000);
+    assert.equal(env.window.scrollY, top);
+    assert.equal(env.frames.size, 0);
+    assert.equal(env.timers.size, 0);
+  }
+  env.window.scrollTo({ top: 1200 });
+  assert.equal(env.emit('keydown', { key: 'PageDown' }).defaultPrevented, false, 'paging must not skip unread long content');
+});

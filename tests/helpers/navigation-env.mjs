@@ -91,7 +91,7 @@ export function loadNavigation({ reduced = false, desktop = true } = {}) {
     WheelEvent: { DOM_DELTA_LINE: 1, DOM_DELTA_PAGE: 2 },
   });
   return {
-    document, window, motion, media, menu, nav, links, contact, about, frames, scrolls, history,
+    document, window, motion, media, menu, nav, links, contact, about, frames, timers, scrolls, history,
     emit: (name, event) => windowEvents.emit(name, event),
     frame(now) { const pending = [...frames.values()]; frames.clear(); pending.forEach(callback => callback(now)); },
   };

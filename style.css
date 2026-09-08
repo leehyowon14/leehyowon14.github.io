@@ -1960,8 +1960,7 @@ html {
   scroll-padding-top: 0;
 }
 
-html[data-page-snap="timed"],
-html[data-page-snap="contact-free"] {
+html[data-page-snap="timed"] {
   scroll-behavior: auto;
   scroll-snap-type: none;
 }
@@ -2508,6 +2507,23 @@ html[data-page-snap="contact-free"] {
 
   .experience-detail h3 {
     font-size: clamp(2.6rem, 9vw, 4.4rem);
+  }
+}
+
+/* Let desktop wheel gestures and their momentum settle in the browser.
+   Nearby chapter boundaries align without trapping long reads or fast flings. */
+@media (min-width: 1051px) and (pointer: fine) {
+  html {
+    scroll-behavior: auto;
+    scroll-snap-type: y proximity;
+  }
+
+  .editorial-hero,
+  .profile-panel,
+  .experience-step,
+  .chapter-panel,
+  .editorial-contact {
+    scroll-snap-stop: normal;
   }
 }
 
@@ -3412,8 +3428,7 @@ html[data-page-snap="contact-free"] {
 /* Extremely short windows become a readable document instead of a cropped stage. */
 @media (max-height: 480px) {
   html,
-  html[data-page-snap="timed"],
-  html[data-page-snap="contact-free"] {
+  html[data-page-snap="timed"] {
     scroll-behavior: auto;
     scroll-snap-type: none;
     background: #fbfbfd;
