@@ -161,14 +161,12 @@
       <section class="project-chapter" id="projects" data-indexed-chapter data-nav-section="#work" data-nav-href="#work" data-intro-nav-href="#work" aria-label="메인 프로젝트">
         <nav class="chapter-rail" aria-label="메인 프로젝트 인덱스">
           <span class="chapter-rail-name" aria-hidden="true">HYOWON LEE</span>
-          <ol class="chapter-index">
-            <li><a href="#work" data-chapter-link="0" aria-current="true" aria-label="00 프로젝트 목록" title="프로젝트 목록">00</a></li>
-            <li><a href="#project-sonju" data-chapter-link="1" aria-label="01 SONJU" title="SONJU">01</a></li>
-            <li><a href="#project-klap" data-chapter-link="2" aria-label="02 KLAP-cli" title="KLAP-cli">02</a></li>
-            <li><a href="#project-insite" data-chapter-link="3" aria-label="03 INSITE" title="INSITE">03</a></li>
-            <li><a href="#project-reminiscence" data-chapter-link="4" aria-label="04 REMINISCENCE" title="REMINISCENCE">04</a></li>
-            <li><a href="#project-unipang" data-chapter-link="5" aria-label="05 UNI PANG" title="UNI PANG">05</a></li>
-          </ol>
+          <ol class="chapter-index"><li><a href="#work" data-chapter-link="0" aria-current="true" aria-label="00 프로젝트 목록" title="프로젝트 목록">00</a></li>
+            <li><a href="#project-klap" data-chapter-link="1" aria-label="01 KLAP" title="KLAP">01</a></li>
+            <li><a href="#project-reminiscence" data-chapter-link="2" aria-label="02 REMINISCENCE" title="REMINISCENCE">02</a></li>
+            <li><a href="#project-sonju" data-chapter-link="3" aria-label="03 SONJU" title="SONJU">03</a></li>
+            <li><a href="#project-insite" data-chapter-link="4" aria-label="04 INSITE" title="INSITE">04</a></li>
+            <li><a href="#project-unipang" data-chapter-link="5" aria-label="05 UNI PANG" title="UNI PANG">05</a></li></ol>
           <span class="chapter-rail-role" aria-hidden="true">BACKEND / AI DEVELOPER</span>
         </nav>
 
@@ -183,21 +181,66 @@
               <p class="chapter-aside-label">SELECTED WORKS / 2025—2026</p>
               <p>백엔드와 AI를 사용해 정보가 사람에게 닿는 과정의 불필요한 마찰을 줄입니다. 문제 정의에서 시작해 작동하는 구조와 경험까지 연결합니다.</p>
               <nav class="project-directory" aria-label="프로젝트 선택">
-                <ol>
-                  <li><a href="#project-sonju"><span>01</span><strong>SONJU</strong><small>음성으로 찾는 공공 민원 정보</small></a></li>
-                  <li><a href="#project-klap"><span>02</span><strong>KLAP-cli</strong><small>터미널에서 사용하는 대학 포털</small></a></li>
-                  <li><a href="#project-insite"><span>03</span><strong>INSITE</strong><small>사고 과정을 지켜주는 AI 코딩 학습</small></a></li>
-                  <li><a href="#project-reminiscence"><span>04</span><strong>REMINISCENCE</strong><small>기억과 일상을 돕는 케어 액자 기획</small></a></li>
-                  <li><a href="#project-unipang"><span>05</span><strong>UNI PANG</strong><small>교내 복지 참여를 연결하는 서비스 기획</small></a></li>
-                </ol>
+                <ol><li><a href="#project-klap"><span>01</span><strong>KLAP</strong><small>CLI · macOS · ChatGPT로 이어지는 대학 포털</small></a></li>
+<li><a href="#project-reminiscence"><span>02</span><strong>REMINISCENCE</strong><small>음성 대화를 구현한 AI 케어 액자</small></a></li>
+<li><a href="#project-sonju"><span>03</span><strong>SONJU</strong><small>음성으로 찾는 공공 민원 정보</small></a></li>
+<li><a href="#project-insite"><span>04</span><strong>INSITE</strong><small>사고 과정을 지켜주는 AI 코딩 학습</small></a></li>
+<li><a href="#project-unipang"><span>05</span><strong>UNI PANG</strong><small>아이디어톤 · 교내 복지 참여 서비스 기획</small></a></li>
+</ol>
               </nav>
               <span class="chapter-count" aria-label="소개 화면, 전체 5개 프로젝트">00 / 05</span>
             </div>
           </section>
 
-          <article class="chapter-panel project-panel" id="project-sonju" data-chapter-panel="1" aria-labelledby="project-sonju-title">
+          <article class="chapter-panel project-panel" id="project-klap" data-chapter-panel="1" aria-labelledby="project-klap-title">
             <header class="project-heading">
               <span class="project-number" aria-hidden="true">01</span>
+              <p class="project-domain">PERSONAL / CLI · macOS · MCP</p>
+              <h3 id="project-klap-title">KLAP</h3>
+              <p class="project-summary">반복 로그인과 메뉴 탐색을 줄이는 비공식 KLAS 클라이언트입니다. 공지·과제·강의 조회를 CLI에서 시작해 macOS 앱과 ChatGPT 연동으로 확장했습니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>개인 프로젝트로 KLAS API 클라이언트, 인증·세션과 보안 저장소를 구현하고, macOS 앱의 동기화·수명 관리와 MCP 조회 도구까지 연결했습니다.</p></section>
+              <details class="project-case"><summary>KLAP 이야기와 근거</summary><dl><div><dt>문제</dt><dd>수업 정보를 확인하려고 여러 메뉴를 오가는 흐름을 줄이고, 사용하는 환경에서 바로 조회할 수 있게 하고 싶었습니다.</dd></div><div><dt>설계</dt><dd>KLAP-cli를 공통 기반으로 재사용합니다. macOS 앱의 동기화 작업은 화면·앱 수명에 맞춰 정리하고, GPT 연동은 고정된 CLI 서브모듈과 MCP 도구로 구성했습니다.</dd></div><div><dt>결과와 범위</dt><dd>CLI 조회·검색·마감 관리, macOS 클라이언트, MCP 일괄 상세 조회를 구현했습니다. 인증 저장소 분리와 LMS 시간 정규화에 테스트를 추가했으며, 배포·연동 점검 과정을 문서화했습니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/leehyowon14/KLAP-cli/commit/300bcea0e476a4bf456643f201239ad40833573f" target="_blank" rel="noopener noreferrer">인증 저장소 분리와 테스트 ↗</a><a href="https://github.com/leehyowon14/KLAP-for-GPT/commit/b32a499b5f27dd1d8df5470b2a57f9a9e0715f2b" target="_blank" rel="noopener noreferrer">MCP 상세 조회 구현 ↗</a><a href="https://github.com/leehyowon14/KLAP-for-GPT/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">연동 구조 ↗</a></div></details>
+              <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="KLAP 기술과 영역"><li>Go</li><li>Swift / macOS</li><li>OS Keyring</li><li>MCP</li><li>API Integration</li></ul></section>
+              <div class="project-source-group"><a href="https://github.com/leehyowon14/KLAP-cli" target="_blank" rel="noopener noreferrer">CLI ↗</a><a href="https://github.com/leehyowon14/KLAP" target="_blank" rel="noopener noreferrer">macOS ↗</a><a href="https://github.com/leehyowon14/KLAP-for-GPT" target="_blank" rel="noopener noreferrer">CHATGPT ↗</a></div>
+            </div>
+            <span class="project-count" aria-hidden="true">01 / 05</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="project-reminiscence" data-chapter-panel="2" aria-labelledby="project-reminiscence-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">02</span>
+              <p class="project-domain">AI CARE / SOCIAL IMPACT</p>
+              <h3 id="project-reminiscence-title">REMINISCENCE</h3>
+              <p class="project-summary">가족사진 기반 기억 지원, 일정 리마인드, 정서적 음성 대화와 보호자 연결을 담은 치매 환자용 AI 스마트 케어 액자입니다.</p>
+            </header>
+            <div class="project-body">
+              <section class="project-fact">
+                <h4>ROLE / CONTRIBUTION</h4>
+                <p>문제 정의와 서비스 방향 설계에 참여하고 기억 지원, 루틴 케어, 정서 대화의 세 축으로 구조를 정리해 인지 부담을 낮춘 사용자 시나리오를 설계했습니다.</p>
+              </section>
+              <section class="project-fact">
+                <h4>STACK / DOMAIN</h4>
+                <ul class="project-stack" aria-label="Reminiscence 도메인">
+                  <li>AI Care</li>
+                  <li>Voice Interaction</li>
+                  <li>Smart Device</li>
+                  <li>Healthcare</li>
+                  <li>Social Impact</li>
+                </ul>
+              </section>
+              <div class="project-source-unavailable">
+                <span>NO PUBLIC REPOSITORY</span>
+                <a class="project-source-link" href="https://github.com/leehyowon14" target="_blank" rel="noopener noreferrer">VIEW GITHUB PROFILE</a>
+              </div>
+            </div>
+            <span class="project-count" aria-hidden="true">02 / 05</span>
+          </article>
+
+          <article class="chapter-panel project-panel" id="project-sonju" data-chapter-panel="3" aria-labelledby="project-sonju-title">
+            <header class="project-heading">
+              <span class="project-number" aria-hidden="true">03</span>
               <p class="project-domain">VOICE AI / PUBLIC INFORMATION</p>
               <h3 id="project-sonju-title">SONJU</h3>
               <p class="project-summary">음성 질문의 의도를 파악해 신뢰 가능한 공공 민원 정보를 찾고, 다음 절차와 담당 기관을 쉬운 말로 안내하는 AI 상담 서비스입니다.</p>
@@ -232,52 +275,12 @@
               </section>
               <a class="project-source-link" href="https://github.com/Team1-kw13/Sonju-BE" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
             </div>
-            <span class="project-count" aria-hidden="true">01 / 05</span>
+            <span class="project-count" aria-hidden="true">03 / 05</span>
           </article>
 
-          <article class="chapter-panel project-panel" id="project-klap" data-chapter-panel="2" aria-labelledby="project-klap-title">
+          <article class="chapter-panel project-panel" id="project-insite" data-chapter-panel="4" aria-labelledby="project-insite-title">
             <header class="project-heading">
-              <span class="project-number" aria-hidden="true">02</span>
-              <p class="project-domain">DEVELOPER TOOL / REVERSE ENGINEERING</p>
-              <h3 id="project-klap-title">KLAP-cli</h3>
-              <p class="project-summary">반복 로그인과 메뉴 탐색 없이 KLAS의 공지, 과제, 강의, 성적과 학사 일정을 터미널에서 조회·관리하는 크로스플랫폼 CLI/TUI입니다.</p>
-            </header>
-            <div class="project-body">
-              <section class="project-fact">
-                <h4>ROLE / CONTRIBUTION</h4>
-                <p>개인 프로젝트로 KLAS 요청·응답을 역분석하고 비공식 API client, 인증·세션, OS keyring, 캐시·오류 처리와 CLI/TUI 경험 전반을 설계·구현했습니다.</p>
-              </section>
-              <details class="project-case">
-                <summary>KLAP-cli 설계와 구현 근거</summary>
-                <dl>
-                  <div><dt>문제</dt><dd>과제와 공지, 강의 마감을 확인할 때마다 로그인하고 여러 메뉴를 오가야 하는 반복 작업을 줄이고자 했습니다.</dd></div>
-                  <div><dt>설계</dt><dd>인증에 성공한 계정만 저장하고 비밀번호·세션 쿠키는 OS 보안 저장소에 보관합니다. 목록 조회는 기본 5분 캐시로 반복 요청을 줄이고, 최신 정보가 필요하면 <code>--refresh</code>로 직접 갱신할 수 있게 했습니다.</dd></div>
-                  <div><dt>구현 결과</dt><dd><code>klap search</code>로 과목·과제·공지·강의·학사일정을 함께 검색하고, <code>klap due</code>로 여러 종류의 마감을 한 목록에서 확인합니다. 기능별 명령과 패키지 설계는 공개 문서로 제공하고 있습니다.</dd></div>
-                </dl>
-                <div class="project-evidence-links">
-                  <a href="https://github.com/leehyowon14/KLAP-cli#readme" target="_blank" rel="noopener noreferrer">명령과 동작 방식 ↗</a>
-                  <a href="https://github.com/leehyowon14/KLAP-cli/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">패키지 설계 문서 ↗</a>
-                </div>
-              </details>
-              <section class="project-fact">
-                <h4>STACK</h4>
-                <ul class="project-stack" aria-label="KLAP-cli 기술 스택">
-                  <li>Go</li>
-                  <li>Bubble Tea</li>
-                  <li>Lip Gloss</li>
-                  <li>go-keyring</li>
-                  <li>Swift Bridge</li>
-                  <li>Apple Speech</li>
-                </ul>
-              </section>
-              <a class="project-source-link" href="https://github.com/leehyowon14/KLAP-cli" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
-            </div>
-            <span class="project-count" aria-hidden="true">02 / 05</span>
-          </article>
-
-          <article class="chapter-panel project-panel" id="project-insite" data-chapter-panel="3" aria-labelledby="project-insite-title">
-            <header class="project-heading">
-              <span class="project-number" aria-hidden="true">03</span>
+              <span class="project-number" aria-hidden="true">04</span>
               <p class="project-domain">AI EDUCATION / CODE FEEDBACK</p>
               <h3 id="project-insite-title">INSITE</h3>
               <p class="project-summary">정답을 바로 주지 않고 단계별 힌트, 코드 평가와 디버깅 피드백으로 초보 개발자의 사고 과정을 지켜주는 AI 코딩 학습 서비스입니다.</p>
@@ -311,36 +314,6 @@
                 </ul>
               </section>
               <a class="project-source-link" href="https://github.com/kw-ic-web/25-team-in-site" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
-            </div>
-            <span class="project-count" aria-hidden="true">03 / 05</span>
-          </article>
-
-          <article class="chapter-panel project-panel" id="project-reminiscence" data-chapter-panel="4" aria-labelledby="project-reminiscence-title">
-            <header class="project-heading">
-              <span class="project-number" aria-hidden="true">04</span>
-              <p class="project-domain">AI CARE / SOCIAL IMPACT</p>
-              <h3 id="project-reminiscence-title">REMINISCENCE</h3>
-              <p class="project-summary">가족사진 기반 기억 지원, 일정 리마인드, 정서적 음성 대화와 보호자 연결을 담은 치매 환자용 AI 스마트 케어 액자입니다.</p>
-            </header>
-            <div class="project-body">
-              <section class="project-fact">
-                <h4>ROLE / CONTRIBUTION</h4>
-                <p>문제 정의와 서비스 방향 설계에 참여하고 기억 지원, 루틴 케어, 정서 대화의 세 축으로 구조를 정리해 인지 부담을 낮춘 사용자 시나리오를 설계했습니다.</p>
-              </section>
-              <section class="project-fact">
-                <h4>STACK / DOMAIN</h4>
-                <ul class="project-stack" aria-label="Reminiscence 도메인">
-                  <li>AI Care</li>
-                  <li>Voice Interaction</li>
-                  <li>Smart Device</li>
-                  <li>Healthcare</li>
-                  <li>Social Impact</li>
-                </ul>
-              </section>
-              <div class="project-source-unavailable">
-                <span>NO PUBLIC REPOSITORY</span>
-                <a class="project-source-link" href="https://github.com/leehyowon14" target="_blank" rel="noopener noreferrer">VIEW GITHUB PROFILE</a>
-              </div>
             </div>
             <span class="project-count" aria-hidden="true">04 / 05</span>
           </article>
