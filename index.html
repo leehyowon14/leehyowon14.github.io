@@ -350,13 +350,14 @@
               <span class="project-number" aria-hidden="true">01</span>
               <p class="project-domain">TEXT DATA / INPUT EFFICIENCY</p>
               <h3 id="toy-frequency-title">CHARACTER FREQUENCY</h3>
-              <p class="project-summary">한글과 일본어의 글자·발음·배열 패턴을 빈도로 계산하고, 자판과 입력 효율의 관점에서 결과를 해석한 언어 데이터 실험입니다.</p>
+              <p class="project-summary">한글 자모와 일본어 문자의 등장 빈도를 계산해 입력 방식과 자판 배열을 탐색한 언어 데이터 실험입니다.</p>
             </header>
             <div class="project-body">
               <section class="project-fact">
                 <h4>ROLE / CONTRIBUTION</h4>
                 <p>데이터셋 준비부터 정제, 문자 치환·분해, 빈도 집계와 결과 해석까지 개인으로 수행하고 서로 다른 문자 체계에 맞춘 처리 방법을 비교했습니다.</p>
               </section>
+              <details class="project-case"><summary>과정과 구현 근거</summary><dl><div><dt>문제</dt><dd>문자 체계에 따라 입력 빈도와 처리 단위가 어떻게 달라지는지 궁금했습니다.</dd></div><div><dt>구현</dt><dd>말뭉치를 정제하고 한글은 자모로 분해해 집계했습니다. 일본어는 문자 변환과 빈도 계산 흐름을 별도로 구현했습니다.</dd></div><div><dt>결과와 범위</dt><dd>문자별 빈도와 전처리 과정을 코드로 남겼습니다. 실제 타이핑 속도나 인체공학적 개선 효과를 측정한 실험은 아닙니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/leehyowon14/hangul_frequency_for_semi-2-set-keyboard/commit/c8dcb53e4bcc0421689ae8c530d89a64b2482aa8" target="_blank" rel="noopener noreferrer">한글 분석 구현 ↗</a><a href="https://github.com/leehyowon14/Japanese_frequency/commit/02dce565eaee3acaeea02a5e4ec841df7aa4293c" target="_blank" rel="noopener noreferrer">일본어 분석 구현 ↗</a></div></details>
               <section class="project-fact">
                 <h4>STACK</h4>
                 <ul class="project-stack" aria-label="문자 빈도 분석 기술 스택">
