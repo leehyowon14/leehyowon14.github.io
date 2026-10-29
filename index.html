@@ -247,29 +247,15 @@
           <article class="chapter-panel project-panel" id="project-reminiscence" data-chapter-panel="4" aria-labelledby="project-reminiscence-title">
             <header class="project-heading">
               <span class="project-number" aria-hidden="true">04</span>
-              <p class="project-domain">AI CARE / SOCIAL IMPACT</p>
+              <p class="project-domain">TEAM / VOICE INTERACTION · AI CARE</p>
               <h3 id="project-reminiscence-title">REMINISCENCE</h3>
-              <p class="project-summary">가족사진 기반 기억 지원, 일정 리마인드, 정서적 음성 대화와 보호자 연결을 담은 치매 환자용 AI 스마트 케어 액자입니다.</p>
+              <p class="project-summary">가족사진, 일상 루틴과 음성 대화로 기억과 일상을 돕는 AI 케어 액자 프로젝트입니다. 2026년 7월 H.O.P.E 경진대회에서 팀으로 우수상을 받았습니다.</p>
             </header>
             <div class="project-body">
-              <section class="project-fact">
-                <h4>ROLE / CONTRIBUTION</h4>
-                <p>문제 정의와 서비스 방향 설계에 참여하고 기억 지원, 루틴 케어, 정서 대화의 세 축으로 구조를 정리해 인지 부담을 낮춘 사용자 시나리오를 설계했습니다.</p>
-              </section>
-              <section class="project-fact">
-                <h4>STACK / DOMAIN</h4>
-                <ul class="project-stack" aria-label="Reminiscence 도메인">
-                  <li>AI Care</li>
-                  <li>Voice Interaction</li>
-                  <li>Smart Device</li>
-                  <li>Healthcare</li>
-                  <li>Social Impact</li>
-                </ul>
-              </section>
-              <div class="project-source-unavailable">
-                <span>NO PUBLIC REPOSITORY</span>
-                <a class="project-source-link" href="https://github.com/leehyowon14" target="_blank" rel="noopener noreferrer">VIEW GITHUB PROFILE</a>
-              </div>
+              <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>서비스 기획에 참여하고 음성 대화 UI, 녹음·재생·업로드 흐름을 구현했습니다. 수상 이후에는 백엔드의 중복 턴 처리 방지와 대화 문맥 유지 기능을 보강했습니다.</p></section>
+              <details class="project-case"><summary>REMINISCENCE 이야기와 근거</summary><dl><div><dt>문제</dt><dd>화면 조작 부담을 줄이면서 질문을 듣고 음성으로 답하는 대화 흐름을 이어갈 필요가 있었습니다.</dd></div><div><dt>설계</dt><dd>AudioWorklet으로 음성·침묵 상태를 판별하고 16kHz WAV를 업로드합니다. 마이크 권한과 자동 재생 실패의 복구 흐름, 녹음 자원 정리를 함께 다뤘습니다.</dd></div><div><dt>결과와 시점</dt><dd>7월에는 음성 세션 UI와 녹음 처리를 구현했습니다. 8월에는 턴 ID를 이용한 중복 처리 방지와 대화 문맥 유지를 추가했습니다. 수상 당시 구현과 후속 개선을 구분하며, 의료적 효과를 검증한 제품은 아닙니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/KW-Reminiscence/Reminiscence-FE/commit/9bdda0a005519e33c728cd5af193d7a570dd2cce" target="_blank" rel="noopener noreferrer">7월 녹음 처리 ↗</a><a href="https://github.com/KW-Reminiscence/Reminiscence-BE/commit/f60fb2bba8c7b64f2cd197393a446f0b6cbd4dc4" target="_blank" rel="noopener noreferrer">8월 문맥 유지 ↗</a><a href="https://www.kw.ac.kr/ko/life/newsletter.jsp?BoardMode=view&amp;DUID=53004" target="_blank" rel="noopener noreferrer">대학교 수상 소식 ↗</a></div></details>
+              <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="REMINISCENCE 기술과 영역"><li>React / TypeScript</li><li>Web Audio API</li><li>AudioWorklet</li><li>Python</li><li>Voice Interaction</li></ul></section>
+              <div class="project-source-group"><a href="https://github.com/KW-Reminiscence/Reminiscence-FE" target="_blank" rel="noopener noreferrer">FE ↗</a><a href="https://github.com/KW-Reminiscence/Reminiscence-BE" target="_blank" rel="noopener noreferrer">BE ↗</a></div>
             </div>
             <span class="project-count" aria-hidden="true">04 / 07</span>
           </article>
