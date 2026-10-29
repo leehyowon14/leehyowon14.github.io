@@ -279,39 +279,15 @@
           <article class="chapter-panel project-panel" id="project-insite" data-chapter-panel="6" aria-labelledby="project-insite-title">
             <header class="project-heading">
               <span class="project-number" aria-hidden="true">06</span>
-              <p class="project-domain">AI EDUCATION / CODE FEEDBACK</p>
+              <p class="project-domain">TEAM / AI EDUCATION · CODE FEEDBACK</p>
               <h3 id="project-insite-title">INSITE</h3>
-              <p class="project-summary">정답을 바로 주지 않고 단계별 힌트, 코드 평가와 디버깅 피드백으로 초보 개발자의 사고 과정을 지켜주는 AI 코딩 학습 서비스입니다.</p>
+              <p class="project-summary">정답을 바로 주기보다 단계별 힌트와 코드 평가로 학습자가 스스로 오류를 발견하고 수정하도록 돕는 AI 코딩 학습 서비스입니다.</p>
             </header>
             <div class="project-body">
-              <section class="project-fact">
-                <h4>ROLE / CONTRIBUTION</h4>
-                <p>AI 힌트와 L5 피드백, WebSocket 평가, Docker code execution, MongoDB·Redis 기반 학습 기록, API·배포와 일부 프론트엔드 연동까지 폭넓게 구현했습니다.</p>
-              </section>
-              <details class="project-case">
-                <summary>INSITE 설계와 검증 근거</summary>
-                <dl>
-                  <div><dt>문제</dt><dd>AI가 정답을 바로 제시하면 학습자가 막힌 원인을 찾고 코드를 고치는 과정이 사라질 수 있습니다.</dd></div>
-                  <div><dt>설계</dt><dd>힌트 제공과 코드 평가를 별도의 WebSocket 흐름으로 나누고, 제출 코드는 언어별 Docker 환경에서 실행합니다. 공개 연습 케이스와 제출 채점 케이스를 구분해 학습 중 확인과 최종 평가를 분리했습니다.</dd></div>
-                  <div><dt>검증 근거</dt><dd>평가 서비스의 공개 단위 테스트에는 케이스별 통과·실패 판정, 공개 케이스 선택, 시간·메모리 제한 값 변환을 확인하는 시나리오가 있습니다. 요청과 응답 구조는 API 명세에서 확인할 수 있습니다.</dd></div>
-                </dl>
-                <div class="project-evidence-links">
-                  <a href="https://github.com/kw-ic-web/25-team-in-site/blob/main/back-end/apiSpec.yml" target="_blank" rel="noopener noreferrer">API·WebSocket 명세 ↗</a>
-                  <a href="https://github.com/kw-ic-web/25-team-in-site/blob/main/back-end/test/unit/service/evaluation.service.test.js" target="_blank" rel="noopener noreferrer">평가 서비스 단위 테스트 ↗</a>
-                </div>
-              </details>
-              <section class="project-fact">
-                <h4>STACK</h4>
-                <ul class="project-stack" aria-label="INSITE 기술 스택">
-                  <li>Node.js</li>
-                  <li>Express</li>
-                  <li>OpenAI</li>
-                  <li>WebSocket</li>
-                  <li>Dockerode</li>
-                  <li>MongoDB / Redis</li>
-                </ul>
-              </section>
-              <a class="project-source-link" href="https://github.com/kw-ic-web/25-team-in-site" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
+              <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>AI 힌트와 L5 피드백, Redis 대화 세션과 WebSocket 평가 흐름을 구현했습니다. 언어별 코드 실행, 제한 시간·자원 처리와 정리 절차를 개선하고 평가 테스트를 작성했습니다.</p></section>
+              <details class="project-case"><summary>INSITE 이야기와 근거</summary><dl><div><dt>문제</dt><dd>답을 받는 데 그치지 않고, 막힌 지점과 실행 결과를 바탕으로 다음 시도를 할 수 있어야 했습니다.</dd></div><div><dt>설계</dt><dd>힌트 세션과 제출 평가를 나누고 평가 결과를 L5 피드백에 연결했습니다. Docker 실행 환경의 시간 제한, 실패 처리와 자원 정리를 보강했습니다.</dd></div><div><dt>결과와 범위</dt><dd>단계별 힌트·세션 관리와 L5 평가 연동을 구현했습니다. 평가 테스트로 통과·실패와 공개 케이스 선택을 확인하며, 기존 실행 기반 위에 안정성을 개선했습니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/kw-ic-web/25-team-in-site/pull/76" target="_blank" rel="noopener noreferrer">힌트와 Redis 세션 ↗</a><a href="https://github.com/kw-ic-web/25-team-in-site/pull/98" target="_blank" rel="noopener noreferrer">L5 피드백 ↗</a><a href="https://github.com/kw-ic-web/25-team-in-site/commit/b24ac537d666226f05289289e1a85e30df02916b" target="_blank" rel="noopener noreferrer">실행 환경 개선 ↗</a></div></details>
+              <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="INSITE 기술과 영역"><li>Node.js</li><li>OpenAI</li><li>WebSocket</li><li>Dockerode</li><li>MongoDB / Redis</li></ul></section>
+              <div class="project-source-group"><a href="https://github.com/kw-ic-web/25-team-in-site" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div>
             </div>
             <span class="project-count" aria-hidden="true">06 / 07</span>
           </article>
