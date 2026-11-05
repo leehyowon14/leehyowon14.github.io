@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>이효원 — 정보의 마찰을 줄이는 백엔드 · AI 개발자</title>
-  <meta name="description" content="KLAP, Untitled와 팀 프로젝트를 통해 정보의 마찰을 줄이는 개발자 이효원. 백엔드·AI·macOS 개발의 개인 기여와 구현 근거를 소개합니다.">
+  <meta name="description" content="KLAP, Untitled와 팀 프로젝트를 통해 정보의 마찰을 줄이는 개발자 이효원. 백엔드·AI·macOS 개발의 개인 기여와 개발 경험을 소개합니다.">
   <meta property="og:title" content="이효원 — Backend & AI Developer">
-  <meta property="og:description" content="CLI부터 macOS와 AI 서비스까지. 문제, 개인 기여, 설계 판단과 구현 근거를 담았습니다.">
+  <meta property="og:description" content="CLI부터 macOS와 AI 서비스까지. 문제와 개인 기여, 주요 기술과 개발 경험을 담았습니다.">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23141312'/%3E%3Ctext x='50' y='66' font-size='48' text-anchor='middle' fill='%23f5f3ef' font-family='Georgia,serif' font-style='italic'%3EH%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+KR:wght@400;600;700;900&family=Roboto+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -80,7 +80,16 @@
               <div><dt>MAJOR</dt><dd>DATA SCIENCE</dd></div>
               <div><dt>ROLE</dt><dd>BACKEND · AI DEVELOPER</dd></div>
               <div><dt>WORK</dt><dd>7 WORKS · 4 EXPLORATIONS</dd></div>
-              <div><dt>AWARDS</dt><dd>2026 광운대학교 해커톤 총장상 · H.O.P.E 우수상 <small>(팀 수상)</small></dd></div>
+              <div>
+                <dt>AWARDS</dt>
+                <dd class="profile-awards">
+                  <ul>
+                    <li>2026 광운대학교 해커톤 총장상 <small>(팀 수상)</small></li>
+                    <li>2026 소원 H.O.P.E. 창의보조공학 경진대회 우수상 <small>(팀 수상)</small></li>
+                    <li><a href="https://sw.anu.ac.kr/main/sw/jw/main/view.php?mid=%2Fjw%2Fjw_list_all&amp;bznum=702" target="_blank" rel="noopener noreferrer" title="2023학년도 대회 공식 공고 · 2024년 1월 27일 개최">2024 경상북도 청소년 SW코딩 경진대회 은상 <small>(경상북도교육감상)</small> ↗</a></li>
+                  </ul>
+                </dd>
+              </div>
             </dl>
           </div>
 
@@ -100,60 +109,65 @@
             <span class="experience-direction">↑</span>
             <ol>
               <li data-experience-point class="is-active">
-                <span class="experience-point-number">01</span><i></i><span class="experience-point-label">LIKELION 13TH</span>
+                <span class="experience-point-number experience-point-range">2019–20</span><i></i>
               </li>
               <li data-experience-point>
-                <span class="experience-point-number">02</span><i></i><span class="experience-point-label">CHIC 5TH</span>
+                <span class="experience-point-number">2025</span><i></i>
               </li>
               <li data-experience-point>
-                <span class="experience-point-number">03</span><i></i><span class="experience-point-label">LIKELION 14TH</span>
-              </li>
-              <li data-experience-point>
-                <span class="experience-point-number">04</span><i></i><span class="experience-point-label">CHIC 6TH</span>
+                <span class="experience-point-number">2026</span><i></i>
               </li>
             </ol>
           </div>
 
           <div class="experience-detail">
-            <span class="experience-count" data-experience-count>01 / 04</span>
-            <div class="experience-detail-copy" data-experience-detail>
-              <p class="experience-organization" data-experience-organization>광운대학교 멋쟁이사자처럼 13기</p>
-              <h3 data-experience-role>BACK-END 아기사자</h3>
-              <p class="experience-status" data-experience-status hidden></p>
-              <p class="experience-description" data-experience-description>서버 아키텍처, API 설계와 데이터 흐름의 기본기를 다지고 팀 기반 서비스 개발을 경험했습니다.</p>
-            </div>
+            <div class="experience-detail-copy" data-experience-detail></div>
           </div>
         </div>
 
         <div class="experience-steps">
-          <article class="experience-step" id="experience" data-experience-step="0" data-snap-panel>
+          <article class="experience-step" id="experience" data-experience-step="0" data-snap-panel aria-labelledby="experience-year-gifted">
             <div class="experience-step-copy">
-              <p>광운대학교 멋쟁이사자처럼 13기</p>
-              <h3>Back-end 아기사자</h3>
-              <p>서버 아키텍처, API 설계와 데이터 흐름의 기본기를 다지고 팀 기반 서비스 개발을 경험했습니다. 백엔드가 전체 사용자 경험에 어떻게 연결되는지 이해하게 된 시간이었습니다.</p>
+              <h3 class="experience-year" id="experience-year-gifted">2019—2020</h3>
+              <section class="experience-activity">
+                <p class="experience-organization">안동대학교 과학영재교육원 · 2019 · 중1</p>
+                <h4 class="experience-role">소프트웨어 심화과정</h4>
+              </section>
+              <section class="experience-activity">
+                <p class="experience-organization">안동대학교 과학영재교육원 · 2020 · 중2</p>
+                <h4 class="experience-role">소프트웨어 사사과정</h4>
+                <p class="experience-description">「딥러닝을 이용한 SNS 댓글 분류」 공동 보고서를 작성했습니다. 한국어 댓글을 7개 주제로 분류하는 실습을 진행했으며, 『탐구와 진리』 제15호(2020 사사결과보고서)에 수록됐습니다.</p>
+              </section>
             </div>
           </article>
-          <article class="experience-step" id="experience-chic-5" data-experience-step="1" data-snap-panel>
+          <article class="experience-step" id="experience-2025" data-experience-step="1" data-snap-panel aria-labelledby="experience-year-2025">
             <div class="experience-step-copy">
-              <p>광운대학교 정보융합학부 전공동아리 CHIC 5기</p>
-              <h3>ML 스터디 팀장</h3>
-              <p>겨울방학 ML 스터디의 세션과 역할 분담을 조율했습니다. 팀원들과 사람·LLM 코드 비교 실험을 진행하고 특징 추출·차원 축소·군집화 파이프라인을 구현했습니다.</p>
+              <h3 class="experience-year" id="experience-year-2025">2025</h3>
+              <section class="experience-activity">
+                <p class="experience-organization">광운대학교 멋쟁이사자처럼 13기</p>
+                <h4 class="experience-role">Back-end 아기사자</h4>
+                <p class="experience-description">서버 아키텍처와 API 설계의 기본기를 다지고, 팀 프로젝트로 백엔드 개발을 경험했습니다.</p>
+              </section>
             </div>
           </article>
-          <article class="experience-step" id="experience-likelion-14" data-experience-step="2" data-snap-panel>
+          <article class="experience-step" id="experience-2026" data-experience-step="2" data-snap-panel aria-labelledby="experience-year-2026">
             <div class="experience-step-copy">
-              <p>광운대학교 멋쟁이사자처럼 14기</p>
-              <h3>Back-end 운영진</h3>
-              <span>CURRENT</span>
-              <p>멤버들의 백엔드 학습과 프로젝트 완성을 지원하고 있습니다. 기술을 설명하고 팀의 문제 해결을 도우며 개발자 이상의 역할로 성장하는 중입니다.</p>
-            </div>
-          </article>
-          <article class="experience-step" id="experience-chic-6" data-experience-step="3" data-snap-panel>
-            <div class="experience-step-copy">
-              <p>광운대학교 정보융합학부 전공동아리 CHIC 6기</p>
-              <h3>동아리 부원</h3>
-              <span>CURRENT</span>
-              <p>5기 활동에 이어 전공 기반 탐구와 협업 활동을 이어가고 있습니다.</p>
+              <h3 class="experience-year" id="experience-year-2026">2026</h3>
+              <section class="experience-activity">
+                <p class="experience-organization">광운대학교 정보융합학부 전공동아리 CHIC 5기</p>
+                <h4 class="experience-role">ML 스터디 팀장</h4>
+                <p class="experience-description">겨울방학 ML 스터디를 이끌고, 사람·LLM 코드 비교 실험의 특징 추출·차원 축소·군집화 파이프라인을 구현했습니다.</p>
+              </section>
+              <section class="experience-activity">
+                <p class="experience-organization">광운대학교 멋쟁이사자처럼 14기</p>
+                <h4 class="experience-role">Back-end 운영진 <span class="experience-status">CURRENT</span></h4>
+                <p class="experience-description">멤버들의 백엔드 학습과 프로젝트 완성을 지원하며, 기술 설명과 팀의 문제 해결을 돕고 있습니다.</p>
+              </section>
+              <section class="experience-activity">
+                <p class="experience-organization">광운대학교 정보융합학부 전공동아리 CHIC 6기</p>
+                <h4 class="experience-role">동아리 부원 <span class="experience-status">CURRENT</span></h4>
+                <p class="experience-description">5기 활동에 이어 전공 기반 탐구와 협업 활동을 이어가고 있습니다.</p>
+              </section>
             </div>
           </article>
         </div>
@@ -182,11 +196,11 @@
             </div>
             <div class="chapter-intro-aside">
               <p class="chapter-aside-label">SELECTED WORKS / 2025—2026</p>
-              <p>개인 도구부터 팀 서비스까지, 문제 정의를 실제 동작으로 연결합니다. 각 사례에는 제가 구현한 범위와 설계 판단, 결과를 확인할 수 있는 근거를 담았습니다.</p>
+              <p>개인 도구부터 팀 서비스까지, 문제 정의를 실제 동작으로 연결합니다. 각 프로젝트에서 맡은 역할과 주요 기술을 소개합니다.</p>
               <nav class="project-directory" aria-label="프로젝트 선택">
                 <ol><li><a href="#project-klap"><span>01</span><strong>KLAP</strong><small>CLI · macOS · ChatGPT로 이어지는 대학 포털</small></a></li>
 <li><a href="#project-jidan"><span>02</span><strong>지단</strong><small>소상공인 업무 인수인계를 돕는 서비스</small></a></li>
-<li><a href="#project-untitled"><span>03</span><strong>Untitled</strong><small>글쓰기에 집중하는 macOS 네이티브 편집기</small></a></li>
+<li><a href="#project-untitled"><span>03</span><strong>Untitled</strong><small>자신의 생각을 문장으로 쓰는 macOS 편집기</small></a></li>
 <li><a href="#project-reminiscence"><span>04</span><strong>REMINISCENCE</strong><small>음성 대화를 구현한 AI 케어 액자</small></a></li>
 <li><a href="#project-sonju"><span>05</span><strong>SONJU</strong><small>음성으로 찾는 공공 민원 정보</small></a></li>
 <li><a href="#project-insite"><span>06</span><strong>INSITE</strong><small>사고 과정을 지켜주는 AI 코딩 학습</small></a></li>
@@ -206,9 +220,8 @@
             </header>
             <div class="project-body">
               <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>개인 프로젝트로 KLAS API 클라이언트, 인증·세션과 보안 저장소를 구현하고, macOS 앱의 동기화·수명 관리와 MCP 조회 도구까지 연결했습니다.</p></section>
-              <details class="project-case"><summary>KLAP 이야기와 근거</summary><dl><div><dt>문제</dt><dd>수업 정보를 확인하려고 여러 메뉴를 오가는 흐름을 줄이고, 사용하는 환경에서 바로 조회할 수 있게 하고 싶었습니다.</dd></div><div><dt>설계</dt><dd>KLAP-cli를 공통 기반으로 재사용합니다. macOS 앱의 동기화 작업은 화면·앱 수명에 맞춰 정리하고, GPT 연동은 고정된 CLI 서브모듈과 MCP 도구로 구성했습니다.</dd></div><div><dt>결과와 범위</dt><dd>CLI 조회·검색·마감 관리, macOS 클라이언트, MCP 일괄 상세 조회를 구현했습니다. 인증 저장소 분리와 LMS 시간 정규화에 테스트를 추가했으며, 배포·연동 점검 과정을 문서화했습니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/leehyowon14/KLAP-cli/commit/300bcea0e476a4bf456643f201239ad40833573f" target="_blank" rel="noopener noreferrer">인증 저장소 분리와 테스트 ↗</a><a href="https://github.com/leehyowon14/KLAP-for-GPT/commit/b32a499b5f27dd1d8df5470b2a57f9a9e0715f2b" target="_blank" rel="noopener noreferrer">MCP 상세 조회 구현 ↗</a><a href="https://github.com/leehyowon14/KLAP-for-GPT/blob/main/docs/agent-query-api.md" target="_blank" rel="noopener noreferrer">MCP 조회 API 문서 ↗</a></div></details>
               <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="KLAP 기술과 영역"><li>Go</li><li>Swift / macOS</li><li>OS Keyring</li><li>MCP</li><li>API Integration</li></ul></section>
-              <div class="project-source-group"><a href="https://github.com/leehyowon14/KLAP-cli" target="_blank" rel="noopener noreferrer">CLI ↗</a><a href="https://github.com/leehyowon14/KLAP" target="_blank" rel="noopener noreferrer">macOS ↗</a><a href="https://github.com/leehyowon14/KLAP-for-GPT" target="_blank" rel="noopener noreferrer">CHATGPT ↗</a></div>
+              <div class="project-source-group"><a href="https://github.com/leehyowon14/KLAP-cli" target="_blank" rel="noopener noreferrer">CLI ↗</a><a href="https://github.com/leehyowon14/KLAP" target="_blank" rel="noopener noreferrer">macOS ↗</a><a href="https://github.com/leehyowon14/KLAP-for-GPT" target="_blank" rel="noopener noreferrer">ChatGPT ↗</a></div>
             </div>
             <span class="project-count" aria-hidden="true">01 / 07</span>
           </article>
@@ -222,7 +235,6 @@
             </header>
             <div class="project-body">
               <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>문제 조사와 사용자 흐름·화면 설계를 진행했습니다. Q&A·사진·음성 입력 UI, OAuth 가입 흐름, 관리자 승인 처리와 테스트, 배포 구성을 구현했습니다.</p></section>
-              <details class="project-case"><summary>지단 이야기와 근거</summary><dl><div><dt>문제</dt><dd>소규모 매장의 반복 설명과 구두 인수인계 부담을 줄이고, 새 근로자가 업무 맥락을 찾을 수 있어야 했습니다.</dd></div><div><dt>설계</dt><dd>사용자 역할에 따라 진입 화면과 인증 경계를 나누고, 가입 문맥을 OAuth 흐름에 연결했습니다. 관리자 승인은 동시 요청에도 최초 승인 결과가 유지되도록 처리했습니다.</dd></div><div><dt>결과와 범위</dt><dd>Q&A와 입력 UI, 역할별 데모, 인증·승인 기능을 구현하고 동시성·권한·실패 복구 테스트를 추가했습니다. AI 핵심 알고리즘은 팀원의 작업과 구분하고, 저는 화면 연동과 서비스 흐름을 맡았습니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/2026-KW-HACKATHON/29_Jidan/commit/52e8174afcd2a73f57188ef54f87687dbe3f2da4" target="_blank" rel="noopener noreferrer">질문 화면과 테스트 ↗</a><a href="https://github.com/2026-KW-HACKATHON/29_Jidan/commit/43dc243a89113bb6199faa321318d6a58fda04c4" target="_blank" rel="noopener noreferrer">동시 승인 처리 ↗</a><a href="https://velog.io/@wonny_0724/해커톤-도전기-S.1-EP.0" target="_blank" rel="noopener noreferrer">팀 결성과 문제 정의 ↗</a></div></details>
               <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="지단 기술과 영역"><li>React / TypeScript</li><li>Python</li><li>OAuth</li><li>Integration Testing</li><li>Docker / GitHub Actions</li></ul></section>
               <div class="project-source-group"><a href="https://github.com/2026-KW-HACKATHON/29_Jidan" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div>
             </div>
@@ -234,11 +246,10 @@
               <span class="project-number" aria-hidden="true">03</span>
               <p class="project-domain">PERSONAL / NATIVE macOS EDITOR</p>
               <h3 id="project-untitled-title">Untitled</h3>
-              <p class="project-summary">문서를 열고 바로 글쓰기에 집중할 수 있는 macOS 네이티브 텍스트 편집기입니다. 파일과 편집 경험의 기본 동작부터 집중 모드까지 다듬고 있습니다.</p>
+              <p class="project-summary">AI에 생각까지 맡기게 되는 흐름 속에서, 온전히 자신의 생각에 집중해 글을 쓰기 위한 macOS 편집기입니다. 생각의 기본 단위는 문장이라는 관점에서, 한 문장씩 쓰고 다듬는 데 집중할 수 있는 환경을 만듭니다.</p>
             </header>
             <div class="project-body">
               <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>개인 프로젝트로 AppKit·TextKit 2 기반 편집기, 문서 저장·자동 저장·실행 취소, 인코딩 보존과 설정을 구현했습니다. 타이프라이터 모드의 스크롤과 모션 감소 대응도 개선했습니다.</p></section>
-              <details class="project-case"><summary>Untitled 이야기와 근거</summary><dl><div><dt>문제</dt><dd>글을 쓰는 동안 창과 파일 상태를 신경 쓰는 부담을 줄이고, macOS의 익숙한 문서 동작을 유지하고 싶었습니다.</dd></div><div><dt>설계</dt><dd>네이티브 문서 수명 주기에 저장과 실행 취소를 연결했습니다. 입력 위치를 중앙에 유지하는 이동은 취소 가능한 애니메이션으로 처리하고 접근성 설정에 맞췄습니다.</dd></div><div><dt>결과와 범위</dt><dd>텍스트·Markdown 편집, 자동 저장, 집중·타이프라이터 모드와 테마·설정을 구현했습니다. 현재 macOS 개발 프로젝트이며 공개 릴리스 전입니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/leehyowon14/Untitled/commit/d7af6154f56b1430081b99549c1497a0d5ea1e2a" target="_blank" rel="noopener noreferrer">문서·자동 저장·실행 취소 ↗</a><a href="https://github.com/leehyowon14/Untitled/commit/e9a7635c6ead11c5a609c6d7943b21f365626a41" target="_blank" rel="noopener noreferrer">입력 위치 스크롤 개선 ↗</a></div></details>
               <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="Untitled 기술과 영역"><li>Swift</li><li>AppKit</li><li>TextKit 2</li><li>macOS</li><li>Accessibility</li></ul></section>
               <div class="project-source-group"><a href="https://github.com/leehyowon14/Untitled" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div>
             </div>
@@ -250,11 +261,10 @@
               <span class="project-number" aria-hidden="true">04</span>
               <p class="project-domain">TEAM / VOICE INTERACTION · AI CARE</p>
               <h3 id="project-reminiscence-title">REMINISCENCE</h3>
-              <p class="project-summary">가족사진, 일상 루틴과 음성 대화로 기억과 일상을 돕는 AI 케어 액자 프로젝트입니다. 2026년 7월 H.O.P.E 경진대회에서 팀으로 우수상을 받았습니다.</p>
+              <p class="project-summary">가족사진, 일상 루틴과 음성 대화로 기억과 일상을 돕는 AI 케어 액자 프로젝트입니다. 2026년 7월 소원이 주관한 H.O.P.E. 창의보조공학 경진대회에서 팀으로 우수상을 받았습니다.</p>
             </header>
             <div class="project-body">
               <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>서비스 기획에 참여하고 음성 대화 UI, 녹음·재생·업로드 흐름을 구현했습니다. 수상 이후에는 백엔드의 중복 턴 처리 방지와 대화 문맥 유지 기능을 보강했습니다.</p></section>
-              <details class="project-case"><summary>REMINISCENCE 이야기와 근거</summary><dl><div><dt>문제</dt><dd>화면 조작 부담을 줄이면서 질문을 듣고 음성으로 답하는 대화 흐름을 이어갈 필요가 있었습니다.</dd></div><div><dt>설계</dt><dd>AudioWorklet으로 음성·침묵 상태를 판별하고 16kHz WAV를 업로드합니다. 마이크 권한과 자동 재생 실패의 복구 흐름, 녹음 자원 정리를 함께 다뤘습니다.</dd></div><div><dt>결과와 시점</dt><dd>7월에는 음성 세션 UI와 녹음 처리를 구현했습니다. 8월에는 턴 ID를 이용한 중복 처리 방지와 대화 문맥 유지를 추가했습니다. 수상 당시 구현과 후속 개선을 구분하며, 의료적 효과를 검증한 제품은 아닙니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/KW-Reminiscence/Reminiscence-FE/commit/9bdda0a005519e33c728cd5af193d7a570dd2cce" target="_blank" rel="noopener noreferrer">7월 녹음 처리 ↗</a><a href="https://github.com/KW-Reminiscence/Reminiscence-BE/commit/f60fb2bba8c7b64f2cd197393a446f0b6cbd4dc4" target="_blank" rel="noopener noreferrer">8월 문맥 유지 ↗</a><a href="https://www.kw.ac.kr/ko/life/newsletter.jsp?BoardMode=view&amp;DUID=53004" target="_blank" rel="noopener noreferrer">대학교 수상 소식 ↗</a></div></details>
               <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="REMINISCENCE 기술과 영역"><li>React / TypeScript</li><li>Web Audio API</li><li>AudioWorklet</li><li>Python</li><li>Voice Interaction</li></ul></section>
               <div class="project-source-group"><a href="https://github.com/KW-Reminiscence/Reminiscence-FE" target="_blank" rel="noopener noreferrer">FE ↗</a><a href="https://github.com/KW-Reminiscence/Reminiscence-BE" target="_blank" rel="noopener noreferrer">BE ↗</a></div>
             </div>
@@ -270,7 +280,6 @@
             </header>
             <div class="project-body">
               <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>OpenAI Realtime API의 WebSocket 중계, 음성 전사와 대화 순서, 세션 상태·종료 처리를 구현했습니다. Vector Store 검색을 상담 흐름에 연결하고 도구 호출 오류를 처리했습니다.</p></section>
-              <details class="project-case"><summary>SONJU 이야기와 근거</summary><dl><div><dt>문제</dt><dd>음성 입력, 정보 검색과 답변이 하나의 상담 흐름으로 이어져야 하며 연결 종료와 오류에도 세션 상태가 일관되어야 했습니다.</dd></div><div><dt>설계</dt><dd>실시간 음성 중계와 검색 도구를 분리하고, 전사 이벤트와 턴 순서를 관리했습니다. 검색 결과를 답변 문맥으로 전달하는 서버 연동을 맡았습니다.</dd></div><div><dt>결과와 범위</dt><dd>실시간 프록시, 전사·세션 관리와 검색 연동을 구현했습니다. RAG 문서 수집·전처리·업로드는 팀원의 기여이며, 제 역할은 상담 서비스 안에서의 검색 활용입니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/Team1-kw13/Sonju-BE/commit/42ac6756eaa1188a947b5d9fa3cd402510c0eced" target="_blank" rel="noopener noreferrer">실시간 프록시 ↗</a><a href="https://github.com/Team1-kw13/Sonju-BE/pull/24" target="_blank" rel="noopener noreferrer">Vector Store 검색 연동 ↗</a><a href="https://github.com/Team1-kw13/Sonju-BE/pull/28" target="_blank" rel="noopener noreferrer">전사와 턴 순서 ↗</a></div></details>
               <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="SONJU 기술과 영역"><li>Node.js</li><li>Express</li><li>OpenAI Realtime</li><li>WebSocket</li><li>Vector Store</li></ul></section>
               <div class="project-source-group"><a href="https://github.com/Team1-kw13/Sonju-BE" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div>
             </div>
@@ -286,7 +295,6 @@
             </header>
             <div class="project-body">
               <section class="project-fact"><h4>ROLE / CONTRIBUTION</h4><p>AI 힌트와 L5 피드백, Redis 대화 세션과 WebSocket 평가 흐름을 구현했습니다. 언어별 코드 실행, 제한 시간·자원 처리와 정리 절차를 개선하고 평가 테스트를 작성했습니다.</p></section>
-              <details class="project-case"><summary>INSITE 이야기와 근거</summary><dl><div><dt>문제</dt><dd>답을 받는 데 그치지 않고, 막힌 지점과 실행 결과를 바탕으로 다음 시도를 할 수 있어야 했습니다.</dd></div><div><dt>설계</dt><dd>힌트 세션과 제출 평가를 나누고 평가 결과를 L5 피드백에 연결했습니다. Docker 실행 환경의 시간 제한, 실패 처리와 자원 정리를 보강했습니다.</dd></div><div><dt>결과와 범위</dt><dd>단계별 힌트·세션 관리와 L5 평가 연동을 구현했습니다. 평가 테스트로 통과·실패와 공개 케이스 선택을 확인하며, 기존 실행 기반 위에 안정성을 개선했습니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/kw-ic-web/25-team-in-site/pull/76" target="_blank" rel="noopener noreferrer">힌트와 Redis 세션 ↗</a><a href="https://github.com/kw-ic-web/25-team-in-site/pull/98" target="_blank" rel="noopener noreferrer">L5 피드백 ↗</a><a href="https://github.com/kw-ic-web/25-team-in-site/commit/b24ac537d666226f05289289e1a85e30df02916b" target="_blank" rel="noopener noreferrer">실행 환경 개선 ↗</a></div></details>
               <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="INSITE 기술과 영역"><li>Node.js</li><li>OpenAI</li><li>WebSocket</li><li>Dockerode</li><li>MongoDB / Redis</li></ul></section>
               <div class="project-source-group"><a href="https://github.com/kw-ic-web/25-team-in-site" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div>
             </div>
@@ -302,7 +310,6 @@
             </header>
             <div class="project-body">
               <section class="project-fact"><h4>IDEATHON / CONCEPT</h4><p>팀과 함께 정보 탐색의 문제, 추천·퀘스트·참여로 이어지는 사용자 흐름과 서비스 아이디어를 구체화했습니다.</p></section>
-              <details class="project-case"><summary>우니팡 이야기와 근거</summary><dl><div><dt>문제</dt><dd>학교가 제공하는 복지 정보를 알아도 나에게 필요한 혜택인지 판단하고 신청까지 이어가기 어렵다는 점에 주목했습니다.</dd></div><div><dt>아이디어</dt><dd>학년·전공·관심사를 바탕으로 정보를 추천하고, 확인 퀘스트와 포인트를 통해 탐색에서 참여로 이어지는 흐름을 제안했습니다.</dd></div><div><dt>결과와 범위</dt><dd>아이디어톤에서 문제와 서비스 구조를 기획했습니다. 구현 프로젝트와 구분해 아이디어 및 사용자 경험 설계 과정으로 소개합니다.</dd></div></dl><div class="project-evidence-links"></div></details>
               <section class="project-fact"><h4>STACK / DOMAIN</h4><ul class="project-stack" aria-label="우니팡 기술과 영역"><li>Service Planning</li><li>User Flow</li><li>Gamification</li><li>Campus Welfare</li></ul></section>
               <div class="project-source-group"></div>
             </div>
@@ -358,7 +365,6 @@
                 <h4>ROLE / CONTRIBUTION</h4>
                 <p>데이터셋 준비부터 정제, 문자 치환·분해, 빈도 집계와 결과 해석까지 개인으로 수행하고 서로 다른 문자 체계에 맞춘 처리 방법을 비교했습니다.</p>
               </section>
-              <details class="project-case"><summary>과정과 구현 근거</summary><dl><div><dt>문제</dt><dd>문자 체계에 따라 입력 빈도와 처리 단위가 어떻게 달라지는지 궁금했습니다.</dd></div><div><dt>구현</dt><dd>말뭉치를 정제하고 한글은 자모로 분해해 집계했습니다. 일본어는 문자 변환과 빈도 계산 흐름을 별도로 구현했습니다.</dd></div><div><dt>결과와 범위</dt><dd>문자별 빈도와 전처리 과정을 코드로 남겼습니다. 실제 타이핑 속도나 인체공학적 개선 효과를 측정한 실험은 아닙니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/leehyowon14/hangul_frequency_for_semi-2-set-keyboard/commit/c8dcb53e4bcc0421689ae8c530d89a64b2482aa8" target="_blank" rel="noopener noreferrer">한글 분석 구현 ↗</a><a href="https://github.com/leehyowon14/Japanese_frequency/commit/02dce565eaee3acaeea02a5e4ec841df7aa4293c" target="_blank" rel="noopener noreferrer">일본어 분석 구현 ↗</a></div></details>
               <section class="project-fact">
                 <h4>STACK</h4>
                 <ul class="project-stack" aria-label="문자 빈도 분석 기술 스택">
@@ -390,7 +396,6 @@
                 <h4>ROLE / CONTRIBUTION</h4>
                 <p>mirusu400의 KWU-library-QR-PoC를 JavaScript로 이식한 기반 위에 API 입력 검증과 기능을 확장했습니다. 예약 텍스트 파서, 인원수 검증과 관련 테스트를 구현했습니다.</p>
               </section>
-              <details class="project-case"><summary>과정과 구현 근거</summary><dl><div><dt>문제</dt><dd>도서관 인증·예약 흐름을 자동화 도구에서도 사용할 수 있는 API로 제공하고자 했습니다.</dd></div><div><dt>설계</dt><dd>기존 QR 인증 PoC의 출처를 유지하며 서버 API로 연결하고, 예약 요청을 구조화해 입력 단계에서 검증했습니다.</dd></div><div><dt>결과와 범위</dt><dd>QR 인증 연동에 더해 예약 텍스트 해석과 검증을 구현했습니다. 학교가 제공하는 공식 API가 아닌 개인 연동 프로젝트입니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/mirusu400/KWU-library-QR-PoC" target="_blank" rel="noopener noreferrer">기반이 된 QR PoC ↗</a><a href="https://github.com/leehyowon14/Kwangwoon-Univ_Library/commit/c369a6a9b782af5d4105edcd70219d282569efda" target="_blank" rel="noopener noreferrer">예약 파서와 테스트 ↗</a></div></details>
               <section class="project-fact">
                 <h4>STACK</h4>
                 <ul class="project-stack" aria-label="광운대 도서관 API 기술 스택">
@@ -419,7 +424,6 @@
                 <h4>ROLE / CONTRIBUTION</h4>
                 <p>시간표 알림을 구현하고, 자가진단 자동화의 재시도·실패 알림을 개선했습니다. Discord 봇에서는 Go 기반 이벤트·명령 처리 구조를 만들며 자동화의 기본기를 익혔습니다.</p>
               </section>
-              <details class="project-case"><summary>과정과 구현 근거</summary><dl><div><dt>문제</dt><dd>정해진 시간에 반복하는 확인과 알림을 코드에 맡기고 싶었습니다.</dd></div><div><dt>구현</dt><dd>시간표 알림, 자가진단 재시도와 실패 알림, Discord 이벤트·명령 처리로 작은 자동화를 쌓았습니다.</dd></div><div><dt>결과와 범위</dt><dd>초기 개발 경험을 보여주는 보관 프로젝트입니다. 자가진단 도구는 현재 운영 서비스가 아니며 Discord 게임 봇은 초기 구현 단계입니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/Team-Stepix/auto-hcs/commit/6b27aa907c99d6b6813a59add9056d96fb734a12" target="_blank" rel="noopener noreferrer">재시도·실패 알림 ↗</a><a href="https://github.com/leehyowon14/WRwolf_Bot-Go/commit/957dc2c57f3c15d07de4ac55ed09083f055d17ca" target="_blank" rel="noopener noreferrer">봇 초기 구현 ↗</a></div></details>
               <section class="project-fact">
                 <h4>STACK</h4>
                 <ul class="project-stack" aria-label="초기 자동화 프로젝트 기술 스택">
@@ -452,7 +456,6 @@
                 <h4>ROLE / CONTRIBUTION</h4>
                 <p>CHIC ML 스터디의 세션 운영과 역할 분담을 조율했습니다. 코드 비교 실험에서는 TF-IDF, PCA·UMAP, KMeans·HDBSCAN과 통합 분석 파이프라인을 구현했습니다.</p>
               </section>
-              <details class="project-case"><summary>과정과 구현 근거</summary><dl><div><dt>문제</dt><dd>같은 문제를 푼 사람과 LLM의 코드가 표현 공간에서 어떤 패턴을 보이는지 탐색했습니다.</dd></div><div><dt>설계</dt><dd>텍스트 특징을 TF-IDF로 변환하고 차원 축소와 여러 군집화 방법을 연결해 비교할 수 있도록 구성했습니다.</dd></div><div><dt>결과와 범위</dt><dd>개별 분석 단계를 통합 파이프라인으로 묶었습니다. 출처 구분 가능성을 탐색한 팀 실험이며 일반화된 판별 성능을 입증한 결과로 제시하지 않습니다.</dd></div></dl><div class="project-evidence-links"><a href="https://github.com/pgr1212/CHIC_26_Machine_Learning_team-4_toy_project/commit/6e6610c04a62cd8df3671302a3285b95da7cee6b" target="_blank" rel="noopener noreferrer">분석 파이프라인 통합 ↗</a><a href="https://github.com/pgr1212/CHIC_26_Machine_Learning_team-4_toy_project/commit/4f4786a7625ceb164da42e4043030f4bc5f6344e" target="_blank" rel="noopener noreferrer">군집화 구현 ↗</a></div></details>
               <section class="project-fact">
                 <h4>STACK</h4>
                 <ul class="project-stack" aria-label="코드 스타일 실험 기술 스택">

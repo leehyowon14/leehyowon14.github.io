@@ -98,23 +98,10 @@
     const experienceSteps = $$('[data-experience-step]', experience);
     const experiencePoints = $$('[data-experience-point]', experience);
     const experienceDetail = $('[data-experience-detail]', experience);
-    const experienceOrganization = $('[data-experience-organization]', experience);
-    const experienceRole = $('[data-experience-role]', experience);
-    const experienceStatus = $('[data-experience-status]', experience);
-    const experienceDescription = $('[data-experience-description]', experience);
-    const experienceCount = $('[data-experience-count]', experience);
     let activeExperience = 0;
     let experienceSwapTimer = 0;
 
-    const experienceData = experienceSteps.map((step) => {
-      const copy = $('.experience-step-copy', step);
-      return {
-        organization: $('p', copy)?.textContent?.trim() || "",
-        role: $('h3', copy)?.textContent?.trim() || "",
-        status: $('span', copy)?.textContent?.trim() || "",
-        description: $$('p', copy)[1]?.textContent?.trim() || "",
-      };
-    });
+    const experienceData = experienceSteps.map((step) => $('.experience-step-copy', step));
 
     /** @param {number} index @param {boolean} [animate] */
     const updateExperience = (index, animate = true) => {
@@ -131,18 +118,14 @@
       window.clearTimeout(experienceSwapTimer);
       if (animate) experienceDetail?.classList.add('is-changing');
       experienceSwapTimer = window.setTimeout(() => {
-        if (experienceOrganization) experienceOrganization.textContent = next.organization;
-        if (experienceRole) experienceRole.textContent = next.role;
-        if (experienceDescription) experienceDescription.textContent = next.description;
-        if (experienceStatus) {
-          experienceStatus.textContent = next.status;
-          experienceStatus.hidden = !next.status;
-        }
-        if (experienceCount) experienceCount.textContent = `${String(index + 1).padStart(2, '0')} / ${String(experienceData.length).padStart(2, '0')}`;
+        const copy = /** @type {HTMLElement} */ (next.cloneNode(true));
+        $$('[id]', copy).forEach((element) => element.removeAttribute('id'));
+        experienceDetail?.replaceChildren(...copy.childNodes);
         experienceDetail?.classList.remove('is-changing');
       }, animate ? 130 : 0);
 
       experience.dataset.activeExperience = String(index);
+      experience.dataset.experienceEnd = String(index === experienceSteps.length - 1);
     };
 
     const experienceObserver = new IntersectionObserver(

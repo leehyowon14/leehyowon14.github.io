@@ -7,7 +7,7 @@ test('procedural rendering stays within a fixed pixel budget at any viewport', (
     const { allocations } = loadHero({ width, height });
     assert.equal(allocations.length, 1);
     const field = allocations[0];
-    assert.ok(field.width * field.height <= 100_000, `pixel budget exceeded for ${width} × ${height}`);
+    assert.ok(field.width * field.height <= 225_000, `pixel budget exceeded for ${width} × ${height}`);
     assert.ok(field.data.every((value, index) => index % 4 !== 3 || value === 255), 'the entire image must be opaque');
   }
 });

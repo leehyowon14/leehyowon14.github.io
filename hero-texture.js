@@ -70,13 +70,14 @@
     canvas.height = canvasHeight;
 
     // Keep the procedural field bounded; the display canvas handles upscaling.
-    const fieldScale = Math.min(1, 256 / rect.width, 384 / rect.height);
+    const fieldScale = Math.min(1, 384 / rect.width, 576 / rect.height);
     fieldWidth = Math.max(1, Math.round(rect.width * fieldScale));
     fieldHeight = Math.max(1, Math.round(rect.height * fieldScale));
     field.width = fieldWidth;
     field.height = fieldHeight;
     imageData = fieldContext.createImageData(fieldWidth, fieldHeight);
-    context.imageSmoothingEnabled = true;
+    // Preserve the individual grains when the bounded field is enlarged.
+    context.imageSmoothingEnabled = false;
     drawField(motionQuery.matches ? 0.72 : performance.now() * 0.001);
   };
 
@@ -126,7 +127,7 @@
     currentY += (pointerY - currentY) * 0.045;
 
     const pixels = imageData.data;
-    const seed = Math.floor(time * 18);
+    const seed = Math.floor(time * 24);
 
     for (let y = 0; y < fieldHeight; y += 1) {
       const v = y / fieldHeight;
@@ -160,7 +161,7 @@
 
         const scan = 0.5 + 0.5 * Math.sin(x * 0.18 + y * 0.032 + time * 2.3);
         const breakup = hash(x * 0.73, y * 0.91, seed);
-        const sparse = breakup > 0.22 ? 1 : breakup * 0.46;
+        const sparse = breakup > 0.2 ? 1 : breakup * 0.4;
         const energy = clamp(
           (ribbon * 0.74 + surge * 0.85 + fold * 0.55 + flare * 0.66) *
             (0.74 + scan * 0.26) *
